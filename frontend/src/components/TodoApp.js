@@ -1,31 +1,29 @@
 import React from "react";
 
-class TodoApp extends React.Component{
-    constructor(props){
-        super(props);
-        
-        this.state = {
-            todoList: [],
-            activeItem:{
-                id: null,
-                title: '',
-                completed: false
-            },
-            editing: false
-        }
+import AddTask from './AddTask';
+import Header from './Header';
+import Tasks from './Tasks';
 
-        this.fetchTasks = this.fetchTasks.bind(this)
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.getCookie = this.getCookie.bind(this)
+
+class TodoApp extends React.Component {
+
+    state = {
+        todoList: [],
+        activeItem:{
+            id: null,
+            title: '',
+            completed: false
+        },
+        editing: false
     }
 
-    getCookie(name){
+    getCookie = name => {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
             let cookies = document.cookie.split(';');
             for (let i=0; i<cookies.length; i++) {
                 let cookie = cookies[i].trim();
+                
                 // Does this cookie string begin with the name we want?
                 if (cookie.substring(0, name.length + 1) === (name + '=')) {
                     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
@@ -36,14 +34,11 @@ class TodoApp extends React.Component{
         return cookieValue;
     }
 
-    componentDidMount(){
-        this.fetchTasks()
-    }
+    fetchTasks = () => {
+        console.log("Fetching.....")
+        let url = 'http://localhost:8000/api/task-list/';
 
-    fetchTasks(){
-        console.log('Fetching.....');
-
-        fetch('http://localhost:8000/api/task-list/')
+        fetch(url)
         .then(response => response.json())
         .then(data =>
             this.setState({
@@ -52,11 +47,8 @@ class TodoApp extends React.Component{
         )
     }
 
-    handleChange(e){
-        // let name = e.target.name;
+    handleChange = e => {
         let value = e.target.value;
-
-        // console.log(name, value);
 
         this.setState({
             activeItem: {
@@ -66,8 +58,17 @@ class TodoApp extends React.Component{
         })
     }
 
-    handleSubmit(e){
-        e.preventDefault()
+    handleSubmit = e => {
+        let arr = this.state.todoList;
+        let value = this.state.activeItem.title
+
+        if(value === '') return "You can't add an empty list !!!";
+
+        for(let i=0; i<this.state.todoList.length; i++){
+            if(arr[i].title === value){
+                return "You have already added a similar option...";
+            }
+        }
 
         let url = 'http://localhost:8000/api/task-create/';
         let csrftoken = this.getCookie('csrftoken')
@@ -86,7 +87,7 @@ class TodoApp extends React.Component{
                 'X-CSRFToken': csrftoken
             },
             body: JSON.stringify(this.state.activeItem)
-        }).then((response) => {
+        }).then(response => {
             this.fetchTasks()
             this.setState({
                 activeItem:{
@@ -95,19 +96,19 @@ class TodoApp extends React.Component{
                     completed: false
                 }
             })
-        }).catch((error) => {
-            console.log('ERROR:', error)
+        }).catch(error => {
+            return 'ERROR: ' + error;
         })
     }
 
-    startEdit(task){
+    startEdit = task => {
         this.setState({
             activeItem: task,
             editing: true
         })
     }
 
-    deleteItem(task){
+    deleteItem = task => {
         let csrftoken = this.getCookie('csrftoken')
         let url = `http://localhost:8000/api/task-delete/${ task.id }`;
 
@@ -122,7 +123,7 @@ class TodoApp extends React.Component{
         })
     }
 
-    strikeUnstrike(task){
+    strikeUnstrike = task => {
         task.completed = !task.completed
         let csrftoken = this.getCookie('csrftoken')
         let url = `http://localhost:8000/api/task-update/${ task.id }`;
@@ -139,60 +140,34 @@ class TodoApp extends React.Component{
         })
     }
 
+    componentDidMount(){
+        this.fetchTasks()
+    }
+
     render(){
-        let task = this.state.todoList
-        let self = this
+        const subTitle = <p>One of the most secure, fastest and feature rich app &#x1F603;</p>
+
         return(
             <div className = "container">
+                <Header
+                    subTitle = { subTitle }
+                />
                 <div id = "task-container">
-                    <div id = "form-wrapper">
-                        <form onSubmit = { this.handleSubmit } id = "form">
-                            <div className="flex-wrapper">
-                                <div style={{ flex: 6 }}>
-                                    <input 
-                                        onChange = { this.handleChange } 
-                                        className = "form-control" 
-                                        id = "title" 
-                                        type = "text" 
-                                        name = "title" 
-                                        value = { this.state.activeItem.title }
-                                        placeholder = "Add task..."
-                                    />
-                                </div>
+                    <AddTask
+                        title = { this.state.activeItem.title }
+                        handleSubmit = { this.handleSubmit }
+                        handleChange = { this.handleChange }
+                    />
 
-                                <div style={{ flex: 1 }}>
-                                    <input id="submit" className="btn btn-warning" type="submit" name="Add" />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div id = "list-wrapper">
-                        { task.map((task, index) => {
-                            return (
-                                <div key={ index } className="task-wrapper flex-wrapper">
-                                    
-                                    <div onClick = {() => self.strikeUnstrike(task)} style = {{ flex: 7 }}>
-                                        { 
-                                            !task.completed ?
-                                            <span>{ task.title }</span> : <strike>{ task.title }</strike> 
-                                        }
-                                    </div>
-                                    
-                                    <div style = {{ flex: 1 }}>
-                                        <button onClick = {() => self.startEdit(task)} className = "btn btn-sm btn-outline-info">Edit</button>
-                                    </div>
-                                    
-                                    <div style = {{ flex: 1 }}>
-                                        <button onClick = {() => self.deleteItem(task)} className = "btn btn-sm btn-outline-dark delete">-</button>
-                                    </div>
-
-                                </div>
-                        )}) }
-                    </div>
+                    <Tasks
+                        tasks = { this.state.todoList }
+                        strikeUnstrike = { this.strikeUnstrike }
+                        startEdit = { this.startEdit }
+                        deleteItem = { this.deleteItem }
+                    />
                 </div>
             </div>
-        );
+        )
     }
 }
 
