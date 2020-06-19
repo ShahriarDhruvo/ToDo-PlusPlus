@@ -68,6 +68,7 @@ def workDelete(request, pk):
 # Views for tasks
 @api_view(['GET'])
 def taskList(request, wpk):
+	# tasks = Task.objects.all().order_by('-id')
 	tasks = Task.objects.filter(work_name = wpk).order_by('-id')
 	serializer = TaskSerializer(tasks, many=True)
 
@@ -79,9 +80,11 @@ def taskDetail(request, wpk, pk):
 	serializer = TaskSerializer(tasks, many=False)
 
 	return Response(serializer.data)
-
+	
+# Want to make sure that it is done exactly how it meant to be
 @api_view(['POST'])
 def taskCreate(request, wpk):
+	request.data['work_name'] = wpk
 	serializer = TaskSerializer(data = request.data)
 
 	if serializer.is_valid():
@@ -89,15 +92,15 @@ def taskCreate(request, wpk):
 
 	return Response(serializer.data)
 
-# Facing problem
+# Want to make sure that it is done exactly how it meant to be
 @api_view(['POST'])
 def taskUpdate(request, wpk, pk):
+	request.data['work_name'] = wpk
 	tasks = Task.objects.filter(work_name = wpk).get(id = pk)
 	serializer = TaskSerializer(instance = tasks, data = request.data)
 
 	if serializer.is_valid():
 		serializer.save()
-	else: print('Error:', serializer.is_valid())
 
 	return Response(serializer.data)
 

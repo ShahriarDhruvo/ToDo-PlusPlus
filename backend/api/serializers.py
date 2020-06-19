@@ -12,7 +12,7 @@ class WorkSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class TaskSerializer(serializers.ModelSerializer):
-    work = WorkSerializer(many=True, read_only=True)
+    # work = WorkSerializer(many=True, read_only=True)
     class Meta:
         model = Task
-        fields  = ['id', 'title', 'deadline', 'completed', 'work']
+        fields  = '__all__'
