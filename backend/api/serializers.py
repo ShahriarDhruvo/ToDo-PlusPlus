@@ -10,8 +10,10 @@ class WorkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Work
         fields = '__all__'
+        # read_only_fields = ['owner']
 
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields  = '__all__'
+        # read_only_fields = ['work_name']

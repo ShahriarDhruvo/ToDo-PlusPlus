@@ -26,15 +26,45 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'api.apps.ApiConfig',
+    'django.contrib.sites',
+
     'rest_framework',
-    'corsheaders'
+    'rest_framework.authtoken',
+
+    'rest_auth',
+    'rest_auth.registration',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.twitter',
+
+    'corsheaders',
+
+    'api',
+    'users',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication'
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+    ],
+    'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware', # Customly added middleware for corsheaders
+
+    # Customly added middleware for corsheaders
+    'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -92,7 +122,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -111,6 +140,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('APP_EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('APP_EMAIL_PASS')
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
+SITE_ID = 1
 
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:8080",
