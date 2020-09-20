@@ -1,18 +1,67 @@
-html {
-    font-size: 62.5%;
+// Button fade-in-out animation
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-body {
-    background-color: $dark-blue;
-    color: $off-white;
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: $m-size;
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
-button {
-    cursor: pointer;
+.action-button {
+    display: none;
 }
 
-button:disabled {
-    cursor: default;
+.card-body:hover {
+    .action-button {
+        display: flex;
+        -moz-animation: fade-in 1.5s;
+        animation: fade-in 1.5s;
+    }
+}
+
+.card-body:not(:hover) .action-button.did-fade-in {
+    display: flex;
+    -moz-animation: fade-out 0.5s;
+    animation: fade-out 0.5s;
+}
+// Button fade-in-out animation
+
+.vertical-center {
+    min-height: 94%;
+    min-height: 94vh;
+
+    display: flex;
+    align-items: center;
+}
+
+.crounded {
+    border-radius: 0.7rem;
+}
+
+.clogo {
+    font-family: "MuseoModerno";
+}
+
+.clink {
+    margin-right: 8px;
+    margin-left: 8px;
+    transition: 0.5s;
+}
+
+.clink:hover {
+    transform: scale(1.2);
+}
+
+.social {
+    font-size: 1.4rem;
 }

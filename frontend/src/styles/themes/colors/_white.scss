@@ -1,0 +1,38 @@
+.App.theme-white {
+    $bg: #fffef8;
+    $main: #eed54a;
+    $syntax: darken(
+        $color: $main,
+        $amount: 20%,
+    );
+    $main-bg: #fffef1;
+    $complete: #4fb64f;
+    $remove: #e26060;
+
+    $nav-border: #eee;
+
+    background-color: $bg;
+
+    .navLink-border {
+        border-left: 2px solid $nav-border;
+    }
+
+    .cborder {
+        border: 2px solid darken($color: $main, $amount: 15%);
+    }
+
+    $theme-colors: ();
+    $theme-colors: map-merge(
+        (
+            "bg": $bg,
+            "main": $main,
+            "main-bg": $main-bg,
+            "syntax": $syntax,
+            "complete": $complete,
+            "remove": $remove,
+        ),
+        $theme-colors
+    );
+
+    @import "~bootstrap/scss/bootstrap.scss";
+}

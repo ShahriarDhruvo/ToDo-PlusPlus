@@ -1,14 +1,37 @@
 import React from "react";
+import emoji from "react-easy-emoji";
 
 import AddTask from './AddTask';
-import Header from './Header';
+import Header from '../generic/Header';
 import Tasks from './Tasks';
+import { Container } from "react-bootstrap";
 
 
 class TodoApp extends React.Component {
 
     state = {
-        todoList: [],
+        todoList: [
+            {
+                title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque itaque rerum, laborum quis fuga placeat labore laboriosam earum repellendus ea expedita provident asperiores eos fugiat? Debitis iure molestias nemo deserunt!",
+                completed: false
+            },
+            {
+                title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque itaque rerum, laborum quis fuga placeat labore laboriosam earum repellendus ea expedita provident asperiores eos fugiat? Debitis iure molestias nemo deserunt!",
+                completed: false
+            },
+            {
+                title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque itaque rerum, laborum quis fuga placeat labore laboriosam earum repellendus ea expedita provident asperiores eos fugiat? Debitis iure molestias nemo deserunt!",
+                completed: false
+            },
+            {
+                title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque itaque rerum, laborum quis fuga placeat labore laboriosam earum repellendus ea expedita provident asperiores eos fugiat? Debitis iure molestias nemo deserunt!",
+                completed: false
+            },
+            {
+                title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque itaque rerum, laborum quis fuga placeat labore laboriosam earum repellendus ea expedita provident asperiores eos fugiat? Debitis iure molestias nemo deserunt!",
+                completed: false
+            },
+        ],
         activeItem:{
             id: null,
             title: '',
@@ -145,14 +168,14 @@ class TodoApp extends React.Component {
     }
 
     render(){
-        const subTitle = <p>One of the most secure, fastest and feature rich app &#x1F603;</p>
+        const subTitle = <p>One of the most secure, fastest and feature rich app {emoji("🤪")}</p>
 
         return(
-            <div className = "container">
+            <Container>
                 <Header
                     subTitle = { subTitle }
                 />
-                <div id = "task-container">
+                <div className="">
                     <AddTask
                         title = { this.state.activeItem.title }
                         handleSubmit = { this.handleSubmit }
@@ -166,7 +189,7 @@ class TodoApp extends React.Component {
                         deleteItem = { this.deleteItem }
                     />
                 </div>
-            </div>
+            </Container>
         )
     }
 }

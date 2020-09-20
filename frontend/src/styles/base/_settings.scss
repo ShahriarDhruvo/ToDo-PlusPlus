@@ -1,15 +1,28 @@
-// Colors
-$off-black: #20222b;
-$off-white: #a5afd7;
-$dark-blue: #333745;
-$blue: #3c4251;
-$light-blue: #464e5e;
-$purple: #8357c5;
-// $purple: #3092e2;
+@import url("https://fonts.googleapis.com/css2?family=MuseoModerno:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", "sans-serif";
+    font-size: 16px;
+    line-height: 1.6;
+}
 
 // Spacing
-$s-size: 1.2rem;
-$m-size: 1.6rem;
-$l-size: 3.2rem;
-$xl-size: 4.8rem;
-$desktop-breakpoint: 45rem;
+$spacer: 1rem;
+$spacers: ();
+$spacers: map-merge(
+    (
+        6: (
+            $spacer * 4,
+        ),
+        7: (
+            $spacer * 18,
+        ),
+    ),
+    $spacers
+);
+
+// Others
+// $hoverShade: 8%;
