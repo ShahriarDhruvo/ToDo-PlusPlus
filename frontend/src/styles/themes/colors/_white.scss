@@ -7,6 +7,7 @@
     );
     $main-bg: #fffef1;
     $complete: #4fb64f;
+    $complete-bg: #b4ffb4;
     $remove: #e26060;
 
     $nav-border: #eee;
@@ -17,8 +18,9 @@
         border-left: 2px solid $nav-border;
     }
 
-    .cborder {
-        border: 2px solid darken($color: $main, $amount: 15%);
+    .ccard {
+        border: 1px solid darken($color: $main, $amount: 15%);
+        border-radius: 0.25rem;
     }
 
     $theme-colors: ();
@@ -29,6 +31,7 @@
             "main-bg": $main-bg,
             "syntax": $syntax,
             "complete": $complete,
+            "complete-bg": $complete-bg,
             "remove": $remove,
         ),
         $theme-colors

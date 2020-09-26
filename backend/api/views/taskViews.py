@@ -28,17 +28,17 @@ class TaskList(ListAPIView):
 		user_id = user.first()['id']
 		wpk = self.kwargs.get('wpk', None)
 
-		queryset = Task.objects.filter(work_name = wpk).order_by('-id')
-
 		is_authenticated = Work.objects.filter(colaborators = user_id, id = wpk)
 
 		if not is_authenticated:
 			raise PermissionDenied("You are not authorized to see the list")
+		
+		queryset = Task.objects.filter(work_name = wpk).order_by('-id')
 
 		if queryset:
 			return queryset
 		else:
-			raise NotFound("Page not found")
+			raise NotFound("No task added yet.")
 
 class TaskCreate(CreateAPIView):
 	serializer_class = TaskSerializer
@@ -68,16 +68,17 @@ class TaskDelete(DestroyAPIView):
 		wpk = self.kwargs.get('wpk', None)
 		pk = self.kwargs.get('pk', None)
 
-		queryset = Task.objects.filter(work_name = wpk, id = pk)
 		is_authenticated = Work.objects.filter(colaborators = user_id, id = wpk)
 
 		if not is_authenticated:
 			raise PermissionDenied("You are not authorized to delete this item")
 
+		queryset = Task.objects.filter(work_name = wpk, id = pk)
+
 		if queryset:
 			return queryset
 		else:
-			raise NotFound("Page not found")
+			raise NotFound("Item not found")
 
 class TaskUpdate(UpdateAPIView):
 	serializer_class = TaskSerializer
@@ -89,11 +90,12 @@ class TaskUpdate(UpdateAPIView):
 		wpk = self.kwargs.get('wpk', None)
 		pk = self.kwargs.get('pk', None)
 
-		queryset = Task.objects.filter(work_name = wpk, id = pk)
 		is_authenticated = Work.objects.filter(colaborators = user_id, id = wpk)
 
 		if not is_authenticated:
 			raise PermissionDenied("You are not authorized to update this item")
+
+		queryset = Task.objects.filter(work_name = wpk, id = pk)
 
 		if queryset:
 			return queryset
@@ -129,3 +131,4 @@ class TaskDetails(ListAPIView):
 			return queryset
 		else:
 			raise NotFound("Page not found")
+		

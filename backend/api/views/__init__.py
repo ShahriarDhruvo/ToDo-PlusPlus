@@ -11,8 +11,9 @@ from .workViews import (
     WorkDelete,
     WorkUpdate,
     WorkDetails,
-    WorkAddColaborators,
-    WorkRemoveColaborators
+    WorkAddCollaborators,
+    WorkRemoveCollaborators,
+    WorkListCollaboratorsDetails
 )
 
 from .taskViews import (
@@ -28,28 +29,31 @@ from .taskViews import (
 @permission_classes([IsAuthenticatedOrReadOnly])
 def apiOverview(request):
     api_urls = {
-        'API Overview'           : 'api/v1/',
+        'API Overview'                      : 'api/v1/',
 
-        'Users List'             : 'api/v1/users/',
-        'User Login'             : 'api/v1/user/login/',
-        'User Logout'            : 'api/v1/user/logout/',
-        'User Registration'      : 'api/v1/user/registration/',
-        'User Password Reset'    : 'api/v1/user/password/reset/',
-        'User Password Change'   : 'api/v1/user/password/change/',
+        'Users List'                        : 'api/v1/users/',
+        'Users Profile'                     : 'api/v1/users/profile/<str:pk>/<str:uid>',
+        'User Login'                        : 'api/v1/user/login/',
+        'User Logout'                       : 'api/v1/user/logout/',
+        'User Details'                      : 'api/v1/user/user',
+        'User Registration'                 : 'api/v1/user/registration/',
+        'User Password Reset'               : 'api/v1/user/password/reset/',
+        'User Password Change'              : 'api/v1/user/password/change/',
 
-		'Work List'              : 'api/v1/work-list/',
-		'Work Create'            : 'api/v1/work-create/',
-		'Work Update'            : 'api/v1/work-update/<str:pk>/',
-		'Work Delete'            : 'api/v1/work-delete/<str:pk>/',
-		'Work Details'           : 'api/v1/work-details/<str:pk>/',
-        'Work Add Colaborator'   : 'api/v1/work/add/colaborator/<str:pk>/<str:colaborator>/',
-        'Work Remove Colaborator': 'api/v1/work/remove/colaborator/<str:pk>/<str:colaborator>/',
+		'Work List'                         : 'api/v1/work/list/',
+		'Work Create'                       : 'api/v1/work/create/',
+		'Work Update'                       : 'api/v1/work/update/<str:pk>/',
+		'Work Delete'                       : 'api/v1/work/delete/<str:pk>/',
+		'Work Details'                      : 'api/v1/work/details/<str:pk>/',
+        'Work Add Collaborator'             : 'api/v1/work/add/collaborator/<str:pk>/<str:colaborator>/',
+        'Work Remove Collaborator'          : 'api/v1/work/remove/collaborator/<str:pk>/<str:colaborator>/',
+        'Work List Collaborator Details'    : 'api/v1/work/list/collaborator/details/<str:pk>/',
 
-		'Task List'              : 'api/v1/<str:wpk>/task-list/',
-		'Task Create'            : 'api/v1/<str:wpk>/task-create/',
-		'Task Update'            : 'api/v1/<str:wpk>task-update/<str:pk>/',
-		'Task Delete'            : 'api/v1/<str:wpk>/task-delete/<str:pk>/',
-		'Task Details'           : 'api/v1/<str:wpk>/task-details/<str:pk>/',
+		'Task List'                         : 'api/v1/<str:wpk>/task/list/',
+		'Task Create'                       : 'api/v1/<str:wpk>/task/create/',
+		'Task Update'                       : 'api/v1/<str:wpk>/task/update/<str:pk>/',
+		'Task Delete'                       : 'api/v1/<str:wpk>/task/delete/<str:pk>/',
+		'Task Details'                      : 'api/v1/<str:wpk>/task/details/<str:pk>/',
 	}
 
     return Response(api_urls)

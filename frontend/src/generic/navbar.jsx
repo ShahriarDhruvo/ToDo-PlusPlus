@@ -16,7 +16,8 @@ const MainNav = () => {
     return (
         <Navbar
             sticky="top"
-            className={"bg-bg crounded" + (isShadow ? " shadow" : "")}
+            className={"bg-bg " + (isShadow ? "shadow" : "")}
+            style={{ borderRadius: "0.25rem" }}
         >
             <Navbar.Brand
                 style={{ fontFamily: "MuseoModerno" }}

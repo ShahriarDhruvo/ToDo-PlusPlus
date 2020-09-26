@@ -10,8 +10,9 @@ from .views import (
     WorkDelete,
     WorkUpdate,
     WorkDetails,
-    WorkAddColaborators,
-    WorkRemoveColaborators,
+    WorkAddCollaborators,
+    WorkRemoveCollaborators,
+    WorkListCollaboratorsDetails,
 
     TaskList,
     TaskCreate,
@@ -38,8 +39,9 @@ urlpatterns = [
     path('work/delete/<str:pk>', WorkDelete.as_view(), name="work-delete"),
     path('work/update/<str:pk>', WorkUpdate.as_view(), name="work-update"),
     path('work/details/<str:pk>', WorkDetails.as_view(), name="work-details"),
-    path('work/add/colaborator/<str:pk>/<str:colaborator>', WorkAddColaborators.as_view(), name="work-add-colaborator"),
-    path('work/remove/colaborator/<str:pk>/<str:colaborator>', WorkRemoveColaborators.as_view(), name="work-remove-colaborator"),
+    path('work/add/collaborator/<str:pk>/<str:colaborator>', WorkAddCollaborators.as_view(), name="work-add-collaborator"),
+    path('work/remove/collaborator/<str:pk>/<str:colaborator>', WorkRemoveCollaborators.as_view(), name="work-remove-collaborator"),
+    path('work/list/collaborator/details/<str:pk>', WorkListCollaboratorsDetails.as_view(), name="work-list-collaborator-details"),
 
     path('<str:wpk>/task/list/', TaskList.as_view(), name="task-list"),
     path('<str:wpk>/task/create/', TaskCreate.as_view(), name="task-create"),

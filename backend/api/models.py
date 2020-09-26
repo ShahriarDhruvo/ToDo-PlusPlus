@@ -1,6 +1,9 @@
 from django.db import models
+from datetime import datetime
 from django.utils import timezone
 from users.models import CustomUser
+
+formatted_date = datetime.strftime(timezone.now(), '%Y-%m-%d %H:%M')
 
 class Work(models.Model):
     owner = models.ForeignKey(CustomUser, default=1, related_name='owner', on_delete=models.CASCADE)
@@ -13,7 +16,8 @@ class Work(models.Model):
 
 class Task(models.Model):
     title = models.CharField(max_length=200)
-    deadline = models.DateTimeField(default=timezone.now)
+    haveDeadline = models.BooleanField(default=False)
+    deadline = models.DateTimeField(default=formatted_date)
     completed = models.BooleanField(default=False, blank=True, null=True)
     work_name = models.ForeignKey(Work, default=1, on_delete=models.CASCADE)
 

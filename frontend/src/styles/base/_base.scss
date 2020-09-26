@@ -21,7 +21,7 @@
     display: none;
 }
 
-.card-body:hover {
+.ccard:hover {
     .action-button {
         display: flex;
         -moz-animation: fade-in 1.5s;
@@ -29,7 +29,7 @@
     }
 }
 
-.card-body:not(:hover) .action-button.did-fade-in {
+.ccard:not(:hover) .action-button.did-fade-in {
     display: flex;
     -moz-animation: fade-out 0.5s;
     animation: fade-out 0.5s;
@@ -40,13 +40,15 @@
     min-height: 94%;
     min-height: 94vh;
 
-    display: flex;
-    align-items: center;
+    // display: flex;
+    // align-items: center;
+    display: grid;
+    place-items: center;
 }
 
-.crounded {
-    border-radius: 0.7rem;
-}
+// .crounded {
+//     border-radius: 0.7rem;
+// }
 
 .clogo {
     font-family: "MuseoModerno";
@@ -64,4 +66,15 @@
 
 .social {
     font-size: 1.4rem;
+}
+
+.container {
+    min-height: 94vh;
+    padding-bottom: 13rem;
+}
+
+#footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }
