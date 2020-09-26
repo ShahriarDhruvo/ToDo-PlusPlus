@@ -6,31 +6,43 @@ const RemainingTime = (props) => {
     const [time, setTime] = useState(null);
 
     useEffect(() => {
-        const currentTime = `${new Date().toLocaleDateString(
-            "en-CA"
-        )} ${new Date().toLocaleTimeString("en-US", {
-            hour12: false,
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-        })}`;
+        const interval = setInterval(() => {
+            const currentTime = `${new Date().toLocaleDateString(
+                "en-CA"
+            )} ${new Date().toLocaleTimeString("en-US", {
+                hour12: false,
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+            })}`;
 
-        console.log(currentTime);
+            const targetTime = `${props.deadline.split("T")[0]} ${
+                props.deadline.split("T")[1]
+            }`;
 
-        const targetTime = `${props.deadline.split("T")[0]} ${
-            props.deadline.split("T")[1]
-        }`;
+            setTime(
+                moment
+                    .duration(moment(targetTime).diff(moment(currentTime)))
+                    .format(
+                        "Y [year] M [month] w [week] d [days] h [hrs] m [min] s[s]"
+                    )
+            );
+        }, 1000);
 
-        setTime(
-            moment
-                .duration(moment(targetTime).diff(moment(currentTime)))
-                .format(
-                    "Y [year] M [month] w [week] d [days] h [hrs] m [min] s [second]"
-                )
-        );
-    }, [props.deadline]);
+        if (time && time[0] === "-") clearInterval(interval);
 
-    return <>{time}</>;
+        return () => clearInterval(interval);
+    }, [props.deadline, time]);
+
+    return (
+        <>
+            {time && time[0] === "-" ? (
+                <span className="text-danger">Times Up!</span>
+            ) : (
+                time
+            )}
+        </>
+    );
 };
 
 export default RemainingTime;

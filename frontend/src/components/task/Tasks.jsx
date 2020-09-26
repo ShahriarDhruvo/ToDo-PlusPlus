@@ -1,5 +1,3 @@
-// import moment from "moment";
-// import "moment-duration-format";
 import React, { useState } from "react";
 import { Alert, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -79,26 +77,6 @@ const Tasks = (props) => {
         loadData();
     };
 
-    // const getRemainingTime = (deadline) => {
-    //     const currentTime = `${new Date().toLocaleDateString(
-    //         "en-CA"
-    //     )} ${new Date().toLocaleTimeString("en-US", {
-    //         hour12: false,
-    //         hour: "2-digit",
-    //         minute: "2-digit",
-    //     })}:00`;
-
-    //     const targetTime = `${deadline.split("T")[0]} ${
-    //         deadline.split("T")[1]
-    //     }`;
-
-    //     return moment
-    //         .duration(moment(targetTime).diff(moment(currentTime)))
-    //         .format(
-    //             "Y [year] M [month] w [week] d [days] h [hrs] m [min] s [second]"
-    //         );
-    // };
-
     return (
         <div className="row text-center">
             <div className="text-center">
@@ -133,9 +111,6 @@ const Tasks = (props) => {
                                                     " hh:mm a"
                                                 )} */}
                                                 <b>Remaining Time: </b>
-                                                {/* {getRemainingTime(
-                                                    task.deadline
-                                                )} */}
                                                 <RemainingTime
                                                     deadline={task.deadline}
                                                 />
