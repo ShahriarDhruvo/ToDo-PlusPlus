@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Alert, Container, Button, Form, InputGroup } from "react-bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,7 +8,7 @@ import { TokenContext } from "../../contexts/TokenContext";
 
 const Login = () => {
     const [status, setStatus] = useState(undefined);
-    const { handleToken } = useContext(TokenContext);
+    const { token, handleToken } = useContext(TokenContext);
     const form = useRef(null);
 
     const handleSubmit = (e) => {
@@ -39,6 +39,8 @@ const Login = () => {
 
     return (
         <Container className="d-flex align-items-center justify-content-center">
+            {token ? <Redirect to="/" /> : null}
+            
             <div className="card p-5 bg-main-bg">
                 <div className="d-flex justify-content-between mb-4">
                     <div className="w-50">

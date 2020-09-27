@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 
 export const TokenContext = createContext();
 
@@ -8,8 +9,8 @@ const TokenContextProvider = (props) => {
     useEffect(() => {
         const currentToken = localStorage.getItem("token");
 
-        if (currentToken) setToken(currentToken);
-    }, []);
+        if (currentToken !== token) setToken(currentToken);
+    }, [token]);
 
     const handleToken = (token) => {
         setToken(token);
@@ -18,7 +19,14 @@ const TokenContextProvider = (props) => {
 
     return (
         <TokenContext.Provider value={{ token, handleToken }}>
-            {props.children}
+            {!token ? (
+                <>
+                    <Redirect to="/login" />
+                    {props.children}
+                </>
+            ) : (
+                <>{props.children}</>
+            )}
         </TokenContext.Provider>
     );
 };

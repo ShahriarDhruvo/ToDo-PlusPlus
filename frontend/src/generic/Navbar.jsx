@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 
 import { AccountCircle } from "@material-ui/icons";
 
 import { useWindowScroll } from "beautiful-react-hooks";
 import { NavLink } from "react-router-dom";
+import { TokenContext } from "../contexts/TokenContext";
 
 const MainNav = () => {
     const [isShadow, setIsShadow] = useState(window.scrollY > 20);
+    const { token, handleToken } = useContext(TokenContext);
 
     useWindowScroll(() => {
         setIsShadow(window.scrollY > 20);
@@ -21,9 +23,9 @@ const MainNav = () => {
         });
 
         const data = await response.json();
+        console.log(data);
 
-        console.log(data.detail);
-
+        if (response.ok) handleToken(undefined);
         // if (!response.ok) setStatus(data.detail);
         // else handleToken("TOKEN " + data.key);
     };
@@ -46,16 +48,27 @@ const MainNav = () => {
 
             <Navbar.Collapse id="main-nav">
                 <Nav className="ml-auto">
+                    {token ? (
+                        <Nav.Link
+                            onClick={handleLogOut}
+                            className="pr-3 text-syntax"
+                        >
+                            Log out
+                        </Nav.Link>
+                    ) : (
+                        <Nav.Link
+                            as={NavLink}
+                            to="/login"
+                            className="pr-3 text-syntax"
+                        >
+                            Log in
+                        </Nav.Link>
+                    )}
+
                     <Nav.Link
-                        onClick={handleLogOut}
-                        className="pr-3 text-syntax"
-                    >
-                        Log out
-                    </Nav.Link>
-                    <Nav.Link
-                        className="pl-3 pr-0 navLink-border"
                         as={NavLink}
                         to="/profile"
+                        className="pl-3 pr-0 navLink-border"
                     >
                         <AccountCircle className="text-syntax" />
                     </Nav.Link>

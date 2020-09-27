@@ -1,3 +1,4 @@
+*.pyc
 /backend/Environment/
 /backend/venv/
 /frontend/node_modules/
