@@ -21,6 +21,7 @@ import Profile from "./components/user/Profile";
 import Register from "./components/user/Register";
 import Task from "./components/task/Task";
 import TokenContextProvider from "./contexts/TokenContext";
+import ProtectiveRoute from "./generic/protective.route";
 
 library.add(far, fas, fab);
 
@@ -31,31 +32,43 @@ function App() {
                 <TokenContextProvider>
                     <MainNav />
                     <Switch>
-                        <Route
+                        <ProtectiveRoute
                             exact
                             path="/add/collaborator/:id"
                             component={AddCollaborator}
                         />
-                        <Route
+                        <ProtectiveRoute
                             exact
                             path="/work/update/:id"
                             component={UpdateWork}
                         />
-                        <Route
+                        <ProtectiveRoute
                             exact
                             path="/work/details/:id"
                             component={WorkDetails}
                         />
-                        <Route
+                        <ProtectiveRoute
                             exact
                             path="/profile/:wid/:uid"
                             component={Profile}
                         />
+                        <ProtectiveRoute
+                            exact
+                            path="/profile"
+                            component={Profile}
+                        />
+                        <ProtectiveRoute
+                            exact
+                            path="/register"
+                            component={Register}
+                        />
+                        <ProtectiveRoute
+                            exact
+                            path="/:wid/task/list/"
+                            component={Task}
+                        />
                         <Route exact path="/login" component={Login} />
-                        <Route exact path="/profile" component={Profile} />
-                        <Route exact path="/register" component={Register} />
-                        <Route exact path="/:wid/task/list/" component={Task} />
-                        <Route exact path="/" component={Home} />
+                        <ProtectiveRoute exact path="/" component={Home} />
                         <Route component={NotFound} />
                     </Switch>
                 </TokenContextProvider>

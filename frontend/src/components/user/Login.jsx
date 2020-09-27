@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { TokenContext } from "../../contexts/TokenContext";
 
-const Login = () => {
+const Login = (props) => {
     const [status, setStatus] = useState(undefined);
     const { token, handleToken } = useContext(TokenContext);
     const form = useRef(null);
@@ -28,7 +28,10 @@ const Login = () => {
                 const data = await response.json();
 
                 if (!response.ok) setStatus(data.non_field_errors);
-                else handleToken("TOKEN " + data.key);
+                else {
+                    handleToken("TOKEN " + data.key);
+                    window.location.replace("/")
+                }
             } catch (error) {
                 setStatus(error);
             }
@@ -40,7 +43,7 @@ const Login = () => {
     return (
         <Container className="d-flex align-items-center justify-content-center">
             {token ? <Redirect to="/" /> : null}
-            
+
             <div className="card p-5 bg-main-bg">
                 <div className="d-flex justify-content-between mb-4">
                     <div className="w-50">

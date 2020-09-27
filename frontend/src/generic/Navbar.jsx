@@ -4,10 +4,10 @@ import { Navbar, Nav } from "react-bootstrap";
 import { AccountCircle } from "@material-ui/icons";
 
 import { useWindowScroll } from "beautiful-react-hooks";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import { TokenContext } from "../contexts/TokenContext";
 
-const MainNav = () => {
+const MainNav = (props) => {
     const [isShadow, setIsShadow] = useState(window.scrollY > 20);
     const { token, handleToken } = useContext(TokenContext);
 
@@ -22,10 +22,13 @@ const MainNav = () => {
             method: "POST",
         });
 
-        const data = await response.json();
-        console.log(data);
+        // const data = await response.json();
+        // console.log(data);
 
-        if (response.ok) handleToken(undefined);
+        if (response.ok) {
+            handleToken("");
+            window.location.replace("/login");
+        }
         // if (!response.ok) setStatus(data.detail);
         // else handleToken("TOKEN " + data.key);
     };
@@ -78,4 +81,4 @@ const MainNav = () => {
     );
 };
 
-export default MainNav;
+export default withRouter(MainNav);

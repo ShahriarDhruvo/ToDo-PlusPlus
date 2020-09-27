@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 export const TokenContext = createContext();
 
@@ -19,16 +19,9 @@ const TokenContextProvider = (props) => {
 
     return (
         <TokenContext.Provider value={{ token, handleToken }}>
-            {!token ? (
-                <>
-                    <Redirect to="/login" />
-                    {props.children}
-                </>
-            ) : (
-                <>{props.children}</>
-            )}
+            {props.children}
         </TokenContext.Provider>
     );
 };
 
-export default TokenContextProvider;
+export default withRouter(TokenContextProvider);
