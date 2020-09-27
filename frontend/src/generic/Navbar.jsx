@@ -13,6 +13,21 @@ const MainNav = () => {
         setIsShadow(window.scrollY > 20);
     });
 
+    const handleLogOut = async () => {
+        const API_URL = "/user/logout/";
+
+        const response = await fetch(API_URL, {
+            method: "POST",
+        });
+
+        const data = await response.json();
+
+        console.log(data.detail);
+
+        // if (!response.ok) setStatus(data.detail);
+        // else handleToken("TOKEN " + data.key);
+    };
+
     return (
         <Navbar
             sticky="top"
@@ -32,9 +47,15 @@ const MainNav = () => {
             <Navbar.Collapse id="main-nav">
                 <Nav className="ml-auto">
                     <Nav.Link
+                        onClick={handleLogOut}
+                        className="pr-3 text-syntax"
+                    >
+                        Log out
+                    </Nav.Link>
+                    <Nav.Link
                         className="pl-3 pr-0 navLink-border"
                         as={NavLink}
-                        to="/login"
+                        to="/profile"
                     >
                         <AccountCircle className="text-syntax" />
                     </Nav.Link>

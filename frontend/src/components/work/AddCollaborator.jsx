@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Form, Alert, Button, Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import { TokenContext } from "../../contexts/TokenContext";
 
 const AddCollaborator = (props) => {
     const [status, setStatus] = useState(undefined);
     const [variant, setVariant] = useState(undefined);
-    const params = useParams();
 
-    const token = "6a3fd094a2902e2b0c7180569fae8dd4e0828ea9";
+    const params = useParams();
+    const { token } = useContext(TokenContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,7 +25,7 @@ const AddCollaborator = (props) => {
                     method: "PATCH",
                     headers: {
                         Accept: "application/json",
-                        Authorization: "TOKEN " + token,
+                        Authorization: token,
                         "Content-Type": "application/json",
                     },
                 });

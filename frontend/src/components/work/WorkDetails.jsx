@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Alert, Container, Button } from "react-bootstrap";
 import { useParams, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext } from "react";
+import { TokenContext } from "../../contexts/TokenContext";
 
 const WorkDetails = () => {
     const [work, setWork] = useState({});
@@ -9,9 +11,9 @@ const WorkDetails = () => {
     const [tasks, setTasks] = useState([]);
     const [status, setStatus] = useState(undefined);
     const [variant, setVariant] = useState("danger");
-    const params = useParams();
 
-    const token = "6a3fd094a2902e2b0c7180569fae8dd4e0828ea9";
+    const params = useParams();
+    const { token } = useContext(TokenContext);
 
     useEffect(() => {
         let API_URL = "/work/details/" + params.id;
@@ -21,7 +23,7 @@ const WorkDetails = () => {
                 method: "GET",
                 headers: {
                     Accept: "application/json",
-                    Authorization: "TOKEN " + token,
+                    Authorization: token,
                     "Content-Type": "application/json",
                 },
             });
@@ -37,7 +39,7 @@ const WorkDetails = () => {
                 method: "GET",
                 headers: {
                     Accept: "application/json",
-                    Authorization: "TOKEN " + token,
+                    Authorization: token,
                     "Content-Type": "application/json",
                 },
             });
@@ -53,7 +55,7 @@ const WorkDetails = () => {
                 method: "GET",
                 headers: {
                     Accept: "application/json",
-                    Authorization: "TOKEN " + token,
+                    Authorization: token,
                     "Content-Type": "application/json",
                 },
             });
@@ -63,8 +65,8 @@ const WorkDetails = () => {
             if (response.status !== 404) setTasks(data);
         };
 
-        loadData();
-    }, [params.id]);
+        if (token) loadData();
+    }, [params.id, token]);
 
     const removeCollaborator = (collaborator) => {
         const API_URL = `/work/remove/collaborator/${params.id}/${collaborator}`;
@@ -74,7 +76,7 @@ const WorkDetails = () => {
                 method: "PATCH",
                 headers: {
                     Accept: "application/json",
-                    Authorization: "TOKEN " + token,
+                    Authorization: token,
                     "Content-Type": "application/json",
                 },
             });

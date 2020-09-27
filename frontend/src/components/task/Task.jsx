@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import AddTask from "./AddTask";
 import Tasks from "./Tasks";
 import Header from "../../generic/Header";
+import { TokenContext } from "../../contexts/TokenContext";
 
 const Task = () => {
     const [tasks, setTasks] = useState([]);
@@ -13,8 +14,7 @@ const Task = () => {
     const [flag, setFlag] = useState(true);
 
     const params = useParams();
-
-    const token = "6a3fd094a2902e2b0c7180569fae8dd4e0828ea9";
+    const { token } = useContext(TokenContext);
 
     useEffect(() => {
         let API_URL = `/${params.wid}/task/list/`;
@@ -24,7 +24,7 @@ const Task = () => {
                 method: "GET",
                 headers: {
                     Accept: "application/json",
-                    Authorization: "TOKEN " + token,
+                    Authorization: token,
                     "Content-Type": "application/json",
                 },
             });
@@ -43,7 +43,7 @@ const Task = () => {
                 method: "GET",
                 headers: {
                     Accept: "application/json",
-                    Authorization: "TOKEN " + token,
+                    Authorization: token,
                     "Content-Type": "application/json",
                 },
             });
@@ -53,17 +53,23 @@ const Task = () => {
             response.ok ? setWorkTitle(data[0].title) : setStatus(data.detail);
         };
 
-        loadData();
-    }, [params.wid, flag]);
+        if (token) loadData();
+    }, [params.wid, flag, token]);
 
     const updateFlag = () => setFlag(!flag);
 
     return (
         <Container>
             <Header title={workTitle} subTitle=" " />
-            <AddTask wid={params.wid} tasks={tasks} updateFlag={updateFlag} />
+            <AddTask
+                token={token}
+                tasks={tasks}
+                wid={params.wid}
+                updateFlag={updateFlag}
+            />
             <Tasks
                 tasks={tasks}
+                token={token}
                 status={status}
                 wid={params.wid}
                 variant={variant}

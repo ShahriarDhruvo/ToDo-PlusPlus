@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Form, Alert, Button, Container } from "react-bootstrap";
 import { useParams, Link } from "react-router-dom";
+import { useContext } from "react";
+import { TokenContext } from "../../contexts/TokenContext";
 
 const UpdateWork = (props) => {
     const [error, setError] = useState(undefined);
     const [title, setTitle] = useState("");
     const [works, setWorks] = useState([]);
     const form = useRef(null);
-    const params = useParams();
 
-    const token = "6a3fd094a2902e2b0c7180569fae8dd4e0828ea9";
+    const params = useParams();
+    const { token } = useContext(TokenContext);
 
     useEffect(() => {
         const API_URL = "/work/list/";
@@ -19,7 +21,7 @@ const UpdateWork = (props) => {
                 method: "GET",
                 headers: {
                     Accept: "application/json",
-                    Authorization: "TOKEN " + token,
+                    Authorization: token,
                     "Content-Type": "application/json",
                 },
             });
@@ -29,7 +31,7 @@ const UpdateWork = (props) => {
             setWorks(data);
         };
 
-        loadData();
+        if (token) loadData();
 
         const API_URL_2 = "/work/details/" + params.id;
 
@@ -38,7 +40,7 @@ const UpdateWork = (props) => {
                 method: "GET",
                 headers: {
                     Accept: "application/json",
-                    Authorization: "TOKEN " + token,
+                    Authorization: token,
                     "Content-Type": "application/json",
                 },
             });
@@ -48,8 +50,8 @@ const UpdateWork = (props) => {
             setTitle(data[0].title);
         };
 
-        loadData_2();
-    }, [params.id]);
+        if (token) loadData_2();
+    }, [params.id, token]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -73,7 +75,7 @@ const UpdateWork = (props) => {
                     method: "PUT",
                     headers: {
                         Accept: "application/json",
-                        Authorization: "TOKEN " + token,
+                        Authorization: token,
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({

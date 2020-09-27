@@ -5,9 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const UpdateTask = (props) => {
     const [status, setStatus] = useState(undefined);
     const [haveDeadline, setHaveDeadline] = useState(false);
+    
     const form = useRef(null);
-
-    const token = "6a3fd094a2902e2b0c7180569fae8dd4e0828ea9";
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -41,7 +40,7 @@ const UpdateTask = (props) => {
                     method: "PUT",
                     headers: {
                         Accept: "application/json",
-                        Authorization: "TOKEN " + token,
+                        Authorization: props.token,
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({

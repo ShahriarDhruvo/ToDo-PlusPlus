@@ -13,8 +13,6 @@ const Tasks = (props) => {
     const [status, setStatus] = useState(props.status);
     const [variant, setVariant] = useState(props.variant);
 
-    const token = "6a3fd094a2902e2b0c7180569fae8dd4e0828ea9";
-
     const markAsCompleted = (task) => {
         const completed = !task.completed;
         const API_URL = `/${props.wid}/task/update/${task.id}`;
@@ -25,7 +23,7 @@ const Tasks = (props) => {
                     method: "PUT",
                     headers: {
                         Accept: "application/json",
-                        Authorization: "TOKEN " + token,
+                        Authorization: props.token,
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
@@ -61,7 +59,7 @@ const Tasks = (props) => {
                 method: "DELETE",
                 headers: {
                     Accept: "application/json",
-                    Authorization: "TOKEN " + token,
+                    Authorization: props.token,
                     "Content-Type": "application/json",
                 },
             });
@@ -78,31 +76,35 @@ const Tasks = (props) => {
     };
 
     return (
-        <div className="row text-center">
-            <div className="text-center">
-                {status && <Alert variant={variant}>{status}</Alert>}
-            </div>
-            {props.tasks.map((task, index) => (
-                <div key={index} className="col-lg-6 align-self-center">
-                    <div
-                        className={
-                            "ccard my-1 " +
-                            (task.completed ? "bg-complete-bg" : "bg-main-bg")
-                        }
-                    >
-                        {!(edit.status && edit.id === task.id) ? (
-                            <>
-                                <div className="card-body">
-                                    {!task.completed ? (
-                                        <span>{task.title}</span>
-                                    ) : (
-                                        <strike>{task.title}</strike>
-                                    )}
+        <>
+            {props.tasks.length ? (
+                <div className="row text-center">
+                    <div className="text-center">
+                        {status && <Alert variant={variant}>{status}</Alert>}
+                    </div>
+                    {props.tasks.map((task, index) => (
+                        <div key={index} className="col-lg-6 align-self-center">
+                            <div
+                                className={
+                                    "ccard my-1 " +
+                                    (task.completed
+                                        ? "bg-complete-bg"
+                                        : "bg-main-bg")
+                                }
+                            >
+                                {!(edit.status && edit.id === task.id) ? (
+                                    <>
+                                        <div className="card-body">
+                                            {!task.completed ? (
+                                                <span>{task.title}</span>
+                                            ) : (
+                                                <strike>{task.title}</strike>
+                                            )}
 
-                                    {task.haveDeadline ? (
-                                        <div className="mt-2">
-                                            <small>
-                                                {/* <b>Deadline: </b>
+                                            {task.haveDeadline ? (
+                                                <div className="mt-2">
+                                                    <small>
+                                                        {/* <b>Deadline: </b>
                                                 {Moment(task.deadline).format(
                                                     "MMM DD, YY "
                                                 )}
@@ -110,101 +112,120 @@ const Tasks = (props) => {
                                                 {Moment(task.deadline).format(
                                                     " hh:mm a"
                                                 )} */}
-                                                <b>Remaining Time: </b>
-                                                <RemainingTime
-                                                    deadline={task.deadline}
-                                                />
-                                            </small>
+                                                        <RemainingTime
+                                                            deadline={
+                                                                task.deadline
+                                                            }
+                                                        />
+                                                    </small>
+                                                </div>
+                                            ) : (
+                                                <></>
+                                            )}
                                         </div>
-                                    ) : (
-                                        <></>
-                                    )}
-                                </div>
 
-                                <div className="card-footer justify-content-around action-button">
-                                    <Button
-                                        onClick={() => markAsCompleted(task)}
-                                        variant={
-                                            task.completed ? "info" : "complete"
-                                        }
-                                        className="w-25"
-                                        disabled={edit.status}
-                                        size="sm"
-                                    >
-                                        {!task.completed ? (
-                                            <>
+                                        <div className="card-footer justify-content-around action-button">
+                                            <Button
+                                                onClick={() =>
+                                                    markAsCompleted(task)
+                                                }
+                                                variant={
+                                                    task.completed
+                                                        ? "info"
+                                                        : "complete"
+                                                }
+                                                className="w-25"
+                                                disabled={edit.status}
+                                                size="sm"
+                                            >
+                                                {!task.completed ? (
+                                                    <>
+                                                        <FontAwesomeIcon
+                                                            className="mb-1 mr-sm-1"
+                                                            icon={[
+                                                                "fas",
+                                                                "check",
+                                                            ]}
+                                                        />
+                                                        <span className="d-none d-sm-inline">
+                                                            Complete
+                                                        </span>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <FontAwesomeIcon
+                                                            className="mb-1 mr-sm-1"
+                                                            icon={["fa", "ban"]}
+                                                        />
+                                                        <span className="d-none d-sm-inline">
+                                                            Incomplete
+                                                        </span>
+                                                    </>
+                                                )}
+                                            </Button>
+
+                                            <Button
+                                                size="sm"
+                                                variant="main"
+                                                className="w-25"
+                                                disabled={edit.status}
+                                                onClick={() =>
+                                                    toggleEdit(task.id, true)
+                                                }
+                                            >
                                                 <FontAwesomeIcon
                                                     className="mb-1 mr-sm-1"
-                                                    icon={["fas", "check"]}
+                                                    icon={["fas", "edit"]}
                                                 />
                                                 <span className="d-none d-sm-inline">
-                                                    Complete
+                                                    Edit
                                                 </span>
-                                            </>
-                                        ) : (
-                                            <>
+                                            </Button>
+
+                                            <CustomModal
+                                                edit={edit.status}
+                                                variant="remove"
+                                                modalTitle="Delete"
+                                                actionButtonSize="sm"
+                                                actionVariant="danger"
+                                                actionButtonClass="w-25"
+                                                handleAction={() =>
+                                                    deleteItem(task.id)
+                                                }
+                                                modalBody="Do you really want to delete this task?"
+                                            >
                                                 <FontAwesomeIcon
                                                     className="mb-1 mr-sm-1"
-                                                    icon={["fa", "ban"]}
+                                                    icon={["fas", "trash"]}
                                                 />
                                                 <span className="d-none d-sm-inline">
-                                                    Incomplete
+                                                    Remove
                                                 </span>
-                                            </>
-                                        )}
-                                    </Button>
-
-                                    <Button
-                                        size="sm"
-                                        variant="main"
-                                        className="w-25"
-                                        disabled={edit.status}
-                                        onClick={() =>
-                                            toggleEdit(task.id, true)
-                                        }
-                                    >
-                                        <FontAwesomeIcon
-                                            className="mb-1 mr-sm-1"
-                                            icon={["fas", "edit"]}
-                                        />
-                                        <span className="d-none d-sm-inline">
-                                            Edit
-                                        </span>
-                                    </Button>
-
-                                    <CustomModal
-                                        edit={edit.status}
-                                        variant="remove"
-                                        modalTitle="Delete"
-                                        actionButtonSize="sm"
-                                        actionVariant="danger"
-                                        actionButtonClass="w-25"
-                                        handleAction={() => deleteItem(task.id)}
-                                        modalBody="Do you really want to delete this task?"
-                                    >
-                                        <FontAwesomeIcon
-                                            className="mb-1 mr-sm-1"
-                                            icon={["fas", "trash"]}
-                                        />
-                                        <span className="d-none d-sm-inline">
-                                            Remove
-                                        </span>
-                                    </CustomModal>
-                                </div>
-                            </>
-                        ) : (
-                            <UpdateTask
-                                task={task}
-                                tasks={props.tasks}
-                                wid={task.work_name}
-                                toggleEdit={toggleEdit}
-                                updateFlag={props.updateFlag}
-                            />
-                        )}
-                    </div>
+                                            </CustomModal>
+                                        </div>
+                                    </>
+                                ) : (
+                                    <UpdateTask
+                                        task={task}
+                                        token={props.token}
+                                        tasks={props.tasks}
+                                        wid={task.work_name}
+                                        toggleEdit={toggleEdit}
+                                        updateFlag={props.updateFlag}
+                                    />
+                                )}
+                            </div>
+                        </div>
+                    ))}
                 </div>
-            ))}
-        </div>
+            ) : (
+                <div className="ccard card-body text-center">
+                    <Alert variant="info" className="m-0">
+                        Your task list is empty!
+                    </Alert>
+                </div>
+            )}
+        </>
     );
 };
 

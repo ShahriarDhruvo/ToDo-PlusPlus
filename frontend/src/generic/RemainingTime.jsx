@@ -39,7 +39,10 @@ const RemainingTime = (props) => {
             {time && time[0] === "-" ? (
                 <span className="text-danger">Times Up!</span>
             ) : (
-                time
+                <span>
+                    <b>Remaining Time: </b>
+                    {time}
+                </span>
             )}
         </>
     );

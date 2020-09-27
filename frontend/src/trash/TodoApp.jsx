@@ -2,7 +2,7 @@ import React from "react";
 import emoji from "react-easy-emoji";
 
 import AddTask from './AddTask';
-import Header from '../generic/Header';
+import Header from '../../generic/Header';
 import Tasks from './Tasks';
 import { Container } from "react-bootstrap";
 

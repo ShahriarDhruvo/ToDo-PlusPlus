@@ -6,8 +6,6 @@ const AddTask = (props) => {
     const [haveDeadline, setHaveDeadline] = useState(false);
     const form = useRef(null);
 
-    const token = "6a3fd094a2902e2b0c7180569fae8dd4e0828ea9";
-
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -36,7 +34,7 @@ const AddTask = (props) => {
                 const response = await fetch(API_URL, {
                     method: "POST",
                     headers: {
-                        Authorization: "TOKEN " + token,
+                        Authorization: props.token,
                     },
                     body: formData,
                 });

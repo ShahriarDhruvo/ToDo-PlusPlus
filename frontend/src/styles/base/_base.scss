@@ -37,18 +37,35 @@
 // Button fade-in-out animation
 
 .vertical-center {
-    min-height: 94%;
-    min-height: 94vh;
-
-    // display: flex;
-    // align-items: center;
-    display: grid;
-    place-items: center;
+    // min-height: 94%;
+    // min-height: 94vh;
+    // min-width: 100%;
+    // flex-direction: column;
+    display: flex;
+    align-items: center;
+    // display: grid;
+    // place-items: center;
 }
 
-// .crounded {
-//     border-radius: 0.7rem;
-// }
+.divider-text {
+    position: relative;
+}
+
+.divider-text span {
+    font-size: 0.65rem;
+    position: relative;
+    z-index: 2;
+}
+
+.divider-text:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    top: 55%;
+    left: 0;
+    z-index: 1;
+}
 
 .clogo {
     font-family: "MuseoModerno";
