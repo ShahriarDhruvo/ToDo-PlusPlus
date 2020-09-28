@@ -67,7 +67,7 @@ const Profile = () => {
                         {user.username}
                         <br />
 
-                        <b>Name: </b>
+                        <b>Full Name: </b>
                         {user.first_name + " " + user.last_name}
                         <br />
 

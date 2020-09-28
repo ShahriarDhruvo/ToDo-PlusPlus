@@ -21,7 +21,7 @@ import Profile from "./components/user/Profile";
 import Register from "./components/user/Register";
 import Task from "./components/task/Task";
 import TokenContextProvider from "./contexts/TokenContext";
-import ProtectiveRoute from "./generic/protective.route";
+import ProtectedRoute from "./generic/ProtectedRoute";
 
 library.add(far, fas, fab);
 
@@ -32,43 +32,43 @@ function App() {
                 <TokenContextProvider>
                     <MainNav />
                     <Switch>
-                        <ProtectiveRoute
+                        <ProtectedRoute
                             exact
                             path="/add/collaborator/:id"
                             component={AddCollaborator}
                         />
-                        <ProtectiveRoute
+                        <ProtectedRoute
                             exact
                             path="/work/update/:id"
                             component={UpdateWork}
                         />
-                        <ProtectiveRoute
+                        <ProtectedRoute
                             exact
                             path="/work/details/:id"
                             component={WorkDetails}
                         />
-                        <ProtectiveRoute
+                        <ProtectedRoute
                             exact
                             path="/profile/:wid/:uid"
                             component={Profile}
                         />
-                        <ProtectiveRoute
+                        <ProtectedRoute
                             exact
                             path="/profile"
                             component={Profile}
                         />
-                        <ProtectiveRoute
+                        <ProtectedRoute
                             exact
                             path="/register"
                             component={Register}
                         />
-                        <ProtectiveRoute
+                        <ProtectedRoute
                             exact
                             path="/:wid/task/list/"
                             component={Task}
                         />
                         <Route exact path="/login" component={Login} />
-                        <ProtectiveRoute exact path="/" component={Home} />
+                        <ProtectedRoute exact path="/" component={Home} />
                         <Route component={NotFound} />
                     </Switch>
                 </TokenContextProvider>
