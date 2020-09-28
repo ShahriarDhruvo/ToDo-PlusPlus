@@ -26,10 +26,10 @@ class PretectedRoute extends Component {
     getView = (props) => {
         const { component: Component } = this.props;
 
-        if (!!localStorage.getItem("__C_Token")) {
+        if (!!localStorage.getItem("token")) {
             return <Component {...props} />;
         } else {
-            return <Redirect to="/Login" />;
+            return <Redirect to="/login" />;
         }
     };
 
