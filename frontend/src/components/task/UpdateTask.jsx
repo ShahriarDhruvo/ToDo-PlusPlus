@@ -55,7 +55,7 @@ const UpdateTask = (props) => {
 
                 // if (!response.ok) setStatus(data.detail);
             } catch (error) {
-                // setStatus(error);
+                setStatus(error);
             }
         };
 

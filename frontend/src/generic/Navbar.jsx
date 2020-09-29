@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 
-import { AccountCircle } from "@material-ui/icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { useWindowScroll } from "beautiful-react-hooks";
 import { NavLink, withRouter } from "react-router-dom";
@@ -56,7 +56,7 @@ const MainNav = (props) => {
                             onClick={handleLogOut}
                             className="pr-3 text-syntax"
                         >
-                            Log out
+                            Sign out
                         </Nav.Link>
                     ) : (
                         <Nav.Link
@@ -64,7 +64,7 @@ const MainNav = (props) => {
                             to="/login"
                             className="pr-3 text-syntax"
                         >
-                            Log in
+                            Sign in
                         </Nav.Link>
                     )}
 
@@ -73,7 +73,11 @@ const MainNav = (props) => {
                         to="/profile"
                         className="pl-3 pr-0 navLink-border"
                     >
-                        <AccountCircle className="text-syntax" />
+                        <FontAwesomeIcon
+                            icon={["fas", "user-tie"]}
+                            style={{ fontSize: "1.2rem" }}
+                            className="fa-icon mb-1 text-syntax"
+                        />
                     </Nav.Link>
                 </Nav>
             </Navbar.Collapse>

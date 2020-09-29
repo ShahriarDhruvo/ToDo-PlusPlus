@@ -22,6 +22,7 @@ import Register from "./components/user/Register";
 import Task from "./components/task/Task";
 import TokenContextProvider from "./contexts/TokenContext";
 import ProtectedRoute from "./generic/ProtectedRoute";
+import ConfirmEmail from "./generic/ConfirmEmail";
 
 library.add(far, fas, fab);
 
@@ -59,15 +60,16 @@ function App() {
                         />
                         <ProtectedRoute
                             exact
-                            path="/register"
-                            component={Register}
-                        />
-                        <ProtectedRoute
-                            exact
                             path="/:wid/task/list/"
                             component={Task}
                         />
+                        <Route
+                            exact
+                            path="/confirm-email"
+                            component={ConfirmEmail}
+                        />
                         <Route exact path="/login" component={Login} />
+                        <Route exact path="/register" component={Register} />
                         <ProtectedRoute exact path="/" component={Home} />
                         <Route component={NotFound} />
                     </Switch>

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Alert, Container, Button, Form, InputGroup } from "react-bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,7 +8,7 @@ import { TokenContext } from "../../contexts/TokenContext";
 
 const Login = (props) => {
     const [status, setStatus] = useState(undefined);
-    const { token, handleToken } = useContext(TokenContext);
+    const { handleToken } = useContext(TokenContext);
     const form = useRef(null);
 
     const handleSubmit = (e) => {
@@ -30,7 +30,7 @@ const Login = (props) => {
                 if (!response.ok) setStatus(data.non_field_errors);
                 else {
                     handleToken("TOKEN " + data.key);
-                    window.location.replace("/")
+                    window.location.replace("/");
                 }
             } catch (error) {
                 setStatus(error);
@@ -42,9 +42,7 @@ const Login = (props) => {
 
     return (
         <Container className="d-flex align-items-center justify-content-center">
-            {token ? <Redirect to="/" /> : null}
-
-            <div className="card p-5 bg-main-bg">
+            <div className="ccard p-5 bg-main-bg">
                 <div className="d-flex justify-content-between mb-4">
                     <div className="w-50">
                         <img

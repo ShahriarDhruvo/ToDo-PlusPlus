@@ -9,6 +9,8 @@
     $complete: #4fb64f;
     $complete-bg: #b4ffb4;
     $remove: #e26060;
+    $facebook: #405d9d;
+    $twitter: #00acee;
 
     $nav-border: #eee;
 
@@ -33,6 +35,8 @@
             "complete": $complete,
             "complete-bg": $complete-bg,
             "remove": $remove,
+            "facebook": $facebook,
+            "twitter": $twitter,
         ),
         $theme-colors
     );

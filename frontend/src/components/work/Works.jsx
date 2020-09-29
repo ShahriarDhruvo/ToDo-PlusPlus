@@ -45,7 +45,7 @@ const Works = (props) => {
                 // if (!response.ok) setError(data.title);
                 props.updateFlag();
             } catch (error) {
-                // setError(error);
+                setStatus(error);
             }
         };
 
