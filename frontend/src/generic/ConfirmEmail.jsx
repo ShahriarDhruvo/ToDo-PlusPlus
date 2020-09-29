@@ -1,35 +1,36 @@
 import React, { useEffect } from "react";
 import { Alert, Button, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 
 const ConfirmEmail = () => {
-    const [message, setMessage] = useState("dd");
+    // const [message, setMessage] = useState("dd");
+    const params = useParams();
 
-    useEffect(() => {
-        const API_URL = "/accounts/confirm-email/";
+    // useEffect(() => {
+    //     const API_URL = "/accounts/confirm-email/";
 
-        const loadData = async () => {
-            const response = await fetch(API_URL, {
-                method: "GET",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                },
-            });
+    //     const loadData = async () => {
+    //         const response = await fetch(API_URL, {
+    //             method: "GET",
+    //             headers: {
+    //                 Accept: "application/json",
+    //                 "Content-Type": "application/json",
+    //             },
+    //         });
 
-            const data = await response.text();
+    //         const data = await response.text();
 
-            console.log(data);
-        };
+    //         console.log(data);
+    //     };
 
-        loadData();
-    }, []);
+    //     loadData();
+    // }, []);
 
     return (
         <Container className="d-flex align-items-center justify-content-center">
-            <div className="text-center">
-                {message && <Alert variant="success">{message}</Alert>}
+            <div className="ccard card-body text-center" style={{ maxWidth: "40rem" }}>
+                <Alert variant="success">{params.email}</Alert>
 
                 <h4>Verify Your E-mail Address</h4>
 
@@ -44,7 +45,7 @@ const ConfirmEmail = () => {
                 </div>
 
                 <div className="d-flex justify-content-center mt-4">
-                    <Button
+                    {/* <Button
                         size="sm"
                         as={Link}
                         className="mr-2"
@@ -52,7 +53,7 @@ const ConfirmEmail = () => {
                         to="/api/v1/accounts/logout/"
                     >
                         Sign Out
-                    </Button>
+                    </Button> */}
 
                     <Button
                         size="sm"

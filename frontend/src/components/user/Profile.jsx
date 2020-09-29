@@ -67,9 +67,13 @@ const Profile = () => {
                         {user.username}
                         <br />
 
-                        <b>Full Name: </b>
-                        {user.first_name + " " + user.last_name}
-                        <br />
+                        {user.first_name || user.last_name ? (
+                            <>
+                                <b>Full Name: </b>
+                                {user.first_name + " " + user.last_name}
+                                <br />
+                            </>
+                        ) : null}
 
                         <b>Email: </b>
                         {user.email}

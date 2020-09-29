@@ -65,7 +65,7 @@ function App() {
                         />
                         <Route
                             exact
-                            path="/confirm-email"
+                            path="/confirm-email/:email"
                             component={ConfirmEmail}
                         />
                         <Route exact path="/login" component={Login} />

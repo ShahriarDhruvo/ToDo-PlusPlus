@@ -28,7 +28,10 @@ const Register = (props) => {
 
                 console.log(data);
                 if (!response.ok) setStatus(data[Object.keys(data)[0]]);
-                else props.history.push("/confirm-email");
+                else
+                    props.history.push(
+                        `/confirm-email/${e.target.email.value}`
+                    );
             } catch (error) {
                 setStatus(error);
             }
