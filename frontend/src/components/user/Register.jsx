@@ -14,6 +14,7 @@ const Register = (props) => {
         e.preventDefault();
 
         const API_URL = "/user/registration/";
+        const email = e.target.email.value;
 
         const loadData = async () => {
             const formData = new FormData(form.current);
@@ -28,10 +29,7 @@ const Register = (props) => {
 
                 console.log(data);
                 if (!response.ok) setStatus(data[Object.keys(data)[0]]);
-                else
-                    props.history.push(
-                        `/confirm-email/${e.target.email.value}`
-                    );
+                else props.history.push(`/confirm-email/${email}`);
             } catch (error) {
                 setStatus(error);
             }
@@ -79,12 +77,7 @@ const Register = (props) => {
 
                     <Form ref={form} onSubmit={handleSubmit}>
                         <div className="text-center">
-                            {status && (
-                                <Alert variant="danger">
-                                    {/* <pre>{JSON.stringify(status)}</pre> */}
-                                    {status}
-                                </Alert>
-                            )}
+                            {status && <Alert variant="danger">{status}</Alert>}
                         </div>
 
                         <div className="form-group input-group">

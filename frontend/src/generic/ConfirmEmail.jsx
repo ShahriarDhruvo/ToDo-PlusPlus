@@ -29,16 +29,21 @@ const ConfirmEmail = () => {
 
     return (
         <Container className="d-flex align-items-center justify-content-center">
-            <div className="ccard card-body text-center" style={{ maxWidth: "40rem" }}>
-                <Alert variant="success">{params.email}</Alert>
-
+            <div
+                className="ccard p-4 text-center"
+                style={{ maxWidth: "40rem" }}
+            >
                 <h4>Verify Your E-mail Address</h4>
 
-                <p>
+                <p className="my-3">
                     We have sent an e-mail to you for verification. Follow the
                     link provided to finalize the signup process. Please contact
                     us if you do not receive it within a few minutes.
                 </p>
+
+                <Alert variant="success">
+                    Confirmation e-mail sent to {params.email}.
+                </Alert>
 
                 <div className="my-3 divider-text">
                     <span className="px-4 bg-main-bg">OR</span>
