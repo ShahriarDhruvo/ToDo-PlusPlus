@@ -45,21 +45,11 @@ const ConfirmEmail = () => {
                     Confirmation e-mail sent to {params.email}.
                 </Alert>
 
-                <div className="my-3 divider-text">
+                {/* <div className="my-3 divider-text">
                     <span className="px-4 bg-main-bg">OR</span>
                 </div>
 
                 <div className="d-flex justify-content-center mt-4">
-                    {/* <Button
-                        size="sm"
-                        as={Link}
-                        className="mr-2"
-                        variant="outline-primary"
-                        to="/api/v1/accounts/logout/"
-                    >
-                        Sign Out
-                    </Button> */}
-
                     <Button
                         size="sm"
                         as={Link}
@@ -68,7 +58,7 @@ const ConfirmEmail = () => {
                     >
                         Change E-mail
                     </Button>
-                </div>
+                </div> */}
             </div>
         </Container>
     );
