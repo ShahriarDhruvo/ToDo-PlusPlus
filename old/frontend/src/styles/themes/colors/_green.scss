@@ -1,0 +1,15 @@
+.App.theme-green {
+    $bg: #c3e3c1;
+    $main: #5faf3b;
+    $main-bg: #e2f6e1;
+
+    background-color: $bg;
+
+    .ccard {
+        background-color: $main-bg;
+    }
+
+    .cborder {
+        border: 2px solid lighten($color: $main, $amount: 20%);
+    }
+}

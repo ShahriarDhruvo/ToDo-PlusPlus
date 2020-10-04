@@ -1,0 +1,16 @@
+.App.theme-blue {
+    $bg: #bec7e7;
+    $main: #1e41c1;
+    $main-bg: #d8def4;
+
+    background-color: $bg;
+
+    .ccard {
+        background-color: $main-bg;
+    }
+
+    .cborder {
+        border: 2px solid lighten($color: $main, $amount: 20%);
+    }
+}
+

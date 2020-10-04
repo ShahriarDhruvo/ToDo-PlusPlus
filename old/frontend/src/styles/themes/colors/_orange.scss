@@ -1,0 +1,15 @@
+.App.theme-orange {
+    $bg: #f4c9b7;
+    $main: #b64b1e;
+    $main-bg: #f4dfd6;
+
+    background-color: $bg;
+
+    .ccard {
+        background-color: $main-bg;
+    }
+
+    .cborder {
+        border: 2px solid lighten($color: $main, $amount: 20%);
+    }
+}

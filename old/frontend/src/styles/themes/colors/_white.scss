@@ -1,0 +1,45 @@
+.App.theme-white {
+    $bg: #fffef8;
+    $main: #eed54a;
+    $syntax: darken(
+        $color: $main,
+        $amount: 20%,
+    );
+    $main-bg: #fffef1;
+    $complete: #4fb64f;
+    $complete-bg: #b4ffb4;
+    $remove: #e26060;
+    $facebook: #405d9d;
+    $twitter: #00acee;
+
+    $nav-border: #eee;
+
+    background-color: $bg;
+
+    .navLink-border {
+        border-left: 2px solid $nav-border;
+    }
+
+    .ccard {
+        border: 1px solid darken($color: $main, $amount: 15%);
+        border-radius: 0.25rem;
+    }
+
+    $theme-colors: ();
+    $theme-colors: map-merge(
+        (
+            "bg": $bg,
+            "main": $main,
+            "main-bg": $main-bg,
+            "syntax": $syntax,
+            "complete": $complete,
+            "complete-bg": $complete-bg,
+            "remove": $remove,
+            "facebook": $facebook,
+            "twitter": $twitter,
+        ),
+        $theme-colors
+    );
+
+    @import "~bootstrap/scss/bootstrap.scss";
+}

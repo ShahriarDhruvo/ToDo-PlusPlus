@@ -12,10 +12,11 @@ tests/coverage_html/
 tests/.coverage
 build/
 tests/report/
+
 server/venv/
 client/node_modules/
 
 
-/backend/venv/
-/frontend/node_modules/
+/old/backend/venv/
+/old/frontend/node_modules/
 
