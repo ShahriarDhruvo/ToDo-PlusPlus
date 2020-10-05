@@ -30,7 +30,7 @@ import PassworResetConfirm from "./generic/PasswordResetConfirm";
 
 library.add(far, fas, fab);
 
-function App() {
+const App = () => {
     return (
         <Router>
             <ThemeContextProvider>

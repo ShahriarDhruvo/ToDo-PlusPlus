@@ -9423,6 +9423,11 @@ react-overlays@^4.1.0:
     uncontrollable "^7.0.0"
     warning "^4.0.3"
 
+react-promise-tracker@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-promise-tracker/-/react-promise-tracker-2.1.0.tgz#a8ac2ca5322ca60f83fa7a00ad9d99bfbbdb8434"
+  integrity sha512-1LQSGAnFF4o++iPFgeBrMpS+ZHQg8ZGl9Zuf70v+OoLxuOnUeLCP7ugma+InBCUZzPnSLyWTLt/jyW+FAy5ELQ==
+
 react-router-dom@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-5.2.0.tgz#9e65a4d0c45e13289e66c7b17c7e175d0ea15662"
