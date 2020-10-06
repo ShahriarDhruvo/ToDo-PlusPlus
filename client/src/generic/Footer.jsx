@@ -6,8 +6,7 @@ const Footer = () => {
     return (
         <footer
             id="footer"
-            className="text-center bg-main-bg py-4 shadow"
-            style={{ borderRadius: "0.25rem" }}
+            className="text-center bg-bg py-4"
         >
             <p>Developed by, Shahriar Elahi Dhruvo</p>
             <small>Follow me on</small>

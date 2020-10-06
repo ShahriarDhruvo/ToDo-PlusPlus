@@ -1,17 +1,38 @@
 .App.theme-white {
-    $bg: #fffef8;
-    $main: #eed54a;
+    // $bg: #fffef8;
+    // $main: #eed54a;
+    // $syntax: darken(
+    //     $color: $main,
+    //     $amount: 20%,
+    // );
+    // $main-bg: #fffef1;
+    // $complete: #4fb64f;
+    // $complete-bg: #b4ffb4;
+    // $remove: #e26060;
+    // $facebook: #405d9d;
+    // $twitter: #00acee;
+
+    // $nav-border: #eee;
+
+    $main-bg: #ffffff;
+    $bg: darken(
+        $color: $main-bg,
+        $amount: 3%,
+    );
+    $main: #00acee;
     $syntax: darken(
         $color: $main,
-        $amount: 20%,
+        $amount: 15%,
     );
-    $main-bg: #fffef1;
+    $border: darken(
+        $color: $main-bg,
+        $amount: 10%,
+    );
     $complete: #4fb64f;
     $complete-bg: #b4ffb4;
     $remove: #e26060;
     $facebook: #405d9d;
     $twitter: #00acee;
-
     $nav-border: #eee;
 
     background-color: $bg;
@@ -21,8 +42,8 @@
     }
 
     .ccard {
-        border: 1px solid darken($color: $main, $amount: 15%);
-        border-radius: 0.25rem;
+        border: 1px solid $border;
+        border-radius: 0.45rem;
     }
 
     $theme-colors: ();

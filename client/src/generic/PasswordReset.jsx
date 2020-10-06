@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
-import { Alert, Form, Container, Button, Spinner } from "react-bootstrap";
+import { Alert, Form, Container, Button } from "react-bootstrap";
 import { usePromiseTracker, trackPromise } from "react-promise-tracker";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import LoadingScreen from "./LoadingScreen";
 
 const PasswordReset = (props) => {
     const { promiseInProgress } = usePromiseTracker();
@@ -41,7 +42,7 @@ const PasswordReset = (props) => {
     return (
         <Container className="d-flex align-items-center justify-content-center">
             {promiseInProgress ? (
-                <Spinner animation="border" />
+                <LoadingScreen />
             ) : (
                 <div className="ccard bg-main-bg" style={{ minWidth: "28rem" }}>
                     <div className="p-4 text-center">

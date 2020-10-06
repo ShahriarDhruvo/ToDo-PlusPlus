@@ -5,19 +5,6 @@ import CustomModal from "../../generic/Modal";
 import { Link } from "react-router-dom";
 
 const Works = (props) => {
-    // Button Fade-in/out anitmation
-    document.addEventListener("animationstart", (e) => {
-        if (e.animationName === "fade-in") {
-            e.target.classList.add("did-fade-in");
-        }
-    });
-
-    document.addEventListener("animationend", (e) => {
-        if (e.animationName === "fade-out") {
-            e.target.classList.remove("did-fade-in");
-        }
-    });
-    // Button Fade-in/out anitmation
     const [status, setStatus] = useState(undefined);
 
     const markAsCompleted = (work) => {
@@ -48,7 +35,6 @@ const Works = (props) => {
             }
         };
 
-        // if (props.token) loadData();
         loadData();
     };
 
@@ -58,11 +44,6 @@ const Works = (props) => {
         const loadData = async () => {
             fetch(API_URL, {
                 method: "DELETE",
-                // headers: {
-                //     Accept: "application/json",
-                //     Authorization: props.token,
-                //     "Content-Type": "application/json",
-                // },
             });
 
             props.updateFlag();
@@ -78,7 +59,7 @@ const Works = (props) => {
                     {status && <Alert variant="danger">{status}</Alert>}
 
                     {props.works.map((work, index) => (
-                        <div key={index} className="col-lg-6 align-self-center">
+                        <div key={index} className="col-md-4 align-self-center">
                             <div
                                 className={
                                     "ccard my-1 " +
@@ -101,18 +82,20 @@ const Works = (props) => {
                                         variant={
                                             work.completed ? "info" : "complete"
                                         }
-                                        className="w-25"
+                                        // className="w-25"
+                                        style={{ width: "3rem" }}
                                         size="sm"
                                     >
                                         {!work.completed ? (
                                             <>
                                                 <FontAwesomeIcon
-                                                    className="mb-1 mr-sm-1"
+                                                    // className="mb-1 mr-sm-1"
+                                                    className="mb-1"
                                                     icon={["fas", "check"]}
                                                 />
-                                                <span className="d-none d-sm-inline">
+                                                {/* <span className="d-none d-sm-inline">
                                                     Complete
-                                                </span>
+                                                </span> */}
                                             </>
                                         ) : (
                                             <>
@@ -120,9 +103,9 @@ const Works = (props) => {
                                                     className="mb-1 mr-sm-1"
                                                     icon={["fa", "ban"]}
                                                 />
-                                                <span className="d-none d-sm-inline">
+                                                {/* <span className="d-none d-sm-inline">
                                                     Incomplete
-                                                </span>
+                                                </span> */}
                                             </>
                                         )}
                                     </Button>
@@ -131,32 +114,37 @@ const Works = (props) => {
                                         size="sm"
                                         as={Link}
                                         variant="secondary"
-                                        className="w-25 mx-1"
+                                        // className="w-25 mx-1"
+                                        className="mx-1"
+                                        style={{ width: "3rem" }}
                                         to={"/work/details/" + work.id}
                                     >
                                         <FontAwesomeIcon
-                                            className="mb-1 mr-sm-1"
+                                            // className="mb-1 mr-sm-1"
+                                            className="mb-1"
                                             icon={["fa", "info"]}
                                         />
-                                        <span className="d-none d-sm-inline">
+                                        {/* <span className="d-none d-sm-inline">
                                             Details
-                                        </span>
+                                        </span> */}
                                     </Button>
 
                                     <Button
                                         size="sm"
                                         as={Link}
                                         variant="main"
-                                        className="w-25 mr-1"
+                                        className="mr-1"
+                                        style={{ width: "3rem" }}
                                         to={`/${work.id}/task/list/`}
                                     >
                                         <FontAwesomeIcon
-                                            className="mb-1 mr-sm-1"
+                                            // className="mb-1 mr-sm-1"
+                                            className="mb-1"
                                             icon={["fas", "tasks"]}
                                         />
-                                        <span className="d-none d-sm-inline">
+                                        {/* <span className="d-none d-sm-inline">
                                             Tasks
-                                        </span>
+                                        </span> */}
                                     </Button>
 
                                     <CustomModal
@@ -164,17 +152,19 @@ const Works = (props) => {
                                         modalTitle="Delete"
                                         actionButtonSize="sm"
                                         actionVariant="danger"
-                                        actionButtonClass="w-25"
+                                        actionButtonClass=""
+                                        actionButtonWidth="3rem"
                                         handleAction={() => deleteItem(work.id)}
                                         modalBody="Do you really want to delete this work?"
                                     >
                                         <FontAwesomeIcon
-                                            className="mb-1 mr-sm-1"
+                                            // className="mb-1 mr-sm-1"
+                                            className="mb-1"
                                             icon={["fas", "trash"]}
                                         />
-                                        <span className="d-none d-sm-inline">
+                                        {/* <span className="d-none d-sm-inline">
                                             Remove
-                                        </span>
+                                        </span> */}
                                     </CustomModal>
                                 </div>
                             </div>

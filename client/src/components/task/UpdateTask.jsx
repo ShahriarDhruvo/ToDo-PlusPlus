@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const UpdateTask = (props) => {
     const [status, setStatus] = useState(undefined);
-    const [haveDeadline, setHaveDeadline] = useState(false);
-    
+    const [haveDeadline, setHaveDeadline] = useState(props.task.haveDeadline);
+
     const form = useRef(null);
 
     const handleSubmit = (e) => {
@@ -22,15 +22,16 @@ const UpdateTask = (props) => {
             }
         }
 
-        const deadline = haveDeadline
-            ? `${e.target.date.value}T${e.target.time.value}:00`
-            : `${new Date().toLocaleDateString(
-                  "en-CA"
-              )}T${new Date().toLocaleTimeString("en-US", {
-                  hour12: false,
-                  hour: "2-digit",
-                  minute: "2-digit",
-              })}:00`;
+        const deadline =
+            haveDeadline && e.target.date.value && e.target.time.value
+                ? `${e.target.date.value}T${e.target.time.value}`
+                : `${new Date().toLocaleDateString(
+                      "en-CA"
+                  )}T${new Date().toLocaleTimeString("en-US", {
+                      hour12: false,
+                      hour: "2-digit",
+                      minute: "2-digit",
+                  })}:00`;
 
         const API_URL = `/${props.wid}/task/update/${props.task.id}`;
 
@@ -84,6 +85,7 @@ const UpdateTask = (props) => {
                 {haveDeadline ? (
                     <>
                         <Form.Check
+                            defaultChecked
                             type="checkbox"
                             label="Deadline"
                             name="haveDeadline"
@@ -95,21 +97,12 @@ const UpdateTask = (props) => {
                                 type="date"
                                 name="date"
                                 className="mr-2"
-                                defaultValue={new Date().toLocaleDateString(
-                                    "en-CA"
-                                )}
+                                defaultValue={props.task.deadline.split("T")[0]}
                             />
                             <Form.Control
                                 type="time"
                                 name="time"
-                                defaultValue={new Date().toLocaleTimeString(
-                                    "en-US",
-                                    {
-                                        hour12: false,
-                                        hour: "2-digit",
-                                        minute: "2-digit",
-                                    }
-                                )}
+                                defaultValue={props.task.deadline.split("T")[1]}
                             />
                         </div>
 

@@ -27,6 +27,7 @@ import EmailConfirm from "./generic/EmailConfirm";
 import PasswordChange from "./generic/PasswordChange";
 import PasswordReset from "./generic/PasswordReset";
 import PassworResetConfirm from "./generic/PasswordResetConfirm";
+import Animations from "./generic/Animations";
 
 library.add(far, fas, fab);
 
@@ -35,6 +36,7 @@ const App = () => {
         <Router>
             <ThemeContextProvider>
                 <AuthenticationContextProvider>
+                    <Animations />
                     <MainNav />
                     <Switch>
                         <ProtectedRoute

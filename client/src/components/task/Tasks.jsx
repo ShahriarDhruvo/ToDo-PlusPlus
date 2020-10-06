@@ -56,11 +56,6 @@ const Tasks = (props) => {
         const loadData = async () => {
             const response = await fetch(API_URL, {
                 method: "DELETE",
-                // headers: {
-                //     Accept: "application/json",
-                //     Authorization: props.token,
-                //     "Content-Type": "application/json",
-                // },
             });
 
             if (response.status === 404) {
@@ -104,13 +99,14 @@ const Tasks = (props) => {
                                                 <div className="mt-2">
                                                     <small>
                                                         {/* <b>Deadline: </b>
-                                                {Moment(task.deadline).format(
-                                                    "MMM DD, YY "
-                                                )}
-                                                at
-                                                {Moment(task.deadline).format(
-                                                    " hh:mm a"
-                                                )} */}
+                                                        {Moment(
+                                                            task.deadline
+                                                        ).format("MMM DD, YY ")}
+                                                        at
+                                                        {Moment(
+                                                            task.deadline
+                                                        ).format(" hh:mm a")} */}
+
                                                         <RemainingTime
                                                             deadline={
                                                                 task.deadline
@@ -206,7 +202,6 @@ const Tasks = (props) => {
                                 ) : (
                                     <UpdateTask
                                         task={task}
-                                        // token={props.token}
                                         tasks={props.tasks}
                                         wid={task.work_name}
                                         toggleEdit={toggleEdit}

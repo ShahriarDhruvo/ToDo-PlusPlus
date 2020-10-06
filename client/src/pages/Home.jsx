@@ -14,11 +14,6 @@ const Home = () => {
         const loadData = async () => {
             const response = await fetch(API_URL, {
                 method: "GET",
-                // headers: {
-                //     Accept: "application/json",
-                //     Authorization: token,
-                //     "Content-Type": "application/json",
-                // },
             });
 
             const data = await response.json();
@@ -26,7 +21,6 @@ const Home = () => {
             setWorks(data);
         };
 
-        // if (token) loadData();
         loadData();
     }, [flag]);
 
@@ -36,12 +30,10 @@ const Home = () => {
         <Container>
             <Header />
             <CreateWork
-                // token={token}
                 works={works}
                 updateFlag={updateFlag}
             />
             <Works
-                // token={token}
                 works={works}
                 updateFlag={updateFlag}
             />
