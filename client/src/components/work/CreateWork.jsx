@@ -44,7 +44,8 @@ const CreateWork = (props) => {
     };
 
     return (
-        <div className="ccard card-body mb-2 bg-main-bg">
+        // <div className="ccard card-body mb-2 bg-main-bg">
+        <div className="mb-4 mt-3">
             <Form ref={form} onSubmit={handleSubmit}>
                 <div className="text-center">
                     {error && <Alert variant="danger">{error}</Alert>}
