@@ -3,22 +3,23 @@ import { Navbar, Nav } from "react-bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { useWindowScroll } from "beautiful-react-hooks";
+// import { useWindowScroll } from "beautiful-react-hooks";
 import { NavLink } from "react-router-dom";
 import Logout from "../components/account/Logout";
 
 const MainNav = (props) => {
-    const [isShadow, setIsShadow] = useState(window.scrollY > 20);
+    // const [isShadow, setIsShadow] = useState(window.scrollY > 20);
 
-    useWindowScroll(() => {
-        setIsShadow(window.scrollY > 20);
-    });
+    // useWindowScroll(() => {
+    //     setIsShadow(window.scrollY > 20);
+    // });
 
     return (
         <Navbar
-            sticky="top"
-            className={"bg-bg " + (isShadow ? "shadow" : "")}
-            style={{ borderRadius: "0.25rem" }}
+            // sticky="top"
+            // className={"bg-bg " + (isShadow ? "shadow" : "")}
+            className="bg-bg"
+            style={{ borderRadius: "0.5rem" }}
         >
             <Navbar.Brand
                 style={{ fontFamily: "MuseoModerno" }}
@@ -28,17 +29,23 @@ const MainNav = (props) => {
                 ToDo++
             </Navbar.Brand>
 
-            <Navbar.Toggle aria-controls="main-nav" />
+            {/* <Navbar.Toggle aria-controls="main-nav" /> */}
 
             <Navbar.Collapse id="main-nav">
                 <Nav className="ml-auto">
                     <Logout />
 
-                    <Nav.Link
+                    {/* Trash */}
+                    {/* <Nav.Link
                         as={NavLink}
-                        to="/profile"
+                        to="/trash"
                         className="pl-3 pr-0 navLink-border"
                     >
+                        Trash
+                    </Nav.Link> */}
+                    {/* Trash */}
+
+                    <Nav.Link as={NavLink} to="/profile" className="pl-3 pr-0">
                         <FontAwesomeIcon
                             icon={["fas", "user-tie"]}
                             style={{ fontSize: "1.2rem" }}

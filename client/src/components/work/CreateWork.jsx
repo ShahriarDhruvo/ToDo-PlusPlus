@@ -44,25 +44,24 @@ const CreateWork = (props) => {
     };
 
     return (
-        <div className="mb-2 bg-main-bg">
+        <div className="ccard card-body mb-2 bg-main-bg">
             <Form ref={form} onSubmit={handleSubmit}>
                 <div className="text-center">
                     {error && <Alert variant="danger">{error}</Alert>}
                 </div>
 
-                <InputGroup>
-                    <Form.Control
+                <div className="d-flex">
+                    <input
                         type="text"
                         name="title"
-                        defaultValue=""
-                        className="rounded mr-2"
+                        className="ccard__input mr-3 pl-2"
                         placeholder="Add work..."
                     />
 
-                    <Button variant="main" type="submit">
+                    <Button size="sm" variant="main" type="submit">
                         Add Work
                     </Button>
-                </InputGroup>
+                </div>
             </Form>
         </div>
     );

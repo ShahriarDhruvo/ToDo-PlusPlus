@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Nav } from "react-bootstrap";
 import { AuthenticationContext } from "../../contexts/AuthenticationContext";
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Logout = () => {
     const { isAuthenticated, handleAuthentication } = useContext(
@@ -28,11 +29,19 @@ const Logout = () => {
         <>
             {isAuthenticated ? (
                 <Nav.Link onClick={handleLogOut} className="pr-3 text-syntax">
-                    Sign out
+                    <FontAwesomeIcon
+                        className="mb-1 mr-sm-1"
+                        icon={["fas", "sign-out-alt"]}
+                    />
+                    <span className="d-none d-sm-inline">Sign out</span>
                 </Nav.Link>
             ) : (
                 <Nav.Link as={NavLink} to="/login" className="pr-3 text-syntax">
-                    Sign in
+                    <FontAwesomeIcon
+                        className="mb-1 mr-sm-1"
+                        icon={["fas", "sign-in-alt"]}
+                    />
+                    <span className="d-none d-sm-inline">Sign in</span>
                 </Nav.Link>
             )}
         </>

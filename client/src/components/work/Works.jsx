@@ -59,10 +59,10 @@ const Works = (props) => {
                     {status && <Alert variant="danger">{status}</Alert>}
 
                     {props.works.map((work, index) => (
-                        <div key={index} className="col-md-4 align-self-center">
+                        <div key={index} className="col-md-3 align-self-center">
                             <div
                                 className={
-                                    "ccard my-1 " +
+                                    "ccard shadow my-3 " +
                                     (work.completed
                                         ? "bg-complete-bg"
                                         : "bg-main-bg")
@@ -76,8 +76,8 @@ const Works = (props) => {
                                     )}
                                 </div>
 
-                                <div className="card-footer justify-content-around action-button">
-                                    <Button
+                                <div className="card-foote pb-3 justify-content-around action-butto">
+                                    {/* <Button
                                         onClick={() => markAsCompleted(work)}
                                         variant={
                                             work.completed ? "info" : "complete"
@@ -86,31 +86,31 @@ const Works = (props) => {
                                         style={{ width: "3rem" }}
                                         size="sm"
                                     >
-                                        {!work.completed ? (
+                                        {!work.completed ? ( */}
                                             <>
-                                                <FontAwesomeIcon
+                                                {/* <FontAwesomeIcon
                                                     // className="mb-1 mr-sm-1"
                                                     className="mb-1"
                                                     icon={["fas", "check"]}
-                                                />
+                                                /> */}
                                                 {/* <span className="d-none d-sm-inline">
                                                     Complete
                                                 </span> */}
                                             </>
-                                        ) : (
+                                        {/* ) : ( */}
                                             <>
-                                                <FontAwesomeIcon
+                                                {/* <FontAwesomeIcon
                                                     className="mb-1 mr-sm-1"
                                                     icon={["fa", "ban"]}
-                                                />
+                                                /> */}
                                                 {/* <span className="d-none d-sm-inline">
                                                     Incomplete
                                                 </span> */}
                                             </>
-                                        )}
-                                    </Button>
+                                        {/* )} */}
+                                    {/* </Button> */}
 
-                                    <Button
+                                    {/* <Button
                                         size="sm"
                                         as={Link}
                                         variant="secondary"
@@ -123,31 +123,31 @@ const Works = (props) => {
                                             // className="mb-1 mr-sm-1"
                                             className="mb-1"
                                             icon={["fa", "info"]}
-                                        />
+                                        /> */}
                                         {/* <span className="d-none d-sm-inline">
                                             Details
                                         </span> */}
-                                    </Button>
+                                    {/* </Button> */}
 
                                     <Button
                                         size="sm"
                                         as={Link}
                                         variant="main"
                                         className="mr-1"
-                                        style={{ width: "3rem" }}
+                                        style={{ width: "6rem" }}
                                         to={`/${work.id}/task/list/`}
                                     >
                                         <FontAwesomeIcon
-                                            // className="mb-1 mr-sm-1"
-                                            className="mb-1"
+                                            className="mb-1 mr-sm-1"
+                                            // className="mb-1"
                                             icon={["fas", "tasks"]}
                                         />
-                                        {/* <span className="d-none d-sm-inline">
+                                        <span className="d-none d-sm-inline">
                                             Tasks
-                                        </span> */}
+                                        </span>
                                     </Button>
 
-                                    <CustomModal
+                                    {/* <CustomModal
                                         variant="remove"
                                         modalTitle="Delete"
                                         actionButtonSize="sm"
@@ -162,10 +162,10 @@ const Works = (props) => {
                                             className="mb-1"
                                             icon={["fas", "trash"]}
                                         />
-                                        {/* <span className="d-none d-sm-inline">
+                                        <span className="d-none d-sm-inline">
                                             Remove
-                                        </span> */}
-                                    </CustomModal>
+                                        </span>
+                                    </CustomModal> */}
                                 </div>
                             </div>
                         </div>

@@ -28,6 +28,7 @@ import PasswordChange from "./generic/PasswordChange";
 import PasswordReset from "./generic/PasswordReset";
 import PassworResetConfirm from "./generic/PasswordResetConfirm";
 import Animations from "./generic/Animations";
+import Trash from "./trash/Trash";
 
 library.add(far, fas, fab);
 
@@ -96,6 +97,9 @@ const App = () => {
                         />
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/register" component={Register} />
+
+                        <Route exact path="/trash" component={Trash} />
+
                         <ProtectedRoute exact path="/" component={Home} />
                         <Route component={NotFound} />
                     </Switch>

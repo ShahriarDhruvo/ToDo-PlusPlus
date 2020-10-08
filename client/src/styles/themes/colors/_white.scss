@@ -14,16 +14,24 @@
 
     // $nav-border: #eee;
 
-    $main-bg: #ffffff;
+    $main-bg: #ffffff86;
     $bg: darken(
         $color: $main-bg,
-        $amount: 3%,
+        $amount: 5%,
     );
-    $main: #00acee;
-    $syntax: darken(
-        $color: $main,
-        $amount: 15%,
-    );
+
+    // $bg: #ffffff;
+    // $main-bg: darken(
+    //     $color: $bg,
+    //     $amount: 5%,
+    // );
+    // $main: #036477a2;
+    $main: #bfb5da;
+    // $syntax: darken(
+    //     $color: $main,
+    //     $amount: 15%,
+    // );
+    $syntax: black;
     $border: darken(
         $color: $main-bg,
         $amount: 10%,
@@ -33,17 +41,79 @@
     $remove: #e26060;
     $facebook: #405d9d;
     $twitter: #00acee;
-    $nav-border: #eee;
+    // $nav-border: #eee;
 
-    background-color: $bg;
+    // background-color: $bg;
 
-    .navLink-border {
-        border-left: 2px solid $nav-border;
+    background: rgb(238, 174, 202);
+    background: radial-gradient(
+        circle,
+        rgba(238, 174, 202, 1) 0%,
+        rgba(148, 187, 233, 1) 100%
+    );
+
+    .ccard__input {
+        flex: 2;
+        border: none;
+        outline: none;
+        background: transparent;
+        border-bottom: 2px solid $main;
     }
 
+    // Dropdown
+    .dropdown_menu li {
+        display: none;
+        background-color: $bg;
+        opacity: 0;
+        &:hover {
+            background-color: $border;
+        }
+    }
+
+    .dropdown:hover .dropdown_menu li {
+        display: block;
+    }
+
+    .dropdown_menu {
+        @for $num from 1 through 5 {
+            .dropdown_item-#{$num} {
+                animation: rotateX 300ms ($num * 60ms) ease-in-out forwards;
+                transform-origin: top center;
+            }
+        }
+    }
+
+    @keyframes rotateX {
+        0% {
+            opacity: 0;
+            transform: rotateX(-90deg);
+        }
+        50% {
+            transform: rotateX(-20deg);
+        }
+        100% {
+            opacity: 1;
+            transform: rotateX(0deg);
+        }
+    }
+    // Dropdown
+
+    // .navLink-border {
+    //     border-left: 2px solid $nav-border;
+    // }
+
     .ccard {
-        border: 1px solid $border;
+        // border: 1px solid $border;
+        // box-shadow: -8px -8px 8px 0 rgba(255, 255, 255, 1),
+        //     8px 8px 8px 0 rgba(0, 0, 0, 0.03);
+
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
         border-radius: 0.45rem;
+    }
+
+    .card__hover:hover {
+        cursor: pointer;
+        transform: scale(1.02);
     }
 
     $theme-colors: ();
