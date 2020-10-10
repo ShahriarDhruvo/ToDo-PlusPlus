@@ -15,7 +15,12 @@
     // $nav-border: #eee;
 
     // $main-bg: #ffffff86;
-    $main-bg: #ffffff;
+    $main-bg: #a3cde7;
+    background: #c5e3f6;
+    
+    // p, span, strike {
+    //     color: #ffffff;
+    // }
 
     $bg: darken(
         $color: $main-bg,
@@ -30,14 +35,16 @@
     // $main: #036477a2;
 
     // $main: #bfb5da;
-    $main: #00000081;
+    // $main: #00000081;
+    $main: black;
 
     // $syntax: darken(
     //     $color: $main,
     //     $amount: 15%,
     // );
     // $syntax: #383737ee;
-    $syntax: #000000a4;
+    // $syntax: #000000a4;
+    $syntax: $main;
 
     $border: darken(
         $color: $main-bg,
@@ -54,8 +61,6 @@
     // $nav-border: #eee;
 
     // background-color: $bg;
-
-    background: #f1f0f0c9;
 
     // Indigo
     // background: rgb(208, 133, 208);
@@ -160,7 +165,7 @@
     .ccard {
         // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 
-        // border-top: 4px solid color(random(length($colors)));
+        // border-top: 4px solid #9c1de7;
 
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
 

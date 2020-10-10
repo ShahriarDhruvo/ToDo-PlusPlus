@@ -70,8 +70,7 @@ const Works = (props) => {
         576: 1,
     };
 
-    let i = 0;
-    const colors = ["#fc85ae"];
+    const colors = ["#fc85ae", "#9c1de7", "#88bef5", "#482ff7", "#cb3b3b", "#b31e6f", "#22eaaa", "#2d6cdf"];
 
     return (
         <>
@@ -80,7 +79,7 @@ const Works = (props) => {
                     {status && (
                         <CustomAlert status={status} alertClass="mx-2" />
                     )}
-                    
+
                     <Masonry
                         breakpointCols={breakpointColsObj}
                         className="d-flex text-center"
@@ -94,7 +93,9 @@ const Works = (props) => {
                                         ? "bg-complete-bg"
                                         : "bg-main-bg"
                                 }`}
-                                style={{ borderTop: `4px solid ${colors[i]}` }}
+                                // style={{
+                                //     borderTop: `4px solid ${colors[index % colors.length]}`,
+                                // }}
                             >
                                 <div className="px-3 pt-3">
                                     {!work.completed ? (
