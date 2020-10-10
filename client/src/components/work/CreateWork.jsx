@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
-import { Button, Form, InputGroup, Alert } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
+import CustomAlert from "../../generic/CustomAlert";
 
 const CreateWork = (props) => {
     const [error, setError] = useState(undefined);
@@ -44,19 +45,17 @@ const CreateWork = (props) => {
     };
 
     return (
-        // <div className="ccard card-body mb-2 bg-main-bg">
-        <div className="mb-4 mt-3">
+        <div className="mb-sm-5 mb-4">
             <Form ref={form} onSubmit={handleSubmit}>
-                <div className="text-center">
-                    {error && <Alert variant="danger">{error}</Alert>}
-                </div>
+                {error && <CustomAlert status={error} />}
 
                 <div className="d-flex">
                     <input
                         type="text"
                         name="title"
-                        className="ccard__input mr-3 pl-2"
                         placeholder="Add work..."
+                        onChange={() => setError("")}
+                        className="ccard__input mr-3 pl-2"
                     />
 
                     <Button size="sm" variant="main" type="submit">

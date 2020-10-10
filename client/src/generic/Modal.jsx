@@ -19,7 +19,7 @@ const CustomModal = (props) => {
                 size={props.actionButtonSize}
                 onClick={handleShow}
                 disabled={props.edit}
-                style={{ width: props.actionButtonWidth }}
+                // style={{ width: props.actionButtonWidth }}
             >
                 {props.children}
             </Button>

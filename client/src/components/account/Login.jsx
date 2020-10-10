@@ -9,7 +9,7 @@ import { AuthenticationContext } from "../../contexts/AuthenticationContext";
 import LoadingScreen from "../../generic/LoadingScreen";
 
 const Login = () => {
-    const { promiseInProgress } = usePromiseTracker();
+    const { promiseInProgress } = usePromiseTracker({ delay: 500 });
     const [status, setStatus] = useState(undefined);
     const { handleAuthentication } = useContext(AuthenticationContext);
     const form = useRef(null);

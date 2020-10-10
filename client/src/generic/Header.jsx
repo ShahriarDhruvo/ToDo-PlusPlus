@@ -3,13 +3,17 @@ import emoji from "react-easy-emoji";
 
 const Header = (props) => {
     return (
-        <div className="text-center mb-4">
-            <h3 className="clogo">{props.title ? props.title : "ToDo++"}</h3>
+        <div className="mt-4 mb-5 text-center">
+            <div className="clogo" style={{ fontSize: "1.72rem" }}>
+                {props.title ? props.title : "ToDo++"}
+            </div>
 
             {props.subTitle ? (
-                <h6>{props.subTitle}</h6>
+                <span style={{ fontSize: "0.86rem" }}>{props.subTitle}</span>
             ) : (
-                <h6>More than some To Do List {emoji("🤪")}</h6>
+                <span style={{ fontSize: "0.86rem" }}>
+                    More than some To Do List {emoji("🤪")}
+                </span>
             )}
         </div>
     );

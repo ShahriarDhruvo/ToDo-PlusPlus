@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import emoji from "react-easy-emoji";
 import { Container } from "react-bootstrap";
 import CreateWork from "../components/work/CreateWork";
 import Trash_Work from "./Trash_Work";
+import Header from "../generic/Header";
 
 const Trash = () => {
     const [works, setWorks] = useState([]);
@@ -29,14 +29,7 @@ const Trash = () => {
     return (
         <Container>
             <div className="mx-2">
-                <div className="clogo mt-4 text-center mb-2">
-                    <div className="card-body">
-                        <div style={{ fontSize: "1.65rem" }}>ToDO++</div>
-                        <span className="" style={{ fontSize: "0.8rem" }}>
-                            More than some To Do List {emoji("🤪")}
-                        </span>
-                    </div>
-                </div>
+                <Header />
                 <CreateWork works={works} updateFlag={updateFlag} />
             </div>
 

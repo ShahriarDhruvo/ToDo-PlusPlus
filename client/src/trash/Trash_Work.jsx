@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Alert, Button, Container } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import CustomModal from "../../generic/Modal";
 import { Link } from "react-router-dom";
 import Masonry from "react-masonry-css";
+import CustomModal from "../generic/Modal";
+import CustomAlert from "../generic/CustomAlert";
 
 const Trash_Work = (props) => {
     const [status, setStatus] = useState(undefined);
+    const [showButtons, setShowButtons] = useState({});
 
     const markAsCompleted = (work) => {
         const completed = !work.completed;
@@ -53,6 +55,13 @@ const Trash_Work = (props) => {
         loadData();
     };
 
+    const toggleButtons = (id) => {
+        setShowButtons((prevShownComments) => ({
+            ...prevShownComments,
+            [id]: !prevShownComments[id],
+        }));
+    };
+
     const breakpointColsObj = {
         default: 4,
         1200: 3,
@@ -62,59 +71,156 @@ const Trash_Work = (props) => {
     };
 
     return (
-        <Masonry
-            breakpointCols={breakpointColsObj}
-            className="d-flex text-center"
-            columnClassName="mx-2"
-        >
-            {props.works.map((work, index) => (
-                <div
-                    key={index}
-                    className={`ccard card__hover my-3 ${
-                        work.completed ? "bg-complete-bg" : "bg-main-bg"
-                    }`}
-                >
-                    <div className="px-3 pt-3">
-                        {!work.completed ? (
-                            <span>{work.title}</span>
-                        ) : (
-                            <strike>{work.title}</strike>
-                        )}
-                    </div>
+        <>
+            {props.works.length ? (
+                <>
+                    {status && (
+                        <CustomAlert status={status} alertClass="mx-2" />
+                    )}
 
-                    <div className="pt-1">
-                        {/* <Link
-                            // size="sm"
-                            // as={Link}
-                            // variant="outline-main"
-                            // className="border"
-                            // style={{ maxWidth: "1rem" }}
-                            to={`/${work.id}/task/list/`}
-                        >
-                            <img
-                                src="/img/icons/more.png"
-                                alt="more"
-                                style={{ width: "2rem" }}
-                            />
-                        </Link> */}
+                    <Masonry
+                        breakpointCols={breakpointColsObj}
+                        className="d-flex text-center"
+                        columnClassName="mx-2"
+                    >
+                        {props.works.map((work, index) => (
+                            <div
+                                key={index}
+                                className={`ccard card__hover my-3 ${
+                                    work.completed
+                                        ? "bg-complete-bg"
+                                        : "bg-main-bg"
+                                }`}
+                            >
+                                <div className="px-3 pt-3">
+                                    {!work.completed ? (
+                                        <span>{work.title}</span>
+                                    ) : (
+                                        <strike>{work.title}</strike>
+                                    )}
+                                </div>
 
-                        <Button variant="" className="dropdown">
-                            <FontAwesomeIcon
-                                className="mb-1"
-                                icon={["fas", "caret-down"]}
-                            />
-                            <ul className="dropdown_menu p-0 m-0">
-                                <li className="py-2 dropdown_item-1">Item 1</li>
-                                <li className="py-2 dropdown_item-2">Item 2</li>
-                                <li className="py-2 dropdown_item-3">Item 3</li>
-                                <li className="py-2 dropdown_item-4">Item 4</li>
-                                <li className="py-2 dropdown_item-5">Item 5</li>
-                            </ul>
-                        </Button>
-                    </div>
-                </div>
-            ))}
-        </Masonry>
+                                <div onClick={() => toggleButtons(index)}>
+                                    {showButtons[index] ? (
+                                        <FontAwesomeIcon
+                                            className="mt-1 mb-2"
+                                            icon={["fas", "caret-up"]}
+                                        />
+                                    ) : (
+                                        <FontAwesomeIcon
+                                            className="mt-1 mb-2"
+                                            icon={["fas", "caret-down"]}
+                                        />
+                                    )}
+
+                                    {showButtons[index] ? (
+                                        <div className="card-footer dropdown_menu">
+                                            <Button
+                                                size="sm"
+                                                variant="complete"
+                                                onClick={() =>
+                                                    markAsCompleted(work)
+                                                }
+                                                variant={
+                                                    work.completed
+                                                        ? "c-info"
+                                                        : "complete"
+                                                }
+                                                className="work-btn mx-1 my-2 dropdown_item-1"
+                                            >
+                                                {!work.completed ? (
+                                                    <>
+                                                        <FontAwesomeIcon
+                                                            className="mb-1"
+                                                            icon={[
+                                                                "fas",
+                                                                "check",
+                                                            ]}
+                                                        />
+                                                        {/* <span className="d-none d-sm-inline">
+                                                        Complete
+                                                    </span> */}
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <FontAwesomeIcon
+                                                            className="mb-1"
+                                                            icon={["fa", "ban"]}
+                                                        />
+                                                        {/* <span className="d-none d-sm-inline">
+                                                        Incomplete
+                                                    </span> */}
+                                                    </>
+                                                )}
+                                            </Button>
+
+                                            <Button
+                                                size="sm"
+                                                as={Link}
+                                                variant="c-secondary"
+                                                to={"/work/details/" + work.id}
+                                                className="work-btn mx-1 my-2 dropdown_item-2"
+                                            >
+                                                <FontAwesomeIcon
+                                                    className="mb-1"
+                                                    icon={["fas", "info"]}
+                                                />
+                                                {/* <span className="d-none d-sm-inline">
+                                                Details
+                                            </span> */}
+                                            </Button>
+
+                                            <Button
+                                                size="sm"
+                                                as={Link}
+                                                variant="main"
+                                                to={`/${work.id}/task/list/`}
+                                                className="work-btn mx-1 my-2 dropdown_item-3"
+                                            >
+                                                <FontAwesomeIcon
+                                                    className="mb-1"
+                                                    icon={["fas", "tasks"]}
+                                                />
+                                                {/* <span className="d-none d-sm-inline">
+                                                Tasks
+                                            </span> */}
+                                            </Button>
+
+                                            <CustomModal
+                                                variant="remove"
+                                                modalTitle="Delete"
+                                                actionButtonSize="sm"
+                                                actionVariant="danger"
+                                                actionButtonClass="work-btn mx-1 my-2 dropdown_item-4"
+                                                // actionButtonWidth="3rem"
+                                                handleAction={() =>
+                                                    deleteItem(work.id)
+                                                }
+                                                modalBody={`Do you really want to delete "${work.title}" work?`}
+                                            >
+                                                <FontAwesomeIcon
+                                                    className="mb-1"
+                                                    icon={["fas", "trash"]}
+                                                />
+                                                {/* <span className="d-none d-sm-inline">
+                                                Remove
+                                            </span> */}
+                                            </CustomModal>
+                                        </div>
+                                    ) : null}
+                                </div>
+                            </div>
+                        ))}
+                    </Masonry>
+                </>
+            ) : (
+                <CustomAlert
+                    variant="info"
+                    status="Your work list is empty!"
+                    alertClass="mx-2"
+                />
+            )}
+        </>
     );
 };
 

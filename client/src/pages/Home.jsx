@@ -28,15 +28,12 @@ const Home = () => {
 
     return (
         <Container>
-            <Header />
-            <CreateWork
-                works={works}
-                updateFlag={updateFlag}
-            />
-            <Works
-                works={works}
-                updateFlag={updateFlag}
-            />
+            <div className="mx-2">
+                <Header />
+                <CreateWork works={works} updateFlag={updateFlag} />
+            </div>
+
+            <Works works={works} updateFlag={updateFlag} />
         </Container>
     );
 };

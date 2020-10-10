@@ -14,7 +14,9 @@
 
     // $nav-border: #eee;
 
-    $main-bg: #ffffff86;
+    // $main-bg: #ffffff86;
+    $main-bg: #ffffff;
+
     $bg: darken(
         $color: $main-bg,
         $amount: 5%,
@@ -28,32 +30,64 @@
     // $main: #036477a2;
 
     // $main: #bfb5da;
-    $main: #0000006b;
+    $main: #00000081;
 
     // $syntax: darken(
     //     $color: $main,
     //     $amount: 15%,
     // );
-    $syntax: black;
+    // $syntax: #383737ee;
+    $syntax: #000000a4;
+
     $border: darken(
         $color: $main-bg,
         $amount: 10%,
     );
-    $complete: #4fb64f;
-    $complete-bg: #b4ffb4;
-    $remove: #e26060;
+    $complete: #3eb83ed3;
+    $complete-bg: #b4ffb491;
+    $remove: #ff0000ad;
+    $c-secondary: #d36729c9;
+    // $c-info: #7418b6b2;
+    $c-info: #e05e3ae7;
     $facebook: #405d9d;
     $twitter: #00acee;
     // $nav-border: #eee;
 
     // background-color: $bg;
 
-    background: rgb(238, 174, 202);
-    background: radial-gradient(
-        circle,
-        rgba(238, 174, 202, 1) 0%,
-        rgba(148, 187, 233, 1) 100%
-    );
+    background: #f1f0f0c9;
+
+    // Indigo
+    // background: rgb(208, 133, 208);
+    // background: linear-gradient(
+    //     90deg,
+    //     rgba(208, 133, 208, 1) 0%,
+    //     rgba(183, 183, 233, 1) 100%
+    // );
+
+    // Cream Color
+    // background: rgb(255, 192, 192);
+    // background: linear-gradient(
+    //     90deg,
+    //     rgba(255, 192, 192, 1) 0%,
+    //     rgba(245, 221, 235, 1) 100%
+    // );
+
+    // Blue Color
+    // background: rgb(114, 160, 193);
+    // background: linear-gradient(
+    //     90deg,
+    //     rgba(114, 160, 193, 1) 0%,
+    //     rgba(178, 255, 255, 1) 100%
+    // );
+
+    // Silver Color
+    // background: rgb(238, 174, 202);
+    // background: radial-gradient(
+    //     circle,
+    //     rgba(238, 174, 202, 1) 0%,
+    //     rgba(148, 187, 233, 1) 100%
+    // );
 
     .ccard__input {
         flex: 2;
@@ -63,24 +97,42 @@
         border-bottom: 2px solid $main;
     }
 
-    // Dropdown
-    .dropdown_menu li {
-        display: none;
-        background-color: $bg;
-        opacity: 0;
-        &:hover {
-            background-color: $border;
-        }
+    .work-btn {
+        width: 2.6rem;
+        height: 2rem;
     }
 
-    .dropdown:hover .dropdown_menu li {
-        display: block;
-    }
+    // Dropdown
+    // .dropdown_menu {
+    //     button {
+    //         display: none;
+    //         opacity: 0;
+    //     }
+
+    //     a {
+    //         display: none;
+    //         opacity: 0;
+    //     }
+    // }
+
+    // .dropdown:hover {
+    //     .card__hover-btn {
+    //         display: none;
+    //     }
+
+    //     button {
+    //         display: inline-block;
+    //     }
+
+    //     a {
+    //         display: inline-block;
+    //     }
+    // }
 
     .dropdown_menu {
         @for $num from 1 through 5 {
             .dropdown_item-#{$num} {
-                animation: rotateX 300ms ($num * 60ms) ease-in-out forwards;
+                animation: rotateX 400ms ($num * 150ms) ease-in-out forwards;
                 transform-origin: top center;
             }
         }
@@ -106,11 +158,12 @@
     // }
 
     .ccard {
-        // border: 1px solid $border;
-        // box-shadow: -8px -8px 8px 0 rgba(255, 255, 255, 1),
-        //     8px 8px 8px 0 rgba(0, 0, 0, 0.03);
+        // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        // border-top: 4px solid color(random(length($colors)));
+
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+
         border-radius: 0.45rem;
     }
 
@@ -129,6 +182,8 @@
             "complete": $complete,
             "complete-bg": $complete-bg,
             "remove": $remove,
+            "c-secondary": $c-secondary,
+            "c-info": $c-info,
             "facebook": $facebook,
             "twitter": $twitter,
         ),
