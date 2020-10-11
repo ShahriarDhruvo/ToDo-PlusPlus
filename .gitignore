@@ -14,7 +14,6 @@ build/
 tests/report/
 
 server/venv/
-server/db.sqlite3
 client/node_modules/
 
 
