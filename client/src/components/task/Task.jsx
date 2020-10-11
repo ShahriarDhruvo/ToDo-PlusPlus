@@ -3,7 +3,6 @@ import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import AddTask from "./AddTask";
 import Tasks from "./Tasks";
-import Header from "../../generic/Header";
 
 const Task = () => {
     const [tasks, setTasks] = useState([]);

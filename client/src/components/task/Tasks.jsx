@@ -91,7 +91,7 @@ const Tasks = (props) => {
                                 {!(edit.status && edit.id === task.id) ? (
                                     <>
                                         <div className="row card-body">
-                                            <div className="col-11">
+                                            <div className="col-md-11">
                                                 {!task.completed ? (
                                                     <span>{task.title}</span>
                                                 ) : (
@@ -123,7 +123,7 @@ const Tasks = (props) => {
                                             </div>
 
                                             <div
-                                                className="col-1 my-auto"
+                                                className="col-md-1 my-auto"
                                                 style={{ fontStyle: "italic" }}
                                             >
                                                 <small className="float-right text-muted">

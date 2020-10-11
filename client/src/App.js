@@ -28,7 +28,9 @@ import PasswordChange from "./generic/PasswordChange";
 import PasswordReset from "./generic/PasswordReset";
 import PassworResetConfirm from "./generic/PasswordResetConfirm";
 import Animations from "./generic/Animations";
-import Trash from "./trash/Trash";
+import About from "./help/About";
+import Me from "./help/Me";
+// import Trash from "./trash/Trash";
 
 library.add(far, fas, fab);
 
@@ -95,10 +97,12 @@ const App = () => {
                             path="/email/confirmation/:key"
                             component={EmailConfirm}
                         />
+                        <Route exact path="/me" component={Me} />
+                        <Route exact path="/about" component={About} />
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/register" component={Register} />
 
-                        <Route exact path="/trash" component={Trash} />
+                        {/* <Route exact path="/trash" component={Trash} /> */}
 
                         <ProtectedRoute exact path="/" component={Home} />
                         <Route component={NotFound} />

@@ -21,6 +21,10 @@ const MainNav = () => {
 
             <Navbar.Collapse>
                 <Nav className="ml-auto">
+                    <Nav.Link as={NavLink} to="/about">
+                        About
+                    </Nav.Link>
+
                     <Logout />
 
                     <Nav.Link as={NavLink} to="/profile">
