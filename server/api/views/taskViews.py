@@ -50,6 +50,7 @@ class TaskCreate(CreateAPIView):
 
 		request.data._mutable = True
 		request.data['work_name'] = wpk
+		request.data['author'] = request.user.username
 		request.data._mutable = False
 
 		return super(TaskCreate, self).create(request, *args, **kwargs)
@@ -95,8 +96,20 @@ class TaskUpdate(UpdateAPIView):
 	# To keep the Task instance into the current Work instance (You shouldn't be able to update the work_name field)
 	def patch(self, request, *args, **kwargs):
 		wpk = self.kwargs.get('wpk', None)
+
 		request.data._mutable = True
 		request.data['work_name'] = wpk
+		request.data['author'] = request.user.username
+		request.data._mutable = False
+
+		return self.partial_update(request, *args, **kwargs)
+
+	def put(self, request, *args, **kwargs):
+		wpk = self.kwargs.get('wpk', None)
+
+		request.data._mutable = True
+		request.data['work_name'] = wpk
+		request.data['author'] = request.user.username
 		request.data._mutable = False
 
 		return self.partial_update(request, *args, **kwargs)

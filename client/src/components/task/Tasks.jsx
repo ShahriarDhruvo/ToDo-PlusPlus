@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Alert, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CustomModal from "../../generic/Modal";
 import UpdateTask from "./UpdateTask";
 import RemainingTime from "../../generic/RemainingTime";
+import CustomAlert from "../../generic/CustomAlert";
 
 const Tasks = (props) => {
     const [edit, setEdit] = useState({
@@ -73,11 +74,12 @@ const Tasks = (props) => {
         <>
             {props.tasks.length ? (
                 <div className="row text-center">
-                    <div className="text-center">
-                        {status && <Alert variant={variant}>{status}</Alert>}
-                    </div>
+                    {status && (
+                        <CustomAlert variant={variant} status={status} />
+                    )}
+
                     {props.tasks.map((task, index) => (
-                        <div key={index} className="col-lg-6 align-self-center">
+                        <div key={index} className="col-12 align-self-center">
                             <div
                                 className={
                                     "ccard my-1 " +
@@ -88,17 +90,20 @@ const Tasks = (props) => {
                             >
                                 {!(edit.status && edit.id === task.id) ? (
                                     <>
-                                        <div className="card-body">
-                                            {!task.completed ? (
-                                                <span>{task.title}</span>
-                                            ) : (
-                                                <strike>{task.title}</strike>
-                                            )}
+                                        <div className="row card-body">
+                                            <div className="col-11">
+                                                {!task.completed ? (
+                                                    <span>{task.title}</span>
+                                                ) : (
+                                                    <strike>
+                                                        {task.title}
+                                                    </strike>
+                                                )}
 
-                                            {task.haveDeadline ? (
-                                                <div className="mt-2">
-                                                    <small>
-                                                        {/* <b>Deadline: </b>
+                                                {task.haveDeadline && (
+                                                    <div className="mt-2">
+                                                        <small>
+                                                            {/* <b>Deadline: </b>
                                                         {Moment(
                                                             task.deadline
                                                         ).format("MMM DD, YY ")}
@@ -107,16 +112,24 @@ const Tasks = (props) => {
                                                             task.deadline
                                                         ).format(" hh:mm a")} */}
 
-                                                        <RemainingTime
-                                                            deadline={
-                                                                task.deadline
-                                                            }
-                                                        />
-                                                    </small>
-                                                </div>
-                                            ) : (
-                                                <></>
-                                            )}
+                                                            <RemainingTime
+                                                                deadline={
+                                                                    task.deadline
+                                                                }
+                                                            />
+                                                        </small>
+                                                    </div>
+                                                )}
+                                            </div>
+
+                                            <div
+                                                className="col-1 my-auto"
+                                                style={{ fontStyle: "italic" }}
+                                            >
+                                                <small className="float-right text-muted">
+                                                    {task.author}
+                                                </small>
+                                            </div>
                                         </div>
 
                                         <div className="card-footer justify-content-around action-button">
@@ -213,11 +226,7 @@ const Tasks = (props) => {
                     ))}
                 </div>
             ) : (
-                <div className="ccard card-body text-center">
-                    <Alert variant="info" className="m-0">
-                        Your task list is empty!
-                    </Alert>
-                </div>
+                <CustomAlert variant="info" status="Your task list is empty!" />
             )}
         </>
     );

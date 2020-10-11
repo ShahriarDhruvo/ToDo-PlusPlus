@@ -20,11 +20,6 @@ const Task = () => {
         const loadData = async () => {
             let response = await fetch(API_URL, {
                 method: "GET",
-                // headers: {
-                //     Accept: "application/json",
-                //     Authorization: token,
-                //     "Content-Type": "application/json",
-                // },
             });
 
             let data = await response.json();
@@ -39,11 +34,6 @@ const Task = () => {
 
             response = await fetch(API_URL, {
                 method: "GET",
-                // headers: {
-                //     Accept: "application/json",
-                //     Authorization: token,
-                //     "Content-Type": "application/json",
-                // },
             });
 
             data = await response.json();
@@ -51,7 +41,6 @@ const Task = () => {
             response.ok ? setWorkTitle(data[0].title) : setStatus(data.detail);
         };
 
-        // if (token) loadData();
         loadData();
     }, [params.wid, flag]);
 
@@ -59,16 +48,11 @@ const Task = () => {
 
     return (
         <Container>
-            <Header title={workTitle} subTitle=" " />
-            <AddTask
-                // token={token}
-                tasks={tasks}
-                wid={params.wid}
-                updateFlag={updateFlag}
-            />
+            <h5 className="clogo text-center pt-sm-5 pt-4">{workTitle}</h5>
+
+            <AddTask tasks={tasks} wid={params.wid} updateFlag={updateFlag} />
             <Tasks
                 tasks={tasks}
-                // token={token}
                 status={status}
                 wid={params.wid}
                 variant={variant}

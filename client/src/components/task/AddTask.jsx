@@ -1,5 +1,7 @@
 import React, { useState, useRef } from "react";
-import { Button, Form, InputGroup, Alert } from "react-bootstrap";
+import { Button, Form, InputGroup } from "react-bootstrap";
+
+import CustomAlert from "../../generic/CustomAlert";
 
 const AddTask = (props) => {
     const [status, setStatus] = useState(undefined);
@@ -52,23 +54,21 @@ const AddTask = (props) => {
     };
 
     return (
-        <div className="ccard card-body text-center mb-2 bg-main-bg">
+        <div className="text-center mt-5 mb-4">
             <Form id="Add_Task_Form" ref={form} onSubmit={handleSubmit}>
-                <div className="text-center">
-                    {status && <Alert variant="danger">{status}</Alert>}
-                </div>
+                {status && <CustomAlert status={status} />}
 
                 <InputGroup>
-                    <Form.Control
+                    <input
                         required
                         type="text"
                         name="title"
-                        defaultValue=""
-                        className="rounded mr-2"
                         placeholder="Add task..."
+                        onChange={() => setStatus("")}
+                        className="ccard__input mr-3 pl-2"
                     />
 
-                    <Button variant="main" type="submit">
+                    <Button size="sm" variant="main" type="submit">
                         Add Task
                     </Button>
                 </InputGroup>

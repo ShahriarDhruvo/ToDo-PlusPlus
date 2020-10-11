@@ -79,7 +79,34 @@ class WorkUpdate(UpdateAPIView):
 		if queryset:
 			return queryset
 		else:
-			raise NotFound("Page not found")	
+			raise NotFound("Page not found")
+
+	# Tried to prevent the collaborators, owner change (But lost patience)
+	# def patch(self, request, *args, **kwargs):
+	# 	pk = self.kwargs.get('pk', None)
+	# 	prev_collaborators = list(Work.objects.filter(id = pk).values('collaborators'))
+
+	# 	collaborators = []
+
+	# 	for i in range(len(prev_collaborators)):
+	# 		collaborators.append(prev_collaborators[i]['collaborators'])
+
+	# 	# request.data._mutable = True
+	# 	request.data['collaborators'] = collaborators
+	# 	# request.data['author'] = request.user.username
+	# 	request.data._mutable = False
+
+	# 	return self.partial_update(request, *args, **kwargs)
+
+	# def put(self, request, *args, **kwargs):
+	# 	wpk = self.kwargs.get('pk', None)
+
+	# 	request.data._mutable = True
+	# 	request.data['work_name'] = wpk
+	# 	request.data['author'] = request.user.username
+	# 	request.data._mutable = False
+
+	# 	return self.partial_update(request, *args, **kwargs)
 
 class WorkDetails(ListAPIView):
 	serializer_class = WorkSerializer

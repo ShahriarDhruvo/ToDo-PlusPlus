@@ -51,8 +51,8 @@ const Register = (props) => {
             {promiseInProgress ? (
                 <LoadingScreen />
             ) : (
-                <div className="ccard bg-main-bg" style={{ maxWidth: "28rem" }}>
-                    <div className="p-4 text-center">
+                <div className="ccard bg-main-bg" style={{ maxWidth: "29rem" }}>
+                    <div className="py-4 px-5 text-center">
                         <h5 className="card-title">Create an Account</h5>
                         <span>Get started with your free account</span>
 
@@ -82,8 +82,8 @@ const Register = (props) => {
                             Signup via facebook
                         </Button>
 
-                        <div className="my-3 divider-text">
-                            <span className="px-4 bg-main-bg">OR</span>
+                        <div className="my-3">
+                            <span style={{ fontSize: "0.8rem" }}>OR</span>
                         </div>
 
                         <Form ref={form} onSubmit={handleSubmit}>

@@ -1,12 +1,13 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Alert, Container, Button, Form, InputGroup } from "react-bootstrap";
+import { Container, Button, Form, InputGroup } from "react-bootstrap";
 import { usePromiseTracker, trackPromise } from "react-promise-tracker";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { AuthenticationContext } from "../../contexts/AuthenticationContext";
 import LoadingScreen from "../../generic/LoadingScreen";
+import CustomAlert from "../../generic/CustomAlert";
 
 const Login = () => {
     const { promiseInProgress } = usePromiseTracker({ delay: 500 });
@@ -52,13 +53,9 @@ const Login = () => {
                     <div className="d-flex justify-content-between mb-4">
                         <div className="w-50">
                             <img
-                                src="/img/profile_pic.png"
-                                onError={(e) => {
-                                    e.target.onerror = null;
-                                    e.target.src = "/img/Default.png";
-                                }}
                                 alt="profile"
                                 className="w-100"
+                                src="/img/profile_pic.png"
                             />
                         </div>
 
@@ -69,17 +66,17 @@ const Login = () => {
                             >
                                 Sign up
                             </Link>
-                            <div className="my-3 text-center divider-text">
-                                <span className="px-3 bg-main-bg">OR</span>
+
+                            <div className="my-3">
+                                <span style={{ fontSize: "0.7rem" }}>OR</span>
                             </div>
+
                             <h5 className="card-title">Sign in</h5>
                         </div>
                     </div>
 
                     <Form ref={form} onSubmit={handleSubmit}>
-                        <div className="text-center">
-                            {status && <Alert variant="danger">{status}</Alert>}
-                        </div>
+                        {status && <CustomAlert status={status} />}
 
                         <Form.Group>
                             <Form.Label>Username</Form.Label>

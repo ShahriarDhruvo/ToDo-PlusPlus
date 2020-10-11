@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
-import { Form, Alert, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CustomAlert from "../../generic/CustomAlert";
 
 const UpdateTask = (props) => {
     const [status, setStatus] = useState(undefined);
@@ -68,9 +69,8 @@ const UpdateTask = (props) => {
     return (
         <Form ref={form} onSubmit={handleSubmit}>
             <div className="card-body">
-                <div className="text-center">
-                    {status && <Alert variant="danger">{status}</Alert>}
-                </div>
+                {status && <CustomAlert status={status} />}
+
                 <Form.Label>Task Title</Form.Label>
                 <Form.Group>
                     <Form.Control

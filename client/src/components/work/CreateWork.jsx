@@ -51,6 +51,7 @@ const CreateWork = (props) => {
 
                 <div className="d-flex">
                     <input
+                        required
                         type="text"
                         name="title"
                         placeholder="Add work..."

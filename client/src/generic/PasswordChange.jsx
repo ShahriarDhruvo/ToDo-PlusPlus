@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react";
-import { Alert, Form, Container, Button } from "react-bootstrap";
+import { Form, Container, Button } from "react-bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CustomAlert from "./CustomAlert";
 
 const PasswordChange = (props) => {
     const [status, setStatus] = useState(undefined);
@@ -47,11 +48,9 @@ const PasswordChange = (props) => {
                         ref={form}
                         onSubmit={handleSubmit}
                     >
-                        <div className="text-center">
-                            {status && (
-                                <Alert variant={variant}>{status}</Alert>
-                            )}
-                        </div>
+                        {status && (
+                            <CustomAlert status={status} variant={variant} />
+                        )}
 
                         <div className="form-group input-group">
                             <div className="input-group-prepend">
@@ -110,14 +109,22 @@ const PasswordChange = (props) => {
                         <div className="mt-4 d-flex justify-content-around">
                             <div className="form-group">
                                 <Button type="submit" variant="main">
+                                    <FontAwesomeIcon
+                                        className="mb-1 mr-2"
+                                        icon={["fa", "key"]}
+                                    />
                                     Change Password
                                 </Button>
                             </div>
                             <div className="form-group">
                                 <Button
-                                    variant="main"
+                                    variant="outline-main"
                                     onClick={() => props.history.goBack()}
                                 >
+                                    <FontAwesomeIcon
+                                        className="mb-1 mr-2"
+                                        icon={["fa", "chevron-left"]}
+                                    />
                                     Go Back
                                 </Button>
                             </div>

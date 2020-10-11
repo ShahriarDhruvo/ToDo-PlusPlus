@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Alert, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useParams, Link } from "react-router-dom";
 import ThemeSwitcher from "../../theme/ThemeSwitcher";
+import CustomAlert from "../../generic/CustomAlert";
 
 const Profile = () => {
     const [user, setUser] = useState({});
@@ -17,11 +18,6 @@ const Profile = () => {
         const loadData = async () => {
             const response = await fetch(API_URL, {
                 method: "GET",
-                // headers: {
-                //     Accept: "application/json",
-                //     Authorization: token,
-                //     "Content-Type": "application/json",
-                // },
             });
 
             const data = await response.json();
@@ -30,18 +26,13 @@ const Profile = () => {
             else setUser(Object.keys(params).length !== 0 ? data[0] : data);
         };
 
-        // if (token) loadData();
         loadData();
     }, [params]);
 
     return (
         <Container className="vertical-center">
             {status ? (
-                <div className="ccard card-body bg-main-bg">
-                    <Alert variant="danger" className="text-center m-0">
-                        {status}
-                    </Alert>
-                </div>
+                <CustomAlert status={status} />
             ) : (
                 <div
                     className="ccard card-body text-center w-100 bg-main-bg"
@@ -54,8 +45,7 @@ const Profile = () => {
                             e.target.src = "/img/Default.png";
                         }}
                         alt="profile"
-                        className=""
-                        style={{ maxWidth: "11rem" }}
+                        style={{ maxWidth: "10rem" }}
                     />
 
                     <ThemeSwitcher />
@@ -65,21 +55,21 @@ const Profile = () => {
                         {user.username}
                         <br />
 
-                        {user.first_name || user.last_name ? (
-                            <>
-                                <b>Full Name: </b>
-                                {user.first_name + " " + user.last_name}
-                                <br />
-                            </>
-                        ) : null}
+                        {user.first_name ||
+                            (user.last_name && (
+                                <>
+                                    <b>Full Name: </b>
+                                    {user.first_name + " " + user.last_name}
+                                    <br />
+                                </>
+                            ))}
 
                         <b>Email: </b>
                         {user.email}
                     </div>
-                    {Object.keys(params).length === 0 ? (
+
+                    {Object.keys(params).length === 0 && (
                         <Link to="/password/change/">Change Password</Link>
-                    ) : (
-                        <></>
                     )}
                 </div>
             )}

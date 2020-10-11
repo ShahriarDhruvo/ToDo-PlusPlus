@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Alert, Container, Button } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import { useParams, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CustomModal from "../../generic/Modal";
+import CustomAlert from "../../generic/CustomAlert";
 
 const WorkDetails = () => {
     const [work, setWork] = useState({});
@@ -20,11 +21,6 @@ const WorkDetails = () => {
         const loadData = async () => {
             let response = await fetch(API_URL, {
                 method: "GET",
-                // headers: {
-                //     Accept: "application/json",
-                //     Authorization: token,
-                //     "Content-Type": "application/json",
-                // },
             });
 
             let data = await response.json();
@@ -36,11 +32,6 @@ const WorkDetails = () => {
 
             response = await fetch(API_URL, {
                 method: "GET",
-                // headers: {
-                //     Accept: "application/json",
-                //     Authorization: token,
-                //     "Content-Type": "application/json",
-                // },
             });
 
             data = await response.json();
@@ -52,11 +43,6 @@ const WorkDetails = () => {
 
             response = await fetch(API_URL, {
                 method: "GET",
-                // headers: {
-                //     Accept: "application/json",
-                //     Authorization: token,
-                //     "Content-Type": "application/json",
-                // },
             });
 
             data = await response.json();
@@ -64,7 +50,6 @@ const WorkDetails = () => {
             if (response.status !== 404) setTasks(data);
         };
 
-        // if (token) loadData();
         loadData();
     }, [params.id, flag]);
 
@@ -74,11 +59,6 @@ const WorkDetails = () => {
         const loadData = async () => {
             const response = await fetch(API_URL, {
                 method: "PATCH",
-                // headers: {
-                //     Accept: "application/json",
-                //     Authorization: token,
-                //     "Content-Type": "application/json",
-                // },
             });
 
             const data = await response.json();
@@ -99,24 +79,22 @@ const WorkDetails = () => {
     return (
         <Container className="vertical-center">
             <div
-                className="ccard card-body text-center w-100 bg-main-bg"
+                className="ccard p-4 text-center w-100 bg-main-bg"
                 style={{ maxWidth: "30rem", minWidth: "20rem" }}
             >
-                <div className="text-center">
-                    {status && <Alert variant={variant}>{status}</Alert>}
-                </div>
+                {status && <CustomAlert variant={variant} status={status} />}
 
                 <div className="mb-3">
-                    <h4>
+                    <h5>
                         <b>{work.title}</b>
-                    </h4>
+                    </h5>
 
                     <Link to={"/work/update/" + work.id}>
                         <FontAwesomeIcon
-                            className="mb-1 mr-sm-1"
+                            className="mb-1 mr-1"
                             icon={["fas", "edit"]}
                         />
-                        <span className="d-none d-sm-inline">Edit</span>
+                        Edit
                     </Link>
                 </div>
 
@@ -174,6 +152,16 @@ const WorkDetails = () => {
                         </CustomModal>
                     </div>
                 ))}
+
+                <div className="mt-3" style={{ fontSize: "0.95rem" }}>
+                    <Link to={`/add/collaborator/${params.id}`}>
+                        <FontAwesomeIcon
+                            className="mb-1 mr-1"
+                            icon={["fas", "user-plus"]}
+                        />
+                        Add Collaborator
+                    </Link>
+                </div>
             </div>
         </Container>
     );

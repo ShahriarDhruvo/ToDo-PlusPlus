@@ -1,21 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const NotFound = (props) => (
-    <div id="notfound">
-        <div className="notfound pb-6">
-            <div className="notfound-404">
-                <h1>404</h1>
+    <Container className="vertical-center text-center">
+        <div>
+            <div>
+                <img
+                    src="/img/notFound.png"
+                    alt="notFound"
+                    style={{ maxWidth: "10rem" }}
+                />
             </div>
-            <h2 className="mb-3 mt-5 pt-3">
-                Oops! This Page Could Not Be Found
-            </h2>
+            <h2 className="my-3">Oops! This Page Could Not Be Found.</h2>
+            <span className="text-danger">Error Code: 404</span>
             <p>
-                Sorry but the page you are looking for does not exist, have been
-                removed. name changed or is temporarily unavailable
+                The page you are looking for does not exist, have
+                been removed, name changed or is temporarily unavailable.
             </p>
             <Button variant="main" className="mt-3" as={Link} to="/">
+                <FontAwesomeIcon className="mb-1 mr-2" icon={["fa", "home"]} />
                 Go To Homepage
             </Button>
             <Button
@@ -23,10 +28,14 @@ const NotFound = (props) => (
                 className="mt-3 ml-2"
                 onClick={() => props.history.goBack()}
             >
+                <FontAwesomeIcon
+                    className="mb-1 mr-2"
+                    icon={["fa", "chevron-left"]}
+                />
                 Go Back
             </Button>
         </div>
-    </div>
+    </Container>
 );
 
 export default NotFound;

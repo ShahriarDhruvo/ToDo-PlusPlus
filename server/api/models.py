@@ -15,9 +15,10 @@ class Work(models.Model):
         return self.title
 
 class Task(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=400)
     haveDeadline = models.BooleanField(default=False)
     deadline = models.DateTimeField(default=formatted_date)
+    author = models.CharField(max_length=100, default="Anonymous")
     completed = models.BooleanField(default=False, blank=True, null=True)
     work_name = models.ForeignKey(Work, default=1, on_delete=models.CASCADE)
 

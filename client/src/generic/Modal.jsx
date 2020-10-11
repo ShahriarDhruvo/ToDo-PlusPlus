@@ -24,22 +24,32 @@ const CustomModal = (props) => {
                 {props.children}
             </Button>
 
-            <Modal show={show} onHide={handleClose} animation={false} centered>
-                <Modal.Header closeButton>
-                    <Modal.Title>{props.modalTitle}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>{props.modalBody}</Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button
-                        variant={props.actionVariant}
-                        onClick={handleAction}
-                    >
-                        {props.modalTitle}
-                    </Button>
-                </Modal.Footer>
+            <Modal
+                show={show}
+                onHide={handleClose}
+                animation={false}
+                className="text-center"
+                centered
+            >
+                <div>
+                    <Modal.Header closeButton>
+                        <Modal.Title>{props.modalTitle}</Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>{props.modalBody}</Modal.Body>
+
+                    <Modal.Footer className="d-flex justify-content-center">
+                        <Button
+                            variant={props.actionVariant}
+                            onClick={handleAction}
+                        >
+                            {props.modalTitle}
+                        </Button>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </div>
             </Modal>
         </>
     );

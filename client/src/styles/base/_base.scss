@@ -1,3 +1,10 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 // Button fade-in-out animation
 @keyframes fade-in {
     from {
@@ -15,6 +22,10 @@
     to {
         opacity: 0;
     }
+}
+
+a {
+    text-decoration: none !important;
 }
 
 .action-button {
@@ -43,29 +54,30 @@
     // flex-direction: column;
     // display: flex;
     // align-items: center;
+
     display: grid;
     place-items: center;
 }
 
-.divider-text {
-    position: relative;
-}
+// .divider-text {
+//     position: relative;
+// }
 
-.divider-text span {
-    font-size: 0.65rem;
-    position: relative;
-    z-index: 2;
-}
+// .divider-text span {
+//     font-size: 0.65rem;
+//     position: relative;
+//     z-index: 2;
+// }
 
-.divider-text:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    border-bottom: 1px solid #ddd;
-    top: 55%;
-    left: 0;
-    z-index: 1;
-}
+// .divider-text:after {
+//     content: "";
+//     position: absolute;
+//     width: 100%;
+//     border-bottom: 1px solid #ddd;
+//     top: 55%;
+//     left: 0;
+//     z-index: 1;
+// }
 
 .clogo {
     font-family: "MuseoModerno";
@@ -86,7 +98,7 @@
 }
 
 .container {
-    min-height: 91.6vh;
+    min-height: 94vh;
     padding-bottom: 8rem;
 }
 

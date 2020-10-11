@@ -70,7 +70,16 @@ const Works = (props) => {
         576: 1,
     };
 
-    const colors = ["#fc85ae", "#9c1de7", "#88bef5", "#482ff7", "#cb3b3b", "#b31e6f", "#22eaaa", "#2d6cdf"];
+    const colors = [
+        "#fc85ae",
+        "#9c1de7",
+        "#88bef5",
+        "#482ff7",
+        "#cb3b3b",
+        "#b31e6f",
+        "#22eaaa",
+        "#2d6cdf",
+    ];
 
     return (
         <>
@@ -117,103 +126,100 @@ const Works = (props) => {
                                             icon={["fas", "caret-down"]}
                                         />
                                     )}
+                                </div>
 
-                                    {showButtons[index] && (
-                                        <div className="card-footer dropdown_menu">
-                                            <Button
-                                                size="sm"
-                                                variant="complete"
-                                                onClick={() =>
-                                                    markAsCompleted(work)
-                                                }
-                                                variant={
-                                                    work.completed
-                                                        ? "c-info"
-                                                        : "complete"
-                                                }
-                                                className="work-btn mx-1 my-2 dropdown_item-1"
-                                            >
-                                                {!work.completed ? (
-                                                    <>
-                                                        <FontAwesomeIcon
-                                                            className="mb-1"
-                                                            icon={[
-                                                                "fas",
-                                                                "check",
-                                                            ]}
-                                                        />
-                                                        {/* <span className="d-none d-sm-inline">
+                                {showButtons[index] && (
+                                    <div className="card-footer dropdown_menu">
+                                        <Button
+                                            size="sm"
+                                            variant="complete"
+                                            onClick={() =>
+                                                markAsCompleted(work)
+                                            }
+                                            variant={
+                                                work.completed
+                                                    ? "c-info"
+                                                    : "complete"
+                                            }
+                                            className="work-btn mx-1 my-2 dropdown_item-1"
+                                        >
+                                            {!work.completed ? (
+                                                <>
+                                                    <FontAwesomeIcon
+                                                        className="mb-1"
+                                                        icon={["fas", "check"]}
+                                                    />
+                                                    {/* <span className="d-none d-sm-inline">
                                                         Complete
                                                     </span> */}
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        <FontAwesomeIcon
-                                                            className="mb-1"
-                                                            icon={["fa", "ban"]}
-                                                        />
-                                                        {/* <span className="d-none d-sm-inline">
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <FontAwesomeIcon
+                                                        className="mb-1"
+                                                        icon={["fa", "ban"]}
+                                                    />
+                                                    {/* <span className="d-none d-sm-inline">
                                                         Incomplete
                                                     </span> */}
-                                                    </>
-                                                )}
-                                            </Button>
+                                                </>
+                                            )}
+                                        </Button>
 
-                                            <Button
-                                                size="sm"
-                                                as={Link}
-                                                variant="c-secondary"
-                                                to={"/work/details/" + work.id}
-                                                className="work-btn mx-1 my-2 dropdown_item-2"
-                                            >
-                                                <FontAwesomeIcon
-                                                    className="mb-1"
-                                                    icon={["fas", "info"]}
-                                                />
-                                                {/* <span className="d-none d-sm-inline">
+                                        <Button
+                                            size="sm"
+                                            as={Link}
+                                            variant="c-secondary"
+                                            to={"/work/details/" + work.id}
+                                            className="work-btn mx-1 my-2 dropdown_item-2"
+                                        >
+                                            <FontAwesomeIcon
+                                                className="mb-1"
+                                                icon={["fas", "info"]}
+                                            />
+                                            {/* <span className="d-none d-sm-inline">
                                                 Details
                                             </span> */}
-                                            </Button>
+                                        </Button>
 
-                                            <Button
-                                                size="sm"
-                                                as={Link}
-                                                variant="main"
-                                                to={`/${work.id}/task/list/`}
-                                                className="work-btn mx-1 my-2 dropdown_item-3"
-                                            >
-                                                <FontAwesomeIcon
-                                                    className="mb-1"
-                                                    icon={["fas", "tasks"]}
-                                                />
-                                                {/* <span className="d-none d-sm-inline">
+                                        <Button
+                                            size="sm"
+                                            as={Link}
+                                            variant="main"
+                                            to={`/${work.id}/task/list/`}
+                                            className="work-btn mx-1 my-2 dropdown_item-3"
+                                        >
+                                            <FontAwesomeIcon
+                                                className="mb-1"
+                                                icon={["fas", "tasks"]}
+                                            />
+                                            {/* <span className="d-none d-sm-inline">
                                                 Tasks
                                             </span> */}
-                                            </Button>
+                                        </Button>
 
-                                            <CustomModal
-                                                variant="remove"
-                                                modalTitle="Delete"
-                                                actionButtonSize="sm"
-                                                actionVariant="danger"
-                                                actionButtonClass="work-btn mx-1 my-2 dropdown_item-4"
-                                                // actionButtonWidth="3rem"
-                                                handleAction={() =>
-                                                    deleteItem(work.id)
-                                                }
-                                                modalBody={`Do you really want to delete "${work.title}" work?`}
-                                            >
-                                                <FontAwesomeIcon
-                                                    className="mb-1"
-                                                    icon={["fas", "trash"]}
-                                                />
-                                                {/* <span className="d-none d-sm-inline">
+                                        <CustomModal
+                                            variant="remove"
+                                            modalTitle="Delete"
+                                            actionButtonSize="sm"
+                                            actionVariant="danger"
+                                            actionButtonClass="work-btn mx-1 my-2 dropdown_item-4"
+                                            // actionButtonWidth="3rem"
+                                            handleAction={() =>
+                                                deleteItem(work.id)
+                                            }
+                                            modalBody={`Do you really want to delete "${work.title}" work?`}
+                                        >
+                                            <FontAwesomeIcon
+                                                className="mb-1"
+                                                icon={["fas", "trash"]}
+                                            />
+                                            {/* <span className="d-none d-sm-inline">
                                                 Remove
                                             </span> */}
-                                            </CustomModal>
-                                        </div>
-                                    )}
-                                </div>
+                                        </CustomModal>
+                                    </div>
+                                )}
                             </div>
                         ))}
                     </Masonry>

@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Form, Alert, Button, Container } from "react-bootstrap";
-import { useParams, Link } from "react-router-dom";
+import { Form, Button, Container } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import CustomAlert from "../../generic/CustomAlert";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const UpdateWork = (props) => {
     const [error, setError] = useState(undefined);
@@ -27,7 +30,6 @@ const UpdateWork = (props) => {
             setWorks(data);
         };
 
-        // if (token) loadData();
         loadData();
 
         const API_URL_2 = "/work/details/" + params.id;
@@ -35,11 +37,6 @@ const UpdateWork = (props) => {
         const loadData_2 = async () => {
             const response = await fetch(API_URL_2, {
                 method: "GET",
-                // headers: {
-                //     Accept: "application/json",
-                //     Authorization: token,
-                //     "Content-Type": "application/json",
-                // },
             });
 
             const data = await response.json();
@@ -47,7 +44,6 @@ const UpdateWork = (props) => {
             setTitle(data[0].title);
         };
 
-        // if (token) loadData_2();
         loadData_2();
     }, [params.id]);
 
@@ -95,21 +91,27 @@ const UpdateWork = (props) => {
 
     return (
         <Container className="vertical-center">
-            <div className="ccard card-body text-center w-100 bg-main-bg">
-                <h4 className="mb-4">Update Work Information</h4>
+            <div className="ccard p-4 text-center w-100 bg-main-bg">
+                <h5 className="clogo mb-5">Update Work Information</h5>
 
                 <Form ref={form} onSubmit={handleSubmit}>
-                    <div className="text-center">
-                        {error && <Alert variant="danger">{error}</Alert>}
-                    </div>
                     <Form.Group>
-                        <Form.Label>Work title</Form.Label>
-                        <Form.Control
-                            type="text"
-                            name="title"
-                            defaultValue={title}
-                            placeholder="Work title..."
-                        />
+                        {error && (
+                            <CustomAlert variant="danger" status={error} />
+                        )}
+
+                        <div className="d-flex mt-4">
+                            <input
+                                required
+                                type="text"
+                                name="title"
+                                defaultValue={title}
+                                placeholder="Work title..."
+                                onChange={() => setError("")}
+                                className="ccard__input pl-2"
+                            />
+                        </div>
+
                         <Form.Text className="text-muted">
                             Update the work's title
                         </Form.Text>
@@ -117,25 +119,31 @@ const UpdateWork = (props) => {
 
                     <div className="mt-4 d-flex justify-content-around">
                         <Button
-                            as={Link}
+                            size="sm"
                             variant="main"
                             type="submit"
-                            className="w-25"
-                            to={"/add/collaborator/" + params.id}
+                            className="my-2"
+                            style={{ minWidth: "7rem" }}
                         >
-                            Add Collaborator
-                        </Button>
-
-                        <Button variant="main" type="submit" className="w-25">
+                            <FontAwesomeIcon
+                                className="mb-1 mr-2"
+                                icon={["fa", "wrench"]}
+                            />
                             Update
                         </Button>
 
                         <Button
-                            variant="main"
+                            size="sm"
+                            variant="outline-main"
                             type="submit"
-                            className="w-25"
+                            className="my-2"
+                            style={{ minWidth: "7rem" }}
                             onClick={() => props.history.goBack()}
                         >
+                            <FontAwesomeIcon
+                                className="mb-1 mr-2"
+                                icon={["fa", "chevron-left"]}
+                            />
                             Go Back
                         </Button>
                     </div>

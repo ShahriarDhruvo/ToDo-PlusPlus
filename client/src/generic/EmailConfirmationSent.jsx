@@ -1,6 +1,7 @@
 import React from "react";
-import { Alert, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import CustomAlert from "./CustomAlert";
 
 const EmailConfirmationSent = () => {
     const params = useParams();
@@ -8,7 +9,7 @@ const EmailConfirmationSent = () => {
     return (
         <Container className="d-flex align-items-center justify-content-center">
             <div
-                className="ccard p-4 text-center"
+                className="ccard bg-main-bg p-4 text-center"
                 style={{ maxWidth: "40rem" }}
             >
                 <h4>Verify Your E-mail Address</h4>
@@ -19,9 +20,10 @@ const EmailConfirmationSent = () => {
                     us if you do not receive it within a few minutes.
                 </p>
 
-                <Alert variant="success">
-                    Confirmation e-mail sent to {params.email}.
-                </Alert>
+                <CustomAlert
+                    status={`Confirmation e-mail sent to ${params.email}.`}
+                    variant="success"
+                />
             </div>
         </Container>
     );

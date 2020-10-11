@@ -14,20 +14,20 @@
 
     // $nav-border: #eee;
 
-    // $main-bg: #ffffff86;
-    $main-bg: #a3cde7;
-    background: #c5e3f6;
-    
+    $main-bg: #ffffff86;
+    // $main-bg: #ecd9bddc;
+    // background: #fff4e3;
+
     // p, span, strike {
     //     color: #ffffff;
     // }
 
-    $bg: darken(
-        $color: $main-bg,
-        $amount: 5%,
-    );
+    // $bg: darken(
+    //     $color: $main-bg,
+    //     $amount: 5%,
+    // );
 
-    // $bg: #ffffff;
+    $bg: #e4e4e4c5;
     // $main-bg: darken(
     //     $color: $bg,
     //     $amount: 5%,
@@ -35,16 +35,16 @@
     // $main: #036477a2;
 
     // $main: #bfb5da;
-    // $main: #00000081;
-    $main: black;
+    $main: #00000081;
+    // $main: #5d5d5a;
 
     // $syntax: darken(
     //     $color: $main,
     //     $amount: 15%,
     // );
     // $syntax: #383737ee;
-    // $syntax: #000000a4;
-    $syntax: $main;
+    $syntax: #000000a2;
+    // $syntax: $main;
 
     $border: darken(
         $color: $main-bg,
@@ -87,12 +87,12 @@
     // );
 
     // Silver Color
-    // background: rgb(238, 174, 202);
-    // background: radial-gradient(
-    //     circle,
-    //     rgba(238, 174, 202, 1) 0%,
-    //     rgba(148, 187, 233, 1) 100%
-    // );
+    background: rgb(238, 174, 202);
+    background: radial-gradient(
+        circle,
+        rgba(238, 174, 202, 1) 0%,
+        rgba(148, 187, 233, 1) 100%
+    );
 
     .ccard__input {
         flex: 2;

@@ -1,9 +1,10 @@
 import React, { useRef, useState } from "react";
-import { Alert, Form, Container, Button } from "react-bootstrap";
+import { Form, Container, Button } from "react-bootstrap";
 import { usePromiseTracker, trackPromise } from "react-promise-tracker";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LoadingScreen from "./LoadingScreen";
+import CustomAlert from "./CustomAlert";
 
 const PasswordReset = (props) => {
     const { promiseInProgress } = usePromiseTracker();
@@ -47,9 +48,7 @@ const PasswordReset = (props) => {
                 <div className="ccard bg-main-bg" style={{ minWidth: "28rem" }}>
                     <div className="p-4 text-center">
                         {status ? (
-                            <Alert className="m-0" variant={variant}>
-                                {status}
-                            </Alert>
+                            <CustomAlert status={status} variant={variant} />
                         ) : (
                             <Form
                                 id="password-reset-form"
@@ -80,12 +79,20 @@ const PasswordReset = (props) => {
 
                                 <div className="mt-4 d-flex justify-content-around">
                                     <Button type="submit" variant="main">
-                                        Reset Password
+                                        <FontAwesomeIcon
+                                            className="mb-1 mr-2"
+                                            icon={["fa", "paper-plane"]}
+                                        />
+                                        Send Email
                                     </Button>
                                     <Button
-                                        variant="main"
+                                        variant="outline-main"
                                         onClick={() => props.history.goBack()}
                                     >
+                                        <FontAwesomeIcon
+                                            className="mb-1 mr-2"
+                                            icon={["fa", "chevron-left"]}
+                                        />
                                         Go Back
                                     </Button>
                                 </div>

@@ -96,14 +96,22 @@ const PassworResetConfirm = (props) => {
                         <div className="mt-4 d-flex justify-content-around">
                             <div className="form-group">
                                 <Button type="submit" variant="main">
+                                    <FontAwesomeIcon
+                                        className="mb-1 mr-2"
+                                        icon={["fa", "window-restore"]}
+                                    />
                                     Reset Password
                                 </Button>
                             </div>
                             <div className="form-group">
                                 <Button
-                                    variant="main"
+                                    variant="outline-main"
                                     onClick={() => props.history.goBack()}
                                 >
+                                    <FontAwesomeIcon
+                                        className="mb-1 mr-2"
+                                        icon={["fa", "chevron-left"]}
+                                    />
                                     Go Back
                                 </Button>
                             </div>

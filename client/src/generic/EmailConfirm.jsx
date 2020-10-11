@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Alert, Container, Button } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import { useParams, Link } from "react-router-dom";
+import CustomAlert from "./CustomAlert";
 
 const EmailConfirm = () => {
     const [status, setStatus] = useState(undefined);
@@ -32,14 +33,17 @@ const EmailConfirm = () => {
     return (
         <Container className="d-flex align-items-center justify-content-center">
             <div
-                className="ccard p-4 text-center"
+                className="ccard p-4 text-center bg-main-bg"
                 style={{ maxWidth: "40rem" }}
             >
-                <Alert variant="info">
-                    {status === "ok"
-                        ? "You have successfully verified your email address."
-                        : "Sorry, try again."}
-                </Alert>
+                <CustomAlert
+                    variant="info"
+                    status={
+                        status === "ok"
+                            ? "You have successfully verified your email address."
+                            : "Sorry, try again."
+                    }
+                />
 
                 {status === "ok" ? (
                     <Button variant="main" as={Link} to="/login">
