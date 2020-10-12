@@ -49,7 +49,7 @@ const Login = () => {
             {promiseInProgress ? (
                 <LoadingScreen />
             ) : (
-                <div className="ccard p-5 bg-main-bg">
+                <div className="ccard p-4 bg-main-bg">
                     <div className="d-flex justify-content-between mb-4">
                         <div className="w-50">
                             <img

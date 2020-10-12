@@ -7,11 +7,11 @@ import CustomAlert from "../../generic/CustomAlert";
 
 const WorkDetails = () => {
     const [work, setWork] = useState({});
-    const [collaborators, setCollaborators] = useState([]);
     const [tasks, setTasks] = useState([]);
     const [flag, setFlag] = useState(true);
     const [status, setStatus] = useState(undefined);
     const [variant, setVariant] = useState("danger");
+    const [collaborators, setCollaborators] = useState([]);
 
     const params = useParams();
 
@@ -80,7 +80,7 @@ const WorkDetails = () => {
         <Container className="vertical-center">
             <div
                 className="ccard p-4 text-center w-100 bg-main-bg"
-                style={{ maxWidth: "30rem", minWidth: "20rem" }}
+                style={{ maxWidth: "30rem", minWidth: "18rem" }}
             >
                 {status && <CustomAlert variant={variant} status={status} />}
 

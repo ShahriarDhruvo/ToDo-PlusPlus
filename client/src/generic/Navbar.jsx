@@ -21,7 +21,7 @@ const MainNav = () => {
 
             <Navbar.Collapse>
                 <Nav className="ml-auto">
-                    <Nav.Link as={NavLink} to="/about">
+                    <Nav.Link as={NavLink} to="/about" className="text-syntax">
                         About
                     </Nav.Link>
 

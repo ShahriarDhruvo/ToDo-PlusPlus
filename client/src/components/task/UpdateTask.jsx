@@ -68,15 +68,17 @@ const UpdateTask = (props) => {
                 {status && <CustomAlert status={status} />}
 
                 <Form.Label>Task Title</Form.Label>
-                <Form.Group>
-                    <Form.Control
+                <div className="d-flex mt-3">
+                    <input
                         required
                         type="text"
                         name="title"
-                        defaultValue={props.task.title}
                         placeholder="Task..."
+                        defaultValue={props.task.title}
+                        onChange={() => setStatus("")}
+                        className="ccard__input pl-2"
                     />
-                </Form.Group>
+                </div>
 
                 {haveDeadline ? (
                     <>
@@ -88,18 +90,31 @@ const UpdateTask = (props) => {
                             className="mt-3 mb-2"
                             onClick={() => setHaveDeadline(!haveDeadline)}
                         />
-                        <div className="form-inline justify-content-center">
-                            <Form.Control
-                                type="date"
-                                name="date"
-                                className="mr-sm-2 mb-2 mb-md-0"
-                                defaultValue={props.task.deadline.split("T")[0]}
-                            />
-                            <Form.Control
-                                type="time"
-                                name="time"
-                                defaultValue={props.task.deadline.split("T")[1]}
-                            />
+                        <div className="form-inline justify-content-center mt-3">
+                            <div className="d-flex">
+                                <input
+                                    type="date"
+                                    name="date"
+                                    placeholder="Task..."
+                                    defaultValue={
+                                        props.task.deadline.split("T")[0]
+                                    }
+                                    className="ccard__input pl-2 mr-sm-2 mb-2 mb-md-0"
+                                    style={{ maxWidth: "9rem" }}
+                                />
+                            </div>
+
+                            <div className="d-flex">
+                                <input
+                                    type="time"
+                                    name="time"
+                                    placeholder="Task..."
+                                    defaultValue={
+                                        props.task.deadline.split("T")[1]
+                                    }
+                                    className="ccard__input pl-2 mb-2 mb-md-0"
+                                />
+                            </div>
                         </div>
 
                         <Form.Text className="text-muted">
@@ -120,12 +135,17 @@ const UpdateTask = (props) => {
             </div>
 
             <div className="card-footer justify-content-around">
-                <Button size="sm" type="submit" variant="main" className="w-25">
+                <Button
+                    size="sm"
+                    type="submit"
+                    variant="main"
+                    style={{ minWidth: "8rem" }}
+                >
                     <FontAwesomeIcon
-                        className="mb-1 mr-sm-1"
+                        className="mb-1 mr-1"
                         icon={["fa", "wrench"]}
                     />
-                    <span className="d-none d-sm-inline">Update</span>
+                    Update
                 </Button>
             </div>
         </Form>

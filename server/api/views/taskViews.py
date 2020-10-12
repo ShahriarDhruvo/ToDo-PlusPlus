@@ -93,7 +93,7 @@ class TaskUpdate(UpdateAPIView):
 		else:
 			raise NotFound("Page not found")
 	
-	# To keep the Task instance into the current Work instance (You shouldn't be able to update the work_name field)
+	# To keep the Task instance into the current Work instance (both put and patch) (You shouldn't be able to update the work_name field)
 	def patch(self, request, *args, **kwargs):
 		wpk = self.kwargs.get('wpk', None)
 

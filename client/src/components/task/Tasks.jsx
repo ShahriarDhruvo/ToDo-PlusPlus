@@ -92,10 +92,24 @@ const Tasks = (props) => {
                             >
                                 {!(edit.status && edit.id === task.id) ? (
                                     <>
-                                        <div className="row card-body">
-                                            <div className="col-10 col-md-11">
+                                        <div className="card-body">
+                                            <div>
                                                 {!task.completed ? (
-                                                    <span>{task.title}</span>
+                                                    <>
+                                                        <span>
+                                                            {task.title}
+                                                        </span>
+                                                        <div
+                                                            style={{
+                                                                fontStyle:
+                                                                    "italic",
+                                                            }}
+                                                        >
+                                                            <small className="text-muted">
+                                                                {task.author}
+                                                            </small>
+                                                        </div>
+                                                    </>
                                                 ) : (
                                                     <strike>
                                                         {task.title}
@@ -106,14 +120,17 @@ const Tasks = (props) => {
                                                     <div className="mt-2">
                                                         <small>
                                                             {/* <b>Deadline: </b>
-                                                        {Moment(
-                                                            task.deadline
-                                                        ).format("MMM DD, YY ")}
-                                                        at
-                                                        {Moment(
-                                                            task.deadline
-                                                        ).format(" hh:mm a")} */}
-
+                                                            {Moment(
+                                                                task.deadline
+                                                            ).format(
+                                                                "MMM DD, YY "
+                                                            )}
+                                                            at
+                                                            {Moment(
+                                                                task.deadline
+                                                            ).format(
+                                                                " hh:mm a"
+                                                            )} */}
                                                             <RemainingTime
                                                                 deadline={
                                                                     task.deadline
@@ -122,15 +139,6 @@ const Tasks = (props) => {
                                                         </small>
                                                     </div>
                                                 )}
-                                            </div>
-
-                                            <div
-                                                className="col-2 col-md-1 my-auto"
-                                                style={{ fontStyle: "italic" }}
-                                            >
-                                                <small className="float-right text-muted">
-                                                    {task.author}
-                                                </small>
                                             </div>
                                         </div>
 
