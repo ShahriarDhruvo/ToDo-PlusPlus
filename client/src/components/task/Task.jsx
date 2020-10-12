@@ -50,6 +50,7 @@ const Task = () => {
             <h5 className="clogo text-center pt-sm-5 pt-4">{workTitle}</h5>
 
             <AddTask tasks={tasks} wid={params.wid} updateFlag={updateFlag} />
+            
             <Tasks
                 tasks={tasks}
                 status={status}

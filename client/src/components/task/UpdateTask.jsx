@@ -7,7 +7,7 @@ const UpdateTask = (props) => {
     const [status, setStatus] = useState(undefined);
     const [haveDeadline, setHaveDeadline] = useState(props.task.haveDeadline);
 
-    const form = useRef(null);
+    const form = useRef();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -38,23 +38,19 @@ const UpdateTask = (props) => {
 
         const loadData = async () => {
             try {
-                fetch(API_URL, {
-                    method: "PUT",
-                    headers: {
-                        Accept: "application/json",
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        deadline,
-                        haveDeadline,
-                        title: e.target.title.value,
-                    }),
+                const formData = new FormData();
+                formData.append("deadline", deadline);
+                formData.append("haveDeadline", haveDeadline);
+                formData.append("title", e.target.title.value);
+
+                const response = await fetch(API_URL, {
+                    method: "PATCH",
+                    body: formData,
                 });
 
-                // Try to create a universal status to handle all this kind of shits
-                // const data = await response.json();
+                const data = await response.json();
 
-                // if (!response.ok) setStatus(data.detail);
+                if (!response.ok) setStatus(data.detail);
             } catch (error) {
                 setStatus(error);
             }
@@ -96,7 +92,7 @@ const UpdateTask = (props) => {
                             <Form.Control
                                 type="date"
                                 name="date"
-                                className="mr-2"
+                                className="mr-sm-2 mb-2 mb-md-0"
                                 defaultValue={props.task.deadline.split("T")[0]}
                             />
                             <Form.Control

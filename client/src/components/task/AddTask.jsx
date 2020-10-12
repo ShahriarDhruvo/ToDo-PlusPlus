@@ -88,7 +88,7 @@ const AddTask = (props) => {
                             <Form.Control
                                 type="date"
                                 name="date"
-                                className="mr-2"
+                                className="mr-sm-2 mb-2 mb-md-0"
                                 defaultValue={new Date().toLocaleDateString(
                                     "en-CA"
                                 )}

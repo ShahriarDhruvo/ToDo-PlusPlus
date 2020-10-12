@@ -38,13 +38,14 @@ const Tasks = (props) => {
                     setVariant("info");
                     setStatus(data.detail);
                 } else if (response.status === 403) setStatus(data.detail);
-                else props.updateFlag();
+                // else props.updateFlag();
             } catch (error) {
                 setStatus(error);
             }
         };
 
         loadData();
+        props.updateFlag();
     };
 
     const toggleEdit = (id, status) => {
@@ -64,10 +65,11 @@ const Tasks = (props) => {
                 setStatus("Item not found");
             } else if (response.status === 403)
                 setStatus("You are not authorized to delete this item");
-            else props.updateFlag();
+            // else props.updateFlag();
         };
 
         loadData();
+        props.updateFlag();
     };
 
     return (
@@ -91,7 +93,7 @@ const Tasks = (props) => {
                                 {!(edit.status && edit.id === task.id) ? (
                                     <>
                                         <div className="row card-body">
-                                            <div className="col-md-11">
+                                            <div className="col-10 col-md-11">
                                                 {!task.completed ? (
                                                     <span>{task.title}</span>
                                                 ) : (
@@ -123,7 +125,7 @@ const Tasks = (props) => {
                                             </div>
 
                                             <div
-                                                className="col-md-1 my-auto"
+                                                className="col-2 col-md-1 my-auto"
                                                 style={{ fontStyle: "italic" }}
                                             >
                                                 <small className="float-right text-muted">

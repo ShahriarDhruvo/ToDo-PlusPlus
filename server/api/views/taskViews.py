@@ -112,7 +112,7 @@ class TaskUpdate(UpdateAPIView):
 		request.data['author'] = request.user.username
 		request.data._mutable = False
 
-		return self.partial_update(request, *args, **kwargs)
+		return self.update(request, *args, **kwargs)
 
 class TaskDetails(ListAPIView):
 	serializer_class = TaskSerializer
