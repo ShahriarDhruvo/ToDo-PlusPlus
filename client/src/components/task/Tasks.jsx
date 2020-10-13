@@ -87,7 +87,6 @@ const Tasks = (props) => {
                     {props.tasks.map((task, index) => (
                         <div key={index} className="col-12 align-self-center">
                             <div
-                                onClick={() => toggleButtons(index)}
                                 className={
                                     "ccard my-1 " +
                                     (task.completed
@@ -97,7 +96,10 @@ const Tasks = (props) => {
                             >
                                 {!(edit.status && edit.id === task.id) ? (
                                     <>
-                                        <div className="card-body">
+                                        <div
+                                            onClick={() => toggleButtons(index)}
+                                            className="card-body"
+                                        >
                                             <div>
                                                 {!task.completed ? (
                                                     <>
