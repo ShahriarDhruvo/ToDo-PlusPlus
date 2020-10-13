@@ -95,7 +95,7 @@ const UpdateTask = (props) => {
                                 <input
                                     type="date"
                                     name="date"
-                                    placeholder="Task..."
+                                    placeholder="12/21/2020"
                                     defaultValue={
                                         props.task.deadline.split("T")[0]
                                     }
@@ -108,7 +108,7 @@ const UpdateTask = (props) => {
                                 <input
                                     type="time"
                                     name="time"
-                                    placeholder="Task..."
+                                    placeholder="23:58"
                                     defaultValue={
                                         props.task.deadline.split("T")[1]
                                     }

@@ -117,9 +117,8 @@ const Tasks = (props) => {
                                                 )}
 
                                                 {task.haveDeadline && (
-                                                    <div className="mt-2">
-                                                        <small>
-                                                            {/* <b>Deadline: </b>
+                                                    <small>
+                                                        {/* <b>Deadline: </b>
                                                             {Moment(
                                                                 task.deadline
                                                             ).format(
@@ -131,13 +130,12 @@ const Tasks = (props) => {
                                                             ).format(
                                                                 " hh:mm a"
                                                             )} */}
-                                                            <RemainingTime
-                                                                deadline={
-                                                                    task.deadline
-                                                                }
-                                                            />
-                                                        </small>
-                                                    </div>
+                                                        <RemainingTime
+                                                            deadline={
+                                                                task.deadline
+                                                            }
+                                                        />
+                                                    </small>
                                                 )}
                                             </div>
                                         </div>

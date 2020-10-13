@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Button, Form, InputGroup } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
 import CustomAlert from "../../generic/CustomAlert";
 
@@ -7,6 +7,16 @@ const AddTask = (props) => {
     const [status, setStatus] = useState(undefined);
     const [haveDeadline, setHaveDeadline] = useState(false);
     const form = useRef(null);
+
+    // console.log(
+    //     new Date().toLocaleTimeString("en-US", {
+    //         hour12: false,
+    //         // hourCycle: "h23",
+    //         // hourCycle: "h24",
+    //         hour: "2-digit",
+    //         minute: "2-digit",
+    //     })
+    // );
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -58,7 +68,7 @@ const AddTask = (props) => {
             <Form id="Add_Task_Form" ref={form} onSubmit={handleSubmit}>
                 {status && <CustomAlert status={status} />}
 
-                <InputGroup>
+                <div className="d-flex">
                     <input
                         required
                         type="text"
@@ -71,7 +81,7 @@ const AddTask = (props) => {
                     <Button size="sm" variant="main" type="submit">
                         Add Task
                     </Button>
-                </InputGroup>
+                </div>
 
                 <input type="hidden" name="deadline" />
 
@@ -84,27 +94,36 @@ const AddTask = (props) => {
                             className="mt-3 mb-2"
                             onClick={() => setHaveDeadline(!haveDeadline)}
                         />
-                        <div className="form-inline justify-content-center">
-                            <Form.Control
-                                type="date"
-                                name="date"
-                                className="mr-sm-2 mb-2 mb-md-0"
-                                defaultValue={new Date().toLocaleDateString(
-                                    "en-CA"
-                                )}
-                            />
-                            <Form.Control
-                                type="time"
-                                name="time"
-                                defaultValue={new Date().toLocaleTimeString(
-                                    "en-US",
-                                    {
-                                        hour12: false,
-                                        hour: "2-digit",
-                                        minute: "2-digit",
-                                    }
-                                )}
-                            />
+                        <div className="form-inline justify-content-center mt-3">
+                            <div className="d-flex">
+                                <input
+                                    type="date"
+                                    name="date"
+                                    placeholder="12/21/2020"
+                                    defaultValue={new Date().toLocaleDateString(
+                                        "en-CA"
+                                    )}
+                                    className="ccard__input pl-2 mr-2 mb-2 mb-md-0"
+                                    style={{ maxWidth: "9.5rem" }}
+                                />
+                            </div>
+
+                            <div className="d-flex">
+                                <input
+                                    type="time"
+                                    name="time"
+                                    placeholder="23:58"
+                                    defaultValue={new Date().toLocaleTimeString(
+                                        "en-US",
+                                        {
+                                            hour12: false,
+                                            hour: "2-digit",
+                                            minute: "2-digit",
+                                        }
+                                    )}
+                                    className="ccard__input pl-2 mb-2 mb-md-0"
+                                />
+                            </div>
                         </div>
 
                         <Form.Text className="text-muted">

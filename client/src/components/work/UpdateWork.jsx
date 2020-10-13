@@ -6,56 +6,52 @@ import CustomAlert from "../../generic/CustomAlert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const UpdateWork = (props) => {
-    const [error, setError] = useState(undefined);
+    const form = useRef(null);
     const [title, setTitle] = useState("");
     const [works, setWorks] = useState([]);
-    const form = useRef(null);
+    const [status, setStatus] = useState("");
+    const [variant, setVariant] = useState("danger");
 
     const params = useParams();
 
     useEffect(() => {
-        const API_URL = "/work/list/";
+        let API_URL = "/work/list/";
 
         const loadData = async () => {
-            const response = await fetch(API_URL, {
+            let response = await fetch(API_URL, {
                 method: "GET",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                },
             });
 
-            const data = await response.json();
+            let data = await response.json();
 
             setWorks(data);
-        };
 
-        loadData();
-
-        const API_URL_2 = "/work/details/" + params.id;
-
-        const loadData_2 = async () => {
-            const response = await fetch(API_URL_2, {
+            API_URL = "/work/details/" + params.id;
+            response = await fetch(API_URL, {
                 method: "GET",
             });
 
-            const data = await response.json();
+            data = await response.json();
 
             setTitle(data[0].title);
         };
 
-        loadData_2();
+        loadData();
     }, [params.id]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (e.target.title.value === "")
-            return setError("You can't add an empty work title !!!");
-
         for (let i = 0; i < works.length; i++) {
-            if (works[i].title === e.target.title.value) {
-                return setError(
+            if (
+                works[i].id.toString() === params.id &&
+                works[i].title === e.target.title.value
+            ) {
+                setVariant("info");
+                return setStatus("Your work title is unchanged.");
+            } else if (works[i].title === e.target.title.value) {
+                setVariant("danger");
+                return setStatus(
                     "You have already added a similar work title..."
                 );
             }
@@ -65,8 +61,8 @@ const UpdateWork = (props) => {
 
         const loadData = async () => {
             try {
-                fetch(API_URL, {
-                    method: "PUT",
+                const response = await fetch(API_URL, {
+                    method: "PATCH",
                     headers: {
                         Accept: "application/json",
                         "Content-Type": "application/json",
@@ -76,17 +72,17 @@ const UpdateWork = (props) => {
                     }),
                 });
 
-                // Try to create a universal error to handle all this kind of shits
-                // const data = await response.json();
-
-                // if (!response.ok) setError(data.title);
+                if (response.ok) {
+                    setVariant("success");
+                    setStatus("Work title has been updated successfully.");
+                }
             } catch (error) {
-                // setError(error);
+                setStatus(error);
             }
         };
 
         loadData();
-        props.history.push("/");
+        // props.history.push("/");
     };
 
     return (
@@ -96,8 +92,8 @@ const UpdateWork = (props) => {
 
                 <Form ref={form} onSubmit={handleSubmit}>
                     <Form.Group>
-                        {error && (
-                            <CustomAlert variant="danger" status={error} />
+                        {status && (
+                            <CustomAlert variant={variant} status={status} />
                         )}
 
                         <div className="d-flex mt-4">
@@ -107,7 +103,7 @@ const UpdateWork = (props) => {
                                 name="title"
                                 defaultValue={title}
                                 placeholder="Work title..."
-                                onChange={() => setError("")}
+                                onChange={() => setStatus("")}
                                 className="ccard__input pl-2"
                             />
                         </div>
