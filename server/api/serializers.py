@@ -6,13 +6,33 @@ from rest_framework import serializers
 
 from .models import Work, Task
 
+# All WORK serializers
 class WorkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Work
         fields = '__all__'
 
+class WorkUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Work
+        fields = '__all__'
+        read_only_fields = ['owner', 'collaborators']
+
+class WorkUpdateCollaboratorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Work
+        fields = '__all__'
+        read_only_fields = ['owner', 'title', 'completed']
+
+# All TASK serializers
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields  = '__all__'
+
+class TaskUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Task
+        fields  = '__all__'
+        read_only_fields = ['work_name']
         

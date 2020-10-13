@@ -129,7 +129,7 @@ const Works = (props) => {
                                 </div>
 
                                 {showButtons[index] && (
-                                    <div className="card-footer dropdown_men">
+                                    <div className="card-footer dropdown_menu">
                                         <div className="row">
                                             <div className="col-12">
                                                 <Button

@@ -27,7 +27,6 @@ import EmailConfirm from "./generic/EmailConfirm";
 import PasswordChange from "./generic/PasswordChange";
 import PasswordReset from "./generic/PasswordReset";
 import PassworResetConfirm from "./generic/PasswordResetConfirm";
-import Animations from "./generic/Animations";
 import About from "./help/About";
 import Me from "./help/Me";
 // import Trash from "./trash/Trash";
@@ -39,7 +38,6 @@ const App = () => {
         <Router>
             <ThemeContextProvider>
                 <AuthenticationContextProvider>
-                    <Animations />
                     <MainNav />
                     <Switch>
                         <ProtectedRoute

@@ -15,7 +15,12 @@ from rest_framework.generics import (
 	UpdateAPIView
 )
 
-from ..serializers import WorkSerializer, TaskSerializer
+from ..serializers import (
+	WorkSerializer,
+	WorkUpdateSerializer,
+	WorkUpdateCollaboratorSerializer,
+	TaskSerializer
+)
 from ..models import Work, Task
 from django.contrib.auth.models import User
 from dj_rest_auth.serializers import UserDetailsSerializer
@@ -68,7 +73,7 @@ class WorkDelete(DestroyAPIView):
 			raise NotFound("Page not found")
 
 class WorkUpdate(UpdateAPIView):
-	serializer_class = WorkSerializer
+	serializer_class = WorkUpdateSerializer
 
 	def get_queryset(self):
 		user_id = self.request.user.id
@@ -80,33 +85,6 @@ class WorkUpdate(UpdateAPIView):
 			return queryset
 		else:
 			raise NotFound("Page not found")
-
-	# Tried to prevent the collaborators, owner change (But lost patience)
-	# def patch(self, request, *args, **kwargs):
-	# 	pk = self.kwargs.get('pk', None)
-	# 	prev_collaborators = list(Work.objects.filter(id = pk).values('collaborators'))
-
-	# 	collaborators = []
-
-	# 	for i in range(len(prev_collaborators)):
-	# 		collaborators.append(prev_collaborators[i]['collaborators'])
-
-	# 	# request.data._mutable = True
-	# 	request.data['collaborators'] = collaborators
-	# 	# request.data['author'] = request.user.username
-	# 	request.data._mutable = False
-
-	# 	return self.partial_update(request, *args, **kwargs)
-
-	# def put(self, request, *args, **kwargs):
-	# 	wpk = self.kwargs.get('pk', None)
-
-	# 	request.data._mutable = True
-	# 	request.data['work_name'] = wpk
-	# 	request.data['author'] = request.user.username
-	# 	request.data._mutable = False
-
-	# 	return self.partial_update(request, *args, **kwargs)
 
 class WorkDetails(ListAPIView):
 	serializer_class = WorkSerializer
@@ -123,7 +101,7 @@ class WorkDetails(ListAPIView):
 			raise NotFound("Page not found")
 
 class WorkAddCollaborators(UpdateAPIView):
-	serializer_class = WorkSerializer
+	serializer_class = WorkUpdateCollaboratorSerializer
 
 	def get_queryset(self):
 		user_id = self.request.user.id
@@ -165,13 +143,17 @@ class WorkAddCollaborators(UpdateAPIView):
 		return self.partial_update(request, *args, **kwargs)
 
 class WorkRemoveCollaborators(UpdateAPIView):
-	serializer_class = WorkSerializer
+	serializer_class = WorkUpdateCollaboratorSerializer
 
 	def get_queryset(self):
 		user_id = self.request.user.id
 		pk = self.kwargs.get('pk', None)
 
-		queryset = Work.objects.filter(collaborators = user_id, id = pk)
+		queryset = Work.objects.filter(id = pk)
+		is_owner = Work.objects.filter(owner = user_id, id = pk)
+
+		if not is_owner:
+			raise PermissionDenied("Only owner of this work can add others as a collaborator")
 
 		if queryset:
 			return queryset

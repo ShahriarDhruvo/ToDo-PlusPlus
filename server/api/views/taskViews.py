@@ -14,7 +14,7 @@ from rest_framework.generics import (
 	UpdateAPIView
 )
 
-from ..serializers import WorkSerializer, TaskSerializer
+from ..serializers import TaskSerializer, TaskUpdateSerializer
 from ..models import Work, Task
 
 class TaskList(ListAPIView):
@@ -74,7 +74,7 @@ class TaskDelete(DestroyAPIView):
 			raise NotFound("Item not found")
 
 class TaskUpdate(UpdateAPIView):
-	serializer_class = TaskSerializer
+	serializer_class = TaskUpdateSerializer
 
 	def get_queryset(self):
 		user_id = self.request.user.id
@@ -93,22 +93,16 @@ class TaskUpdate(UpdateAPIView):
 		else:
 			raise NotFound("Page not found")
 	
-	# To keep the Task instance into the current Work instance (both put and patch) (You shouldn't be able to update the work_name field)
+	# To keep the Task instance author into the current loggedin user (both put and patch) (You shouldn't be able to update the author field from client side)
 	def patch(self, request, *args, **kwargs):
-		wpk = self.kwargs.get('wpk', None)
-
 		request.data._mutable = True
-		request.data['work_name'] = wpk
 		request.data['author'] = request.user.username
 		request.data._mutable = False
 
 		return self.partial_update(request, *args, **kwargs)
 
 	def put(self, request, *args, **kwargs):
-		wpk = self.kwargs.get('wpk', None)
-
 		request.data._mutable = True
-		request.data['work_name'] = wpk
 		request.data['author'] = request.user.username
 		request.data._mutable = False
 
