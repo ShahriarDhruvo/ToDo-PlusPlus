@@ -39,16 +39,14 @@ const PasswordChange = (props) => {
 
     return (
         <Container className="vertical-center">
-            <div className="ccard bg-main-bg">
-                <div className="p-4 text-center">
+            <div className="col ccard bg-main-bg" style={{ maxWidth: "28rem" }}>
+                <div className="p-3 p-sm-4 text-center">
                     <h5 className="mb-4">Change Password</h5>
 
                     <Form
                         ref={form}
-                        className="row px-2 px-sm-4"
                         onSubmit={handleSubmit}
                         id="password-change-form"
-                        style={{ maxWidth: "28rem" }}
                     >
                         <div className="mx-auto">
                             {status && (
@@ -59,7 +57,7 @@ const PasswordChange = (props) => {
                             )}
                         </div>
 
-                        <div className="my-3 d-flex w-100">
+                        <div className="my-3 d-flex">
                             <span className="ccard__input-prepend">
                                 <FontAwesomeIcon
                                     className="fa-icon"
@@ -77,7 +75,7 @@ const PasswordChange = (props) => {
                             />
                         </div>
 
-                        <div className="my-3 d-flex w-100">
+                        <div className="my-3 d-flex">
                             <span className="ccard__input-prepend">
                                 <FontAwesomeIcon
                                     className="fa-icon"
@@ -95,7 +93,7 @@ const PasswordChange = (props) => {
                             />
                         </div>
 
-                        <div className="my-3 d-flex w-100">
+                        <div className="my-3 d-flex">
                             <span className="ccard__input-prepend">
                                 <FontAwesomeIcon
                                     className="fa-icon"
@@ -113,30 +111,31 @@ const PasswordChange = (props) => {
                             />
                         </div>
 
-                        <div className="mt-4 d-flex mx-auto">
-                            <div className="mr-3">
-                                <Button size="sm" type="submit" variant="main">
-                                    <FontAwesomeIcon
-                                        className="mb-1 mr-2"
-                                        icon={["fa", "key"]}
-                                    />
-                                    Change Password
-                                </Button>
-                            </div>
+                        <div className="mt-4">
+                            <Button
+                                size="sm"
+                                type="submit"
+                                variant="main"
+                                className="mb-2 mb-md-0 mr-sm-2"
+                            >
+                                <FontAwesomeIcon
+                                    className="mb-1 mr-2"
+                                    icon={["fa", "key"]}
+                                />
+                                Change Password
+                            </Button>
 
-                            <div>
-                                <Button
-                                    size="sm"
-                                    variant="outline-main"
-                                    onClick={() => props.history.goBack()}
-                                >
-                                    <FontAwesomeIcon
-                                        className="mb-1 mr-2"
-                                        icon={["fa", "chevron-left"]}
-                                    />
-                                    Go Back
-                                </Button>
-                            </div>
+                            <Button
+                                size="sm"
+                                variant="outline-main"
+                                onClick={() => props.history.goBack()}
+                            >
+                                <FontAwesomeIcon
+                                    className="mb-1 mr-2"
+                                    icon={["fa", "chevron-left"]}
+                                />
+                                Go Back
+                            </Button>
                         </div>
                     </Form>
                 </div>

@@ -35,8 +35,8 @@ const Profile = () => {
                 <CustomAlert status={status} />
             ) : (
                 <div
-                    className="ccard card-body text-center w-100 bg-main-bg"
-                    style={{ maxWidth: "30rem", minWidth: "20rem" }}
+                    className="ccard p-3 p-sm-4 text-center w-100 bg-main-bg"
+                    style={{ maxWidth: "28rem" }}
                 >
                     <img
                         src="/img/profile_pic.png"

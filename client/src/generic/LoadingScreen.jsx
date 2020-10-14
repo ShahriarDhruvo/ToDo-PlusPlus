@@ -3,10 +3,10 @@ import { Spinner } from "react-bootstrap";
 
 const LoadingScreen = () => {
     return (
-        <>
+        <div className="d-flex">
             <Spinner animation="border" variant="syntax" />
-            <p className="ml-3 mt-3">Loading...</p>
-        </>
+            <span className="ml-3 my-auto">Loading...</span>
+        </div>
     );
 };
 

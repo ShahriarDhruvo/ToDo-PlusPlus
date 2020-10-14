@@ -7,12 +7,12 @@ const EmailConfirmationSent = () => {
     const params = useParams();
 
     return (
-        <Container className="d-flex align-items-center justify-content-center">
+        <Container className="vertical-center">
             <div
-                className="ccard bg-main-bg p-4 text-center"
-                style={{ maxWidth: "40rem" }}
+                className="ccard p-3 p-sm-4 bg-main-bg text-center"
+                style={{ maxWidth: "28rem" }}
             >
-                <h4>Verify Your E-mail Address</h4>
+                <h5>Verify Your E-mail Address</h5>
 
                 <p className="my-3">
                     We have sent an e-mail to you for verification. Follow the
@@ -21,8 +21,9 @@ const EmailConfirmationSent = () => {
                 </p>
 
                 <CustomAlert
-                    status={`Confirmation e-mail sent to ${params.email}.`}
                     variant="success"
+                    alertClass="text-break"
+                    status={`Confirmation e-mail sent to ${params.email}.`}
                 />
             </div>
         </Container>

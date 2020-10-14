@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Alert, Container, Button, Form } from "react-bootstrap";
+import { Container, Button, Form } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CustomAlert from "./CustomAlert";
 
 const PassworResetConfirm = (props) => {
     const [status, setStatus] = useState(undefined);
@@ -45,76 +46,77 @@ const PassworResetConfirm = (props) => {
     };
 
     return (
-        <Container className="d-flex align-items-center justify-content-center">
-            <div className="ccard bg-main-bg" style={{ minWidth: "28rem" }}>
-                <div className="px-4 pt-4 pb-3 text-center">
+        <Container className="vertical-center">
+            <div className="col ccard bg-main-bg" style={{ maxWidth: "28rem" }}>
+                <div className="p-3 p-sm-4 text-center">
                     <h5 className="card-title mb-4">Reset Password</h5>
 
                     <Form id="password-reset-form" onSubmit={handleSubmit}>
-                        <div className="text-center">
-                            {status && (
-                                <Alert variant={variant}>{status}</Alert>
-                            )}
-                        </div>
+                        {status && (
+                            <CustomAlert variant={variant} status={status} />
+                        )}
 
-                        <div className="form-group input-group">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">
-                                    <FontAwesomeIcon
-                                        className="fa-icon"
-                                        icon={["fas", "lock"]}
-                                    />
-                                </span>
-                            </div>
+                        <div className="my-3 d-flex">
+                            <span className="ccard__input-prepend">
+                                <FontAwesomeIcon
+                                    className="fa-icon"
+                                    icon={["fas", "lock"]}
+                                />
+                            </span>
+
                             <input
                                 required
                                 type="password"
                                 name="new_password1"
-                                className="form-control"
                                 placeholder="New password"
+                                className="ccard__input pl-2"
+                                onChange={() => setStatus("")}
                             />
                         </div>
 
-                        <div className="form-group input-group">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">
-                                    <FontAwesomeIcon
-                                        className="fa-icon"
-                                        icon={["fas", "lock"]}
-                                    />
-                                </span>
-                            </div>
+                        <div className="my-3 d-flex">
+                            <span className="ccard__input-prepend">
+                                <FontAwesomeIcon
+                                    className="fa-icon"
+                                    icon={["fas", "lock"]}
+                                />
+                            </span>
+
                             <input
                                 required
                                 type="password"
                                 name="new_password2"
-                                className="form-control"
                                 placeholder="Repeat password"
+                                className="ccard__input pl-2"
+                                onChange={() => setStatus("")}
                             />
                         </div>
 
-                        <div className="mt-4 d-flex justify-content-around">
-                            <div className="form-group">
-                                <Button type="submit" variant="main">
-                                    <FontAwesomeIcon
-                                        className="mb-1 mr-2"
-                                        icon={["fa", "window-restore"]}
-                                    />
-                                    Reset Password
-                                </Button>
-                            </div>
-                            <div className="form-group">
-                                <Button
-                                    variant="outline-main"
-                                    onClick={() => props.history.goBack()}
-                                >
-                                    <FontAwesomeIcon
-                                        className="mb-1 mr-2"
-                                        icon={["fa", "chevron-left"]}
-                                    />
-                                    Go Back
-                                </Button>
-                            </div>
+                        <div className="mt-4">
+                            <Button
+                                size="sm"
+                                type="submit"
+                                variant="main"
+                                className="mb-2 mb-md-0 mr-sm-2"
+                            >
+                                <FontAwesomeIcon
+                                    className="mb-1 mr-2"
+                                    icon={["fa", "window-restore"]}
+                                />
+                                Reset Password
+                            </Button>
+
+                            <Button
+                                size="sm"
+                                variant="outline-main"
+                                onClick={() => props.history.goBack()}
+                            >
+                                <FontAwesomeIcon
+                                    className="mb-1 mr-2"
+                                    icon={["fa", "chevron-left"]}
+                                />
+                                Go Back
+                            </Button>
                         </div>
                     </Form>
                 </div>

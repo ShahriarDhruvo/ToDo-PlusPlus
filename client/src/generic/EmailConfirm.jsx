@@ -34,7 +34,7 @@ const EmailConfirm = () => {
         <Container className="d-flex align-items-center justify-content-center">
             <div
                 className="ccard p-4 text-center bg-main-bg"
-                style={{ maxWidth: "40rem" }}
+                style={{ maxWidth: "28rem" }}
             >
                 <CustomAlert
                     variant="info"

@@ -1,12 +1,13 @@
 import React, { useRef, useState } from "react";
-import { Alert, Form, Container, Button } from "react-bootstrap";
+import { Form, Container, Button } from "react-bootstrap";
 import { usePromiseTracker, trackPromise } from "react-promise-tracker";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter, faFacebook } from "@fortawesome/free-brands-svg-icons";
+// import { faTwitter, faFacebook } from "@fortawesome/free-brands-svg-icons";
 
 import { Link } from "react-router-dom";
 import LoadingScreen from "../../generic/LoadingScreen";
+import CustomAlert from "../../generic/CustomAlert";
 
 const Register = (props) => {
     const { promiseInProgress } = usePromiseTracker();
@@ -47,20 +48,25 @@ const Register = (props) => {
     };
 
     return (
-        <Container className="d-flex align-items-center justify-content-center">
+        <Container className="vertical-center">
             {promiseInProgress ? (
                 <LoadingScreen />
             ) : (
-                <div className="ccard bg-main-bg" style={{ maxWidth: "29rem" }}>
-                    <div className="py-4 px-5 text-center">
+                <div
+                    className="col ccard bg-main-bg"
+                    style={{ maxWidth: "28rem" }}
+                >
+                    <div className="p-3 p-sm-4 text-center">
                         <h5 className="card-title">Create an Account</h5>
-                        <span>Get started with your free account</span>
+                        <p className="mb-3" style={{ fontSize: "0.9rem" }}>
+                            Get started with your free account
+                        </p>
 
-                        <Button
+                        {/* <Button
                             disabled
                             size="sm"
                             variant="twitter"
-                            className="mt-3 mb-2 w-100"
+                            className="mb-2 w-100"
                         >
                             <FontAwesomeIcon
                                 className="mb-1 mr-2"
@@ -84,31 +90,26 @@ const Register = (props) => {
 
                         <div className="my-3">
                             <span style={{ fontSize: "0.8rem" }}>OR</span>
-                        </div>
+                        </div> */}
 
                         <Form ref={form} onSubmit={handleSubmit}>
-                            <div className="text-center">
-                                {status && (
-                                    <Alert variant="danger">{status}</Alert>
-                                )}
-                            </div>
+                            {status && <CustomAlert status={status} />}
 
-                            <div className="form-group input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text">
-                                        <FontAwesomeIcon
-                                            className="fa-icon"
-                                            icon={["fas", "user"]}
-                                        />
-                                    </span>
-                                </div>
+                            <div className="my-3 d-flex">
+                                <span className="ccard__input-prepend">
+                                    <FontAwesomeIcon
+                                        className="fa-icon"
+                                        icon={["fas", "user"]}
+                                    />
+                                </span>
+
                                 <input
                                     required
                                     type="text"
                                     name="username"
                                     value={info.username}
                                     placeholder="Username"
-                                    className="form-control"
+                                    className="ccard__input pl-2"
                                     onChange={(e) =>
                                         setInfo({
                                             ...info,
@@ -118,21 +119,19 @@ const Register = (props) => {
                                 />
                             </div>
 
-                            <div className="form-group input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text">
-                                        <FontAwesomeIcon
-                                            className="fa-icon"
-                                            icon={["far", "user"]}
-                                        />
-                                    </span>
-                                </div>
+                            <div className="my-3 d-flex">
+                                <span className="ccard__input-prepend">
+                                    <FontAwesomeIcon
+                                        className="fa-icon"
+                                        icon={["far", "user"]}
+                                    />
+                                </span>
                                 <input
                                     type="text"
                                     name="first_name"
                                     value={info.first_name}
-                                    className="form-control"
                                     placeholder="First name"
+                                    className="ccard__input pl-2"
                                     onChange={(e) =>
                                         setInfo({
                                             ...info,
@@ -140,20 +139,21 @@ const Register = (props) => {
                                         })
                                     }
                                 />
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text">
-                                        <FontAwesomeIcon
-                                            className="fa-icon"
-                                            icon={["far", "user"]}
-                                        />
-                                    </span>
-                                </div>
+                            </div>
+
+                            <div className="my-3 d-flex">
+                                <span className="ccard__input-prepend">
+                                    <FontAwesomeIcon
+                                        className="fa-icon"
+                                        icon={["far", "user"]}
+                                    />
+                                </span>
                                 <input
                                     type="text"
                                     name="last_name"
                                     value={info.last_name}
-                                    className="form-control"
                                     placeholder="Last name"
+                                    className="ccard__input pl-2"
                                     onChange={(e) =>
                                         setInfo({
                                             ...info,
@@ -163,29 +163,20 @@ const Register = (props) => {
                                 />
                             </div>
 
-                            <div className="mb-3">
-                                <small className="text-muted">
-                                    For a cool display name provide first & last
-                                    name
-                                </small>
-                            </div>
-
-                            <div className="form-group input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text">
-                                        <FontAwesomeIcon
-                                            className="fa-icon"
-                                            icon={["fas", "envelope"]}
-                                        />
-                                    </span>
-                                </div>
+                            <div className="my-3 d-flex">
+                                <span className="ccard__input-prepend">
+                                    <FontAwesomeIcon
+                                        className="fa-icon"
+                                        icon={["fas", "envelope"]}
+                                    />
+                                </span>
                                 <input
                                     required
                                     type="email"
                                     name="email"
                                     value={info.email}
-                                    className="form-control"
                                     placeholder="Email address"
+                                    className="ccard__input pl-2"
                                     onChange={(e) =>
                                         setInfo({
                                             ...info,
@@ -195,44 +186,42 @@ const Register = (props) => {
                                 />
                             </div>
 
-                            <div className="form-group input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text">
-                                        <FontAwesomeIcon
-                                            className="fa-icon"
-                                            icon={["fas", "lock"]}
-                                        />
-                                    </span>
-                                </div>
+                            <div className="my-3 d-flex">
+                                <span className="ccard__input-prepend">
+                                    <FontAwesomeIcon
+                                        className="fa-icon"
+                                        icon={["fas", "lock"]}
+                                    />
+                                </span>
                                 <input
                                     required
                                     type="password"
                                     name="password1"
-                                    className="form-control"
                                     placeholder="Create password"
+                                    className="ccard__input pl-2"
                                 />
                             </div>
 
-                            <div className="form-group input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text">
-                                        <FontAwesomeIcon
-                                            className="fa-icon"
-                                            icon={["fas", "lock"]}
-                                        />
-                                    </span>
-                                </div>
+                            <div className="my-3 d-flex">
+                                <span className="ccard__input-prepend">
+                                    <FontAwesomeIcon
+                                        className="fa-icon"
+                                        icon={["fas", "lock"]}
+                                    />
+                                </span>
+
                                 <input
                                     required
                                     type="password"
                                     name="password2"
-                                    className="form-control"
                                     placeholder="Repeat password"
+                                    className="ccard__input pl-2"
                                 />
                             </div>
 
-                            <div className="form-group">
+                            <div className="form-group mt-4">
                                 <Button
+                                    size="sm"
                                     type="submit"
                                     variant="main"
                                     className="w-100"

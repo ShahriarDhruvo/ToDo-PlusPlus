@@ -41,63 +41,68 @@ const PasswordReset = (props) => {
     };
 
     return (
-        <Container className="d-flex align-items-center justify-content-center">
+        <Container className="vertical-center">
             {promiseInProgress ? (
                 <LoadingScreen />
+            ) : status ? (
+                <CustomAlert status={status} variant={variant} />
             ) : (
-                <div className="ccard bg-main-bg" style={{ minWidth: "28rem" }}>
-                    <div className="p-4 text-center">
-                        {status ? (
-                            <CustomAlert status={status} variant={variant} />
-                        ) : (
-                            <Form
-                                id="password-reset-form"
-                                ref={form}
-                                onSubmit={handleSubmit}
-                            >
-                                <h5 className="card-title mb-4">
-                                    Reset Password
-                                </h5>
+                <div
+                    className="col ccard bg-main-bg"
+                    style={{ maxWidth: "28rem" }}
+                >
+                    <div className="p-3 p-sm-4 text-center">
+                        <Form
+                            id="password-reset-form"
+                            ref={form}
+                            onSubmit={handleSubmit}
+                        >
+                            <h5 className="card-title mb-4">Reset Password</h5>
 
-                                <div className="form-group input-group">
-                                    <div className="input-group-prepend">
-                                        <span className="input-group-text">
-                                            <FontAwesomeIcon
-                                                className="fa-icon"
-                                                icon={["fas", "envelope"]}
-                                            />
-                                        </span>
-                                    </div>
-                                    <input
-                                        required
-                                        type="email"
-                                        name="email"
-                                        className="form-control"
-                                        placeholder="Account Email..."
+                            <div className="my-3 d-flex">
+                                <span className="ccard__input-prepend">
+                                    <FontAwesomeIcon
+                                        className="fa-icon"
+                                        icon={["fas", "envelope"]}
                                     />
-                                </div>
+                                </span>
 
-                                <div className="mt-4 d-flex justify-content-around">
-                                    <Button type="submit" variant="main">
-                                        <FontAwesomeIcon
-                                            className="mb-1 mr-2"
-                                            icon={["fa", "paper-plane"]}
-                                        />
-                                        Send Email
-                                    </Button>
-                                    <Button
-                                        variant="outline-main"
-                                        onClick={() => props.history.goBack()}
-                                    >
-                                        <FontAwesomeIcon
-                                            className="mb-1 mr-2"
-                                            icon={["fa", "chevron-left"]}
-                                        />
-                                        Go Back
-                                    </Button>
-                                </div>
-                            </Form>
-                        )}
+                                <input
+                                    required
+                                    type="email"
+                                    name="email"
+                                    placeholder="Account Email..."
+                                    className="ccard__input pl-2"
+                                    onChange={() => setStatus("")}
+                                />
+                            </div>
+
+                            <div className="mt-4">
+                                <Button
+                                    size="sm"
+                                    type="submit"
+                                    variant="main"
+                                    className="mr-2"
+                                >
+                                    <FontAwesomeIcon
+                                        className="mb-1 mr-2"
+                                        icon={["fa", "paper-plane"]}
+                                    />
+                                    Send Email
+                                </Button>
+                                <Button
+                                    size="sm"
+                                    variant="outline-main"
+                                    onClick={() => props.history.goBack()}
+                                >
+                                    <FontAwesomeIcon
+                                        className="mb-1 mr-2"
+                                        icon={["fa", "chevron-left"]}
+                                    />
+                                    Go Back
+                                </Button>
+                            </div>
+                        </Form>
                     </div>
                 </div>
             )}
