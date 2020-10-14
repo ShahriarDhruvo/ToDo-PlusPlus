@@ -45,7 +45,7 @@ const PasswordChange = (props) => {
 
                     <Form
                         ref={form}
-                        className="row px-sm-4"
+                        className="row px-2 px-sm-4"
                         onSubmit={handleSubmit}
                         id="password-change-form"
                         style={{ maxWidth: "28rem" }}
@@ -59,7 +59,7 @@ const PasswordChange = (props) => {
                             )}
                         </div>
 
-                        <div className="my-4 input-group">
+                        <div className="my-3 d-flex w-100">
                             <span className="ccard__input-prepend">
                                 <FontAwesomeIcon
                                     className="fa-icon"
@@ -77,7 +77,7 @@ const PasswordChange = (props) => {
                             />
                         </div>
 
-                        <div className="my-4 input-group">
+                        <div className="my-3 d-flex w-100">
                             <span className="ccard__input-prepend">
                                 <FontAwesomeIcon
                                     className="fa-icon"
@@ -95,7 +95,7 @@ const PasswordChange = (props) => {
                             />
                         </div>
 
-                        <div className="my-4 input-group">
+                        <div className="my-3 d-flex w-100">
                             <span className="ccard__input-prepend">
                                 <FontAwesomeIcon
                                     className="fa-icon"

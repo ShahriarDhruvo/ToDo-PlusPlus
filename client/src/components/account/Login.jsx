@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Container, Button, Form, InputGroup } from "react-bootstrap";
+import { Container, Button, Form } from "react-bootstrap";
 import { usePromiseTracker, trackPromise } from "react-promise-tracker";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,10 +10,10 @@ import LoadingScreen from "../../generic/LoadingScreen";
 import CustomAlert from "../../generic/CustomAlert";
 
 const Login = () => {
-    const { promiseInProgress } = usePromiseTracker({ delay: 500 });
-    const [status, setStatus] = useState(undefined);
-    const { handleAuthentication } = useContext(AuthenticationContext);
     const form = useRef(null);
+    const [status, setStatus] = useState(undefined);
+    const { promiseInProgress } = usePromiseTracker({ delay: 500 });
+    const { handleAuthentication } = useContext(AuthenticationContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -81,23 +81,23 @@ const Login = () => {
 
                         <Form.Group>
                             <Form.Label>Username</Form.Label>
-                            <InputGroup>
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text">
-                                        <FontAwesomeIcon
-                                            className="fa-icon"
-                                            icon={["fas", "user"]}
-                                        />
-                                    </span>
-                                </div>
+                            <div className="mt-2 d-flex">
+                                <span className="ccard__input-prepend">
+                                    <FontAwesomeIcon
+                                        className="fa-icon"
+                                        icon={["fas", "user"]}
+                                    />
+                                </span>
+
                                 <input
                                     required
                                     type="text"
                                     name="username"
                                     placeholder="Username"
-                                    className="form-control"
+                                    className="ccard__input pl-2"
+                                    onChange={() => setStatus("")}
                                 />
-                            </InputGroup>
+                            </div>
                         </Form.Group>
 
                         <Form.Group>
@@ -109,35 +109,37 @@ const Login = () => {
                             </Link>
 
                             <Form.Label>Password</Form.Label>
-                            <InputGroup>
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text">
-                                        <FontAwesomeIcon
-                                            className="fa-icon"
-                                            icon={["fas", "lock"]}
-                                        />
-                                    </span>
-                                </div>
+                            <div className="mt-2 d-flex">
+                                <span className="ccard__input-prepend">
+                                    <FontAwesomeIcon
+                                        className="fa-icon"
+                                        icon={["fas", "lock"]}
+                                    />
+                                </span>
+
                                 <input
                                     required
                                     type="password"
                                     name="password"
                                     placeholder="Password"
-                                    className="form-control"
+                                    className="ccard__input pl-2"
+                                    onChange={() => setStatus("")}
                                 />
-                            </InputGroup>
-                        </Form.Group>
-
-                        <Form.Group>
-                            <div className="checkbox">
-                                <input type="checkbox" />
-                                <Form.Label className="ml-1">
-                                    Save password
-                                </Form.Label>
                             </div>
                         </Form.Group>
 
-                        <Button type="submit" variant="main" className="w-100">
+                        <div className="my-2 text-center">
+                            <small className="text-muted">
+                                Untill signout you will be logged in for 15 days
+                                in this browser
+                            </small>
+                        </div>
+
+                        <Button
+                            type="submit"
+                            variant="main"
+                            className="mt-2 w-100"
+                        >
                             Login
                         </Button>
                     </Form>
