@@ -38,77 +38,84 @@ const PasswordChange = (props) => {
     };
 
     return (
-        <Container className="d-flex align-items-center justify-content-center">
-            <div className="ccard bg-main-bg" style={{ minWidth: "28rem" }}>
-                <div className="px-4 pt-4 pb-3 text-center">
-                    <h5 className="card-title mb-4">Change Password</h5>
+        <Container className="vertical-center">
+            <div className="ccard bg-main-bg">
+                <div className="p-4 text-center">
+                    <h5 className="mb-4">Change Password</h5>
 
                     <Form
-                        id="password-change-form"
                         ref={form}
+                        className="row px-sm-4"
                         onSubmit={handleSubmit}
+                        id="password-change-form"
+                        style={{ maxWidth: "28rem" }}
                     >
-                        {status && (
-                            <CustomAlert status={status} variant={variant} />
-                        )}
+                        <div className="mx-auto">
+                            {status && (
+                                <CustomAlert
+                                    status={status}
+                                    variant={variant}
+                                />
+                            )}
+                        </div>
 
-                        <div className="form-group input-group">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">
-                                    <FontAwesomeIcon
-                                        className="fa-icon"
-                                        icon={["fas", "lock"]}
-                                    />
-                                </span>
-                            </div>
+                        <div className="my-4 input-group">
+                            <span className="ccard__input-prepend">
+                                <FontAwesomeIcon
+                                    className="fa-icon"
+                                    icon={["fas", "lock"]}
+                                />
+                            </span>
+
                             <input
                                 required
                                 type="password"
                                 name="old_password"
-                                className="form-control"
                                 placeholder="Old password"
+                                className="ccard__input pl-2"
+                                onChange={() => setStatus("")}
                             />
                         </div>
 
-                        <div className="form-group input-group">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">
-                                    <FontAwesomeIcon
-                                        className="fa-icon"
-                                        icon={["fas", "lock"]}
-                                    />
-                                </span>
-                            </div>
+                        <div className="my-4 input-group">
+                            <span className="ccard__input-prepend">
+                                <FontAwesomeIcon
+                                    className="fa-icon"
+                                    icon={["fas", "lock"]}
+                                />
+                            </span>
+
                             <input
                                 required
                                 type="password"
                                 name="new_password1"
-                                className="form-control"
                                 placeholder="New password"
+                                className="ccard__input pl-2"
+                                onChange={() => setStatus("")}
                             />
                         </div>
 
-                        <div className="form-group input-group">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">
-                                    <FontAwesomeIcon
-                                        className="fa-icon"
-                                        icon={["fas", "lock"]}
-                                    />
-                                </span>
-                            </div>
+                        <div className="my-4 input-group">
+                            <span className="ccard__input-prepend">
+                                <FontAwesomeIcon
+                                    className="fa-icon"
+                                    icon={["fas", "lock"]}
+                                />
+                            </span>
+
                             <input
                                 required
                                 type="password"
                                 name="new_password2"
-                                className="form-control"
                                 placeholder="Repeat password"
+                                className="ccard__input pl-2"
+                                onChange={() => setStatus("")}
                             />
                         </div>
 
-                        <div className="mt-4 d-flex justify-content-around">
-                            <div className="form-group">
-                                <Button type="submit" variant="main">
+                        <div className="mt-4 d-flex mx-auto">
+                            <div className="mr-3">
+                                <Button size="sm" type="submit" variant="main">
                                     <FontAwesomeIcon
                                         className="mb-1 mr-2"
                                         icon={["fa", "key"]}
@@ -116,8 +123,10 @@ const PasswordChange = (props) => {
                                     Change Password
                                 </Button>
                             </div>
-                            <div className="form-group">
+
+                            <div>
                                 <Button
+                                    size="sm"
                                     variant="outline-main"
                                     onClick={() => props.history.goBack()}
                                 >

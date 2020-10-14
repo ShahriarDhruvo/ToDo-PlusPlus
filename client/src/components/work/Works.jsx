@@ -16,22 +16,14 @@ const Works = (props) => {
 
         const loadData = async () => {
             try {
+                const formData = new FormData();
+                formData.append("completed", completed);
+
                 fetch(API_URL, {
-                    method: "PUT",
-                    headers: {
-                        Accept: "application/json",
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        completed: completed,
-                        title: work.title,
-                    }),
+                    method: "PATCH",
+                    body: formData,
                 });
 
-                // Try to create a universal error to handle all this kind of shits
-                // const data = await response.json();
-                setStatus(undefined); // for warning -_-
-                // if (!response.ok) setError(data.title);
                 props.updateFlag();
             } catch (error) {
                 setStatus(error);

@@ -8,16 +8,6 @@ const AddTask = (props) => {
     const [haveDeadline, setHaveDeadline] = useState(false);
     const form = useRef(null);
 
-    // console.log(
-    //     new Date().toLocaleTimeString("en-US", {
-    //         hour12: false,
-    //         // hourCycle: "h23",
-    //         // hourCycle: "h24",
-    //         hour: "2-digit",
-    //         minute: "2-digit",
-    //     })
-    // );
-
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -28,14 +18,10 @@ const AddTask = (props) => {
         }
 
         e.target.deadline.value = haveDeadline
-            ? `${e.target.date.value}T${e.target.time.value}:00`
+            ? `${e.target.date.value}T${e.target.time.value}`
             : `${new Date().toLocaleDateString(
                   "en-CA"
-              )}T${new Date().toLocaleTimeString("en-US", {
-                  hour12: false,
-                  hour: "2-digit",
-                  minute: "2-digit",
-              })}:00`;
+              )}T${new Date().toLocaleTimeString("en-GB")}`;
 
         const API_URL = `/${props.wid}/task/create/`;
 
@@ -112,11 +98,10 @@ const AddTask = (props) => {
                                 <input
                                     type="time"
                                     name="time"
-                                    placeholder="23:58"
+                                    placeholder="23:58:59"
                                     defaultValue={new Date().toLocaleTimeString(
-                                        "en-US",
+                                        "en-GB",
                                         {
-                                            hour12: false,
                                             hour: "2-digit",
                                             minute: "2-digit",
                                         }

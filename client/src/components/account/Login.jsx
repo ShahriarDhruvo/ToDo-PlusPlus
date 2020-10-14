@@ -33,6 +33,7 @@ const Login = () => {
 
                 if (!response.ok) setStatus(data.non_field_errors);
                 else {
+                    // console.log(data);
                     handleAuthentication("Yes");
                     window.location.replace("/");
                 }

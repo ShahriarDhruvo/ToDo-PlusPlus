@@ -9,12 +9,7 @@ const RemainingTime = (props) => {
         const interval = setInterval(() => {
             const currentTime = `${new Date().toLocaleDateString(
                 "en-CA"
-            )} ${new Date().toLocaleTimeString("en-US", {
-                hour12: false,
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-            })}`;
+            )} ${new Date().toLocaleTimeString("en-GB")}`;
 
             const targetTime = `${props.deadline.split("T")[0]} ${
                 props.deadline.split("T")[1]

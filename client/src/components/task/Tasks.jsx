@@ -171,7 +171,7 @@ const Tasks = (props) => {
                                                             }
                                                             variant={
                                                                 task.completed
-                                                                    ? "info"
+                                                                    ? "c-info"
                                                                     : "complete"
                                                             }
                                                             className="dropdown_item-1"

@@ -28,11 +28,7 @@ const UpdateTask = (props) => {
                 ? `${e.target.date.value}T${e.target.time.value}`
                 : `${new Date().toLocaleDateString(
                       "en-CA"
-                  )}T${new Date().toLocaleTimeString("en-US", {
-                      hour12: false,
-                      hour: "2-digit",
-                      minute: "2-digit",
-                  })}:00`;
+                  )}T${new Date().toLocaleTimeString("en-GB")}`;
 
         const API_URL = `/${props.wid}/task/update/${props.task.id}`;
 
@@ -108,7 +104,7 @@ const UpdateTask = (props) => {
                                 <input
                                     type="time"
                                     name="time"
-                                    placeholder="23:58"
+                                    placeholder="23:58:59"
                                     defaultValue={
                                         props.task.deadline.split("T")[1]
                                     }
