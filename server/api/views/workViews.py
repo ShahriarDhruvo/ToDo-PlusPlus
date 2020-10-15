@@ -65,7 +65,7 @@ class WorkDelete(DestroyAPIView):
 		is_owner = Work.objects.filter(owner = user_id, id = pk)
 
 		if not is_owner:
-			raise PermissionDenied("Only owner of this work is authorized for deletion")
+			raise PermissionDenied("Only the owner of this work is authorized for deletion. If you wish to remove this work from your list, then contact the owner to remove you from collaborator's list")
 
 		if queryset:
 			return queryset
@@ -171,7 +171,7 @@ class WorkRemoveCollaborators(UpdateAPIView):
 			raise NotFound("This username doesn't exist.")
 
 		if is_owner:
-			raise PermissionDenied("You cannot remove the owner from the collaborators list")
+			raise PermissionDenied("The owner cannot remove himself from the collaborator's list.")
 
 		prev_collaborators_id = list(Work.objects.filter(id = pk).values('collaborators'))
 		collaborators = []

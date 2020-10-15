@@ -9,6 +9,14 @@ a {
     text-decoration: none !important;
 }
 
+input[type="checkbox"] {
+    opacity: 0.5;
+}
+
+input[type="checkbox"]:checked {
+    opacity: 1;
+}
+
 // Button fade-in-out animation
 // @keyframes fade-in {
 //     from {
@@ -98,12 +106,14 @@ a {
 }
 
 .container {
-    min-height: 94vh;
-    padding-bottom: 8rem;
+    min-height: 82.2vh;
+    padding-bottom: 1rem;
+    // padding-bottom: 8rem;
+    // margin-bottom: 7rem;
 }
 
-#footer {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-}
+// #footer {
+//     width: 100%;
+//     position: absolute;
+//     bottom: 0;
+// }

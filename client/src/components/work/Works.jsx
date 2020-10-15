@@ -37,9 +37,14 @@ const Works = (props) => {
         const API_URL = `/work/delete/${id}`;
 
         const loadData = async () => {
-            fetch(API_URL, {
+            const response = await fetch(API_URL, {
                 method: "DELETE",
             });
+
+            if (!response.ok) {
+                const data = await response.json();
+                setStatus(data.detail);
+            }
 
             props.updateFlag();
         };

@@ -110,6 +110,6 @@ const App = () => {
             </ThemeContextProvider>
         </Router>
     );
-}
+};
 
 export default App;

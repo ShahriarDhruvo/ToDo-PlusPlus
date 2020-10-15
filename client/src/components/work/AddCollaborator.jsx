@@ -1,15 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import CustomAlert from "../../generic/CustomAlert";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext } from "react";
+import { AuthenticationContext } from "../../contexts/AuthenticationContext";
 
 const AddCollaborator = (props) => {
     const [status, setStatus] = useState(undefined);
     const [variant, setVariant] = useState(undefined);
 
+    const { handleLogOut } = useContext(AuthenticationContext);
+
     const params = useParams();
+
+    useEffect(() => {
+        let API_URL = "/work/list/";
+
+        const loadData = async () => {
+            let response = await fetch(API_URL, {
+                method: "GET",
+            });
+
+            if (response.status === 401) handleLogOut();
+        };
+
+        loadData();
+    });
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -53,7 +71,10 @@ const AddCollaborator = (props) => {
 
     return (
         <Container className="vertical-center">
-            <div className="ccard p-4 text-center w-100 bg-main-bg">
+            <div
+                className="col ccard p-4 text-center bg-main-bg"
+                style={{ maxWidth: "28rem" }}
+            >
                 <h5 className="clogo mb-5">Add a Collaborator for this work</h5>
 
                 <Form id="collaborator-form" onSubmit={handleSubmit}>

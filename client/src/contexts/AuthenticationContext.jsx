@@ -16,9 +16,23 @@ const AuthenticationContextProvider = (props) => {
         localStorage.setItem("isAuthenticated", isAuthenticated);
     };
 
+    const handleLogOut = async () => {
+        const API_URL = "/accounts/logout/";
+
+        const response = await fetch(API_URL, {
+            method: "POST",
+        });
+
+        if (response.ok) {
+            handleAuthentication("");
+            localStorage.setItem("userID", "");
+            window.location.replace("/login");
+        }
+    };
+
     return (
         <AuthenticationContext.Provider
-            value={{ isAuthenticated, handleAuthentication }}
+            value={{ isAuthenticated, handleAuthentication, handleLogOut }}
         >
             {props.children}
         </AuthenticationContext.Provider>

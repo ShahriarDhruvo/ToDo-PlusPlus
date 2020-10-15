@@ -33,7 +33,7 @@ const Login = () => {
 
                 if (!response.ok) setStatus(data.non_field_errors);
                 else {
-                    // console.log(data);
+                    localStorage.setItem("userID", data.user.pk);
                     handleAuthentication("Yes");
                     window.location.replace("/");
                 }

@@ -156,7 +156,6 @@ STATIC_URL = '/static/'
 SITE_ID = 1
 
 SIMPLE_JWT = {
-    # 'ACCESS_TOKEN_LIFETIME': timedelta(seconds=10),
     'ACCESS_TOKEN_LIFETIME': timedelta(days=15),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=15),
 }

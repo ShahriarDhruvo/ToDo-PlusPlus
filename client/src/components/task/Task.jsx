@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { AuthenticationContext } from "../../contexts/AuthenticationContext";
 import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import AddTask from "./AddTask";
@@ -10,6 +11,7 @@ const Task = () => {
     const [status, setStatus] = useState(undefined);
     const [variant, setVariant] = useState("danger");
     const [flag, setFlag] = useState(true);
+    const { handleLogOut } = useContext(AuthenticationContext)
 
     const params = useParams();
 
@@ -20,6 +22,8 @@ const Task = () => {
             let response = await fetch(API_URL, {
                 method: "GET",
             });
+
+            if (response.status === 401) handleLogOut();
 
             let data = await response.json();
 
@@ -41,23 +45,29 @@ const Task = () => {
         };
 
         loadData();
-    }, [params.wid, flag]);
+    }, [params.wid, flag, handleLogOut]);
 
     const updateFlag = () => setFlag(!flag);
 
     return (
-        <Container>
-            <h5 className="clogo text-center pt-sm-5 pt-4">{workTitle}</h5>
+        <Container className="vertical-center">
+            <div className="col">
+                <h5 className="clogo text-center">{workTitle}</h5>
 
-            <AddTask tasks={tasks} wid={params.wid} updateFlag={updateFlag} />
-            
-            <Tasks
-                tasks={tasks}
-                status={status}
-                wid={params.wid}
-                variant={variant}
-                updateFlag={updateFlag}
-            />
+                <AddTask
+                    tasks={tasks}
+                    wid={params.wid}
+                    updateFlag={updateFlag}
+                />
+
+                <Tasks
+                    tasks={tasks}
+                    status={status}
+                    wid={params.wid}
+                    variant={variant}
+                    updateFlag={updateFlag}
+                />
+            </div>
         </Container>
     );
 };

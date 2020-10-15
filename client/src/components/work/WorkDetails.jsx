@@ -4,6 +4,8 @@ import { useParams, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CustomModal from "../../generic/Modal";
 import CustomAlert from "../../generic/CustomAlert";
+import { useContext } from "react";
+import { AuthenticationContext } from "../../contexts/AuthenticationContext";
 
 const WorkDetails = () => {
     const [work, setWork] = useState({});
@@ -12,6 +14,8 @@ const WorkDetails = () => {
     const [status, setStatus] = useState(undefined);
     const [variant, setVariant] = useState("danger");
     const [collaborators, setCollaborators] = useState([]);
+
+    const { handleLogOut } = useContext(AuthenticationContext);
 
     const params = useParams();
 
@@ -22,6 +26,8 @@ const WorkDetails = () => {
             let response = await fetch(API_URL, {
                 method: "GET",
             });
+
+            if (response.status === 401) handleLogOut();
 
             let data = await response.json();
 
@@ -51,7 +57,7 @@ const WorkDetails = () => {
         };
 
         loadData();
-    }, [params.id, flag]);
+    }, [params.id, flag, handleLogOut]);
 
     const removeCollaborator = (collaborator) => {
         const API_URL = `/work/remove/collaborator/${params.id}/${collaborator}`;
@@ -79,11 +85,9 @@ const WorkDetails = () => {
     return (
         <Container className="vertical-center">
             <div
-                className="ccard p-4 text-center w-100 bg-main-bg"
-                style={{ maxWidth: "30rem", minWidth: "18rem" }}
+                className="col ccard p-4 text-center bg-main-bg"
+                style={{ maxWidth: "28rem" }}
             >
-                {status && <CustomAlert variant={variant} status={status} />}
-
                 <div className="mb-3">
                     <h5>
                         <b>{work.title}</b>
@@ -97,6 +101,8 @@ const WorkDetails = () => {
                         Edit
                     </Link>
                 </div>
+
+                {status && <CustomAlert variant={variant} status={status} />}
 
                 <b>Status: </b>
                 {work.completed ? "Completed" : "Incomplete"}
@@ -135,33 +141,38 @@ const WorkDetails = () => {
                             {collaborator.username}
                         </Button>
 
-                        <CustomModal
-                            modalTitle="Delete"
-                            actionButtonSize="sm"
-                            actionVariant="danger"
-                            variant="outline-danger"
-                            handleAction={() =>
-                                removeCollaborator(collaborator.username)
-                            }
-                            modalBody={`Do you really want to remove "${collaborator.username}" from "${work.title}" work's collaboration?`}
-                        >
-                            <FontAwesomeIcon
-                                className="mb-1"
-                                icon={["fas", "user-slash"]}
-                            />
-                        </CustomModal>
+                        {parseInt(localStorage.getItem("userID")) ===
+                            work.owner && (
+                            <CustomModal
+                                modalTitle="Delete"
+                                actionButtonSize="sm"
+                                actionVariant="danger"
+                                variant="outline-danger"
+                                handleAction={() =>
+                                    removeCollaborator(collaborator.username)
+                                }
+                                modalBody={`Do you really want to remove "${collaborator.username}" from "${work.title}" work's collaboration?`}
+                            >
+                                <FontAwesomeIcon
+                                    className="mb-1"
+                                    icon={["fas", "user-slash"]}
+                                />
+                            </CustomModal>
+                        )}
                     </div>
                 ))}
 
-                <div className="mt-3" style={{ fontSize: "0.95rem" }}>
-                    <Link to={`/add/collaborator/${params.id}`}>
-                        <FontAwesomeIcon
-                            className="mb-1 mr-1"
-                            icon={["fas", "user-plus"]}
-                        />
-                        Add Collaborator
-                    </Link>
-                </div>
+                {parseInt(localStorage.getItem("userID")) === work.owner && (
+                    <div className="mt-3" style={{ fontSize: "0.95rem" }}>
+                        <Link to={`/add/collaborator/${params.id}`}>
+                            <FontAwesomeIcon
+                                className="mb-1 mr-1"
+                                icon={["fas", "user-plus"]}
+                            />
+                            Add Collaborator
+                        </Link>
+                    </div>
+                )}
             </div>
         </Container>
     );

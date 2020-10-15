@@ -3,11 +3,15 @@ import { Container } from "react-bootstrap";
 import { useParams, Link } from "react-router-dom";
 import ThemeSwitcher from "../../theme/ThemeSwitcher";
 import CustomAlert from "../../generic/CustomAlert";
+import { useContext } from "react";
+import { AuthenticationContext } from "../../contexts/AuthenticationContext";
 
 const Profile = () => {
     const [user, setUser] = useState({});
     const [status, setStatus] = useState(undefined);
     const params = useParams();
+
+    const { handleLogOut } = useContext(AuthenticationContext);
 
     useEffect(() => {
         const API_URL =
@@ -20,6 +24,8 @@ const Profile = () => {
                 method: "GET",
             });
 
+            if (response.status === 401) handleLogOut();
+
             const data = await response.json();
 
             if (!response.ok) setStatus(data.detail);
@@ -27,7 +33,7 @@ const Profile = () => {
         };
 
         loadData();
-    }, [params]);
+    }, [params, handleLogOut]);
 
     return (
         <Container className="vertical-center">

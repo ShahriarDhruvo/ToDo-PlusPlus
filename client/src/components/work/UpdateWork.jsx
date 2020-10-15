@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import CustomAlert from "../../generic/CustomAlert";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { AuthenticationContext } from "../../contexts/AuthenticationContext";
 
 const UpdateWork = (props) => {
     const form = useRef(null);
@@ -11,6 +12,8 @@ const UpdateWork = (props) => {
     const [works, setWorks] = useState([]);
     const [status, setStatus] = useState("");
     const [variant, setVariant] = useState("danger");
+
+    const { handleLogOut } = useContext(AuthenticationContext);
 
     const params = useParams();
 
@@ -21,6 +24,8 @@ const UpdateWork = (props) => {
             let response = await fetch(API_URL, {
                 method: "GET",
             });
+
+            if (response.status === 401) handleLogOut();
 
             let data = await response.json();
 
@@ -37,7 +42,7 @@ const UpdateWork = (props) => {
         };
 
         loadData();
-    }, [params.id]);
+    }, [params.id, handleLogOut]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -87,7 +92,7 @@ const UpdateWork = (props) => {
 
     return (
         <Container className="vertical-center">
-            <div className="ccard p-4 text-center w-100 bg-main-bg">
+            <div className="col ccard p-4 text-center bg-main-bg" style={{ maxWidth: "28rem" }}>
                 <h5 className="clogo mb-5">Update Work Information</h5>
 
                 <Form ref={form} onSubmit={handleSubmit}>
