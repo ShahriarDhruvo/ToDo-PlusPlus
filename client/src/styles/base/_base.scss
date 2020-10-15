@@ -17,75 +17,10 @@ input[type="checkbox"]:checked {
     opacity: 1;
 }
 
-// Button fade-in-out animation
-// @keyframes fade-in {
-//     from {
-//         opacity: 0;
-//     }
-//     to {
-//         opacity: 1;
-//     }
-// }
-
-// @keyframes fade-out {
-//     from {
-//         opacity: 1;
-//     }
-//     to {
-//         opacity: 0;
-//     }
-// }
-
-// .action-button {
-//     display: none;
-// }
-
-// .ccard:hover {
-//     .action-button {
-//         display: flex;
-//         -moz-animation: fade-in 1.5s;
-//         animation: fade-in 1.5s;
-//     }
-// }
-
-// .ccard:not(:hover) .action-button.did-fade-in {
-//     display: flex;
-//     -moz-animation: fade-out 0.5s;
-//     animation: fade-out 0.5s;
-// }
-// Button fade-in-out animation
-
 .vertical-center {
-    // min-height: 94%;
-    // min-height: 94vh;
-    // min-width: 100%;
-    // flex-direction: column;
-    // display: flex;
-    // align-items: center;
-
     display: grid;
     place-items: center;
 }
-
-// .divider-text {
-//     position: relative;
-// }
-
-// .divider-text span {
-//     font-size: 0.65rem;
-//     position: relative;
-//     z-index: 2;
-// }
-
-// .divider-text:after {
-//     content: "";
-//     position: absolute;
-//     width: 100%;
-//     border-bottom: 1px solid #ddd;
-//     top: 55%;
-//     left: 0;
-//     z-index: 1;
-// }
 
 .clogo {
     font-family: "MuseoModerno";
@@ -108,12 +43,4 @@ input[type="checkbox"]:checked {
 .container {
     min-height: 82.2vh;
     padding-bottom: 1rem;
-    // padding-bottom: 8rem;
-    // margin-bottom: 7rem;
 }
-
-// #footer {
-//     width: 100%;
-//     position: absolute;
-//     bottom: 0;
-// }

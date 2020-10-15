@@ -45,7 +45,7 @@ const CreateWork = (props) => {
     };
 
     return (
-        <div className="mb-sm-5 mb-4">
+        <div className="mb-4 mb-sm-5">
             <Form ref={form} onSubmit={handleSubmit}>
                 {error && <CustomAlert status={error} />}
 

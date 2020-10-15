@@ -4,7 +4,9 @@ import { Container } from "react-bootstrap";
 const Me = () => {
     return (
         <Container className="vertical-center">
-            <h1>I am SED</h1>
+            <div className="col ccard bg-main-bg">
+                <div className="p-3 p-md-4">I am SED</div>
+            </div>
         </Container>
     );
 };

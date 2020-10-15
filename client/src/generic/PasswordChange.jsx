@@ -133,7 +133,7 @@ const PasswordChange = (props) => {
                                 size="sm"
                                 type="submit"
                                 variant="main"
-                                className="mb-2 mb-md-0 mr-sm-2"
+                                className="mr-2"
                             >
                                 <FontAwesomeIcon
                                     className="mb-1 mr-2"

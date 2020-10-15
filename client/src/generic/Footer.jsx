@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
-        <footer id="footer" className="text-center pb-3">
+        <footer className="text-center pb-3">
             <small>Follow me on</small>
 
             <ul className="list-inline social">

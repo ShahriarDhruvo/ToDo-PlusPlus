@@ -1,51 +1,8 @@
 .App.theme-white {
-    // $bg: #fffef8;
-    // $main: #eed54a;
-    // $syntax: darken(
-    //     $color: $main,
-    //     $amount: 20%,
-    // );
-    // $main-bg: #fffef1;
-    // $complete: #4fb64f;
-    // $complete-bg: #b4ffb4;
-    // $remove: #e26060;
-    // $facebook: #405d9d;
-    // $twitter: #00acee;
-
-    // $nav-border: #eee;
-
-    $main-bg: #ffffff86;
-    // $main-bg: #ecd9bddc;
-    // background: #fff4e3;
-
-    // p, span, strike {
-    //     color: #ffffff;
-    // }
-
-    // $bg: darken(
-    //     $color: $main-bg,
-    //     $amount: 5%,
-    // );
-
     $bg: #e4e4e4c5;
-    // $main-bg: darken(
-    //     $color: $bg,
-    //     $amount: 5%,
-    // );
-    // $main: #036477a2;
-
-    // $main: #bfb5da;
     $main: #00000081;
-    // $main: #5d5d5a;
-
-    // $syntax: darken(
-    //     $color: $main,
-    //     $amount: 15%,
-    // );
-    // $syntax: #383737ee;
+    $main-bg: #ffffff86;
     $syntax: #000000a2;
-    // $syntax: $main;
-
     $border: darken(
         $color: $main-bg,
         $amount: 10%,
@@ -54,13 +11,9 @@
     $complete-bg: #b4ffb491;
     $remove: #ff0000ad;
     $c-secondary: #d36729c9;
-    // $c-info: #7418b6b2;
     $c-info: #e05e3ae7;
     $facebook: #405d9d;
     $twitter: #00acee;
-    // $nav-border: #eee;
-
-    // background-color: $bg;
 
     // Indigo
     // background: rgb(208, 133, 208);
@@ -109,38 +62,6 @@
         border: 2px solid $main;
     }
 
-    // .work-btn {
-    //     width: 2.6rem;
-    //     height: 2rem;
-    // }
-
-    // Dropdown
-    // .dropdown_menu {
-    //     button {
-    //         display: none;
-    //         opacity: 0;
-    //     }
-
-    //     a {
-    //         display: none;
-    //         opacity: 0;
-    //     }
-    // }
-
-    // .dropdown:hover {
-    //     .card__hover-btn {
-    //         display: none;
-    //     }
-
-    //     button {
-    //         display: inline-block;
-    //     }
-
-    //     a {
-    //         display: inline-block;
-    //     }
-    // }
-
     .dropdown_menu {
         @for $num from 1 through 5 {
             .dropdown_item-#{$num} {
@@ -163,19 +84,9 @@
             transform: rotateX(0deg);
         }
     }
-    // Dropdown
-
-    // .navLink-border {
-    //     border-left: 2px solid $nav-border;
-    // }
 
     .ccard {
-        // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-
-        // border-top: 4px solid #9c1de7;
-
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
-
         border-radius: 0.45rem;
     }
 
