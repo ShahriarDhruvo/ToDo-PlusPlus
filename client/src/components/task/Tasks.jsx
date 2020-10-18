@@ -17,7 +17,7 @@ const Tasks = (props) => {
 
     const markAsCompleted = (task) => {
         const completed = !task.completed;
-        const API_URL = `/${props.wid}/task/update/${task.id}`;
+        const API_URL = `/api/v1/${props.wid}/task/update/${task.id}`;
 
         const loadData = async () => {
             try {
@@ -50,7 +50,7 @@ const Tasks = (props) => {
     };
 
     const deleteItem = (id) => {
-        const API_URL = `/${props.wid}/task/delete/${id}`;
+        const API_URL = `/api/v1/${props.wid}/task/delete/${id}`;
 
         const loadData = async () => {
             const response = await fetch(API_URL, {

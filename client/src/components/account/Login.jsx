@@ -18,7 +18,7 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const API_URL = "/accounts/login/";
+        const API_URL = "/api/v1/accounts/login/";
 
         const loadData = async () => {
             const formData = new FormData(form.current);
@@ -56,7 +56,7 @@ const Login = () => {
                             <img
                                 alt="profile"
                                 className="w-100"
-                                src="/img/profile_pic.png"
+                                src="/static/img/profile_pic.png"
                             />
                         </div>
 

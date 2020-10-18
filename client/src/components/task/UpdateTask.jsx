@@ -30,7 +30,7 @@ const UpdateTask = (props) => {
                       "en-CA"
                   )}T${new Date().toLocaleTimeString("en-GB")}`;
 
-        const API_URL = `/${props.wid}/task/update/${props.task.id}`;
+        const API_URL = `/api/v1/${props.wid}/task/update/${props.task.id}`;
 
         const loadData = async () => {
             try {

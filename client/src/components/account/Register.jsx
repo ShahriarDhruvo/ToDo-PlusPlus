@@ -23,7 +23,7 @@ const Register = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const API_URL = "/accounts/registration/";
+        const API_URL = "/api/v1/accounts/registration/";
         const email = e.target.email.value;
 
         const loadData = async () => {

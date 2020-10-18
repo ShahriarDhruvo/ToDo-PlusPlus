@@ -9,28 +9,32 @@ const Footer = () => {
             <small>Follow me on</small>
 
             <ul className="list-inline social">
-                <li className="list-inline-item clink">
+                {/* <li className="list-inline-item clink">
                     <a href="/" className="text-syntax" target="_blank">
                         <FontAwesomeIcon icon={["fas", "globe"]} />
                     </a>
-                </li>
+                </li> */}
+
                 <li className="list-inline-item clink">
-                    <a href="/" className="text-syntax" target="_blank">
+                    <a href="https://www.facebook.com/ShahriarDhruvo" className="text-syntax" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={["fab", "facebook-f"]} />
                     </a>
                 </li>
+
                 <li className="list-inline-item clink">
-                    <a href="/" className="text-syntax" target="_blank">
+                    <a href="https://twitter.com/ShahriarDhruvo" className="text-syntax" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={["fab", "twitter"]} />
                     </a>
                 </li>
+
                 <li className="list-inline-item clink">
-                    <a href="/" className="text-syntax" target="_blank">
+                    <a href="https://www.linkedin.com/in/shahriar-dhruvo-613641190/" className="text-syntax" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={["fab", "linkedin"]} />
                     </a>
                 </li>
+
                 <li className="list-inline-item clink">
-                    <a href="/" className="text-syntax" target="_blank">
+                    <a href="https://github.com/ShahriarDhruvo" className="text-syntax" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={["fab", "github"]} />
                     </a>
                 </li>

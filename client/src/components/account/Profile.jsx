@@ -16,8 +16,8 @@ const Profile = () => {
     useEffect(() => {
         const API_URL =
             Object.keys(params).length !== 0
-                ? `/accounts/collaborator/profile/${params.wid}/${params.uid}`
-                : "/accounts/user/";
+                ? `/api/v1/accounts/collaborator/profile/${params.wid}/${params.uid}`
+                : "/api/v1/accounts/user/";
 
         const loadData = async () => {
             const response = await fetch(API_URL, {
@@ -45,7 +45,7 @@ const Profile = () => {
                     style={{ maxWidth: "28rem" }}
                 >
                     <img
-                        src="/img/profile_pic.png"
+                        src="/static/img/profile_pic.png"
                         onError={(e) => {
                             e.target.onerror = null;
                             e.target.src = "/img/Default.png";

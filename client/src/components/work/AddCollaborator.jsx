@@ -16,7 +16,7 @@ const AddCollaborator = (props) => {
     const params = useParams();
 
     useEffect(() => {
-        let API_URL = "/work/list/";
+        let API_URL = "/api/v1/work/list/";
 
         const loadData = async () => {
             let response = await fetch(API_URL, {
@@ -35,7 +35,7 @@ const AddCollaborator = (props) => {
 
         if (collaboratorName === "") return setStatus("Field cannot be empty");
 
-        const API_URL = `/work/add/collaborator/${params.id}/${collaboratorName}`;
+        const API_URL = `/api/v1/work/add/collaborator/${params.id}/${collaboratorName}`;
 
         const loadData = async () => {
             try {

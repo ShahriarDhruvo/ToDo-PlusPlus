@@ -18,7 +18,7 @@ const UpdateWork = (props) => {
     const params = useParams();
 
     useEffect(() => {
-        let API_URL = "/work/list/";
+        let API_URL = "/api/v1/work/list/";
 
         const loadData = async () => {
             let response = await fetch(API_URL, {
@@ -31,7 +31,7 @@ const UpdateWork = (props) => {
 
             setWorks(data);
 
-            API_URL = "/work/details/" + params.id;
+            API_URL = "/api/v1/work/details/" + params.id;
             response = await fetch(API_URL, {
                 method: "GET",
             });
@@ -62,7 +62,7 @@ const UpdateWork = (props) => {
             }
         }
 
-        const API_URL = "/work/update/" + params.id;
+        const API_URL = "/api/v1/work/update/" + params.id;
 
         const loadData = async () => {
             try {

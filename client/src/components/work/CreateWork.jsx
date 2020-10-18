@@ -20,7 +20,7 @@ const CreateWork = (props) => {
             }
         }
 
-        const API_URL = "work/create/";
+        const API_URL = "/api/v1/work/create/";
 
         const loadData = async () => {
             const formData = new FormData(form.current);

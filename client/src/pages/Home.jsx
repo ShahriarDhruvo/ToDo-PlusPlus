@@ -13,7 +13,7 @@ const Home = () => {
     const { handleLogOut } = useContext(AuthenticationContext);
 
     useEffect(() => {
-        const API_URL = "work/list/";
+        const API_URL = "/api/v1/work/list/";
 
         const loadData = async () => {
             const response = await fetch(API_URL, {

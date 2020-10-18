@@ -12,7 +12,7 @@ const Works = (props) => {
 
     const markAsCompleted = (work) => {
         const completed = !work.completed;
-        const API_URL = `/work/update/${work.id}`;
+        const API_URL = `/api/v1/work/update/${work.id}`;
 
         const loadData = async () => {
             try {
@@ -34,7 +34,7 @@ const Works = (props) => {
     };
 
     const deleteItem = (id) => {
-        const API_URL = `/work/delete/${id}`;
+        const API_URL = `/api/v1/work/delete/${id}`;
 
         const loadData = async () => {
             const response = await fetch(API_URL, {

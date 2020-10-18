@@ -20,7 +20,7 @@ const WorkDetails = () => {
     const params = useParams();
 
     useEffect(() => {
-        let API_URL = "/work/details/" + params.id;
+        let API_URL = "/api/v1/work/details/" + params.id;
 
         const loadData = async () => {
             let response = await fetch(API_URL, {
@@ -34,7 +34,7 @@ const WorkDetails = () => {
             if (!response.ok) setStatus(data.detail);
             setWork(data[0]);
 
-            API_URL = "/work/list/collaborator/details/" + params.id;
+            API_URL = "/api/v1/work/list/collaborator/details/" + params.id;
 
             response = await fetch(API_URL, {
                 method: "GET",
@@ -45,7 +45,7 @@ const WorkDetails = () => {
             if (!response.ok) setStatus(data.detail);
             setCollaborators(data);
 
-            API_URL = "/" + params.id + "/task/list/";
+            API_URL = `/api/v1/${params.id}/task/list/`;
 
             response = await fetch(API_URL, {
                 method: "GET",
@@ -60,7 +60,7 @@ const WorkDetails = () => {
     }, [params.id, flag, handleLogOut]);
 
     const removeCollaborator = (collaborator) => {
-        const API_URL = `/work/remove/collaborator/${params.id}/${collaborator}`;
+        const API_URL = `/api/v1/work/remove/collaborator/${params.id}/${collaborator}`;
 
         const loadData = async () => {
             const response = await fetch(API_URL, {

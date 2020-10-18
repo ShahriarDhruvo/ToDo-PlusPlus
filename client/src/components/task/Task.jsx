@@ -16,7 +16,7 @@ const Task = () => {
     const params = useParams();
 
     useEffect(() => {
-        let API_URL = `/${params.wid}/task/list/`;
+        let API_URL = `/api/v1/${params.wid}/task/list/`;
 
         const loadData = async () => {
             let response = await fetch(API_URL, {
@@ -33,7 +33,7 @@ const Task = () => {
             } else if (response.status === 403) setStatus(data.detail);
             else setTasks(data);
 
-            API_URL = "/work/details/" + params.wid;
+            API_URL = "/api/v1/work/details/" + params.wid;
 
             response = await fetch(API_URL, {
                 method: "GET",

@@ -13,7 +13,7 @@ const PasswordChange = (props) => {
     const { handleLogOut } = useContext(AuthenticationContext);
 
     useEffect(() => {
-        let API_URL = "/work/list/";
+        let API_URL = "/api/v1/work/list/";
 
         const loadData = async () => {
             let response = await fetch(API_URL, {
@@ -29,7 +29,7 @@ const PasswordChange = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const API_URL = "/accounts/password/change/";
+        const API_URL = "/api/v1/accounts/password/change/";
 
         const loadData = async () => {
             const formData = new FormData(form.current);

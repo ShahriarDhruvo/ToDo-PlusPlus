@@ -23,7 +23,7 @@ const AddTask = (props) => {
                   "en-CA"
               )}T${new Date().toLocaleTimeString("en-GB")}`;
 
-        const API_URL = `/${props.wid}/task/create/`;
+        const API_URL = `/api/v1/${props.wid}/task/create/`;
 
         const loadData = async () => {
             const formData = new FormData(form.current);

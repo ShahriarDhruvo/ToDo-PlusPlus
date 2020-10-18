@@ -15,7 +15,7 @@ const PasswordReset = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const API_URL = "/accounts/password/reset/";
+        const API_URL = "/api/v1/accounts/password/reset/";
 
         const loadData = async () => {
             const formData = new FormData(form.current);

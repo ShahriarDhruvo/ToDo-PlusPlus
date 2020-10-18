@@ -13,7 +13,7 @@ const PassworResetConfirm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const API_URL = "/accounts/password/reset/confirm/";
+        const API_URL = "/api/v1/accounts/password/reset/confirm/";
 
         const loadData = async () => {
             try {

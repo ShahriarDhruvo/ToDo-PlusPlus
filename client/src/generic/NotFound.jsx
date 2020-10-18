@@ -8,7 +8,7 @@ const NotFound = (props) => (
         <div>
             <div>
                 <img
-                    src="/img/notFound.png"
+                    src="/static/img/notFound.png"
                     alt="notFound"
                     style={{ maxWidth: "10rem" }}
                 />

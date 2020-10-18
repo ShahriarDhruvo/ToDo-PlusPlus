@@ -8,7 +8,7 @@ const EmailConfirm = () => {
     const params = useParams();
 
     useEffect(() => {
-        const API_URL = "/accounts/account-confirm-email/";
+        const API_URL = "/api/v1/accounts/account-confirm-email/";
 
         const loadData = async () => {
             const response = await fetch(API_URL, {

@@ -8,30 +8,29 @@ const About = () => {
                 <div className="p-3 p-md-4">
                     <h5>What is this about?</h5>
                     <div>
-                        This is not just a note taking website. Although you can
-                        use it for making some quick list. This one is intended
-                        to be used in those situation in which case you need
-                        something to create a list of a certain work. Mainly in
-                        those where you need to finish it within a ceratain
+                        This is not your typical note taking website. Although
+                        you can use it for making lists. This one is intended to
+                        be used in those situation where you need to create a
+                        list of tasks to complete a certain work. Mainly in
+                        those where you need to finish it within a certain
                         amount of time.
                     </div>
-
                     <div>
                         Example:
                         <p>
                             1. You have buy some grocery. You make a list (add
                             some task) of that under a certain work name
                             "Today's lunch". Then you add some tasks under that
-                            work name like a. Have to buy some potatoes, b. Need
+                            work name like a. Have to buy some potatoes b. Need
                             to buys some handwash... etc. After going to the
                             supermarket you mark the task no. a, as complete and
                             so on... Someone can also update/add into your task
                             field if you add them as a collaborator. He/she can
-                            add, remove or update about what you have to buy and
-                            what not.
+                            add, remove or update what you have to buy and what
+                            you do not have to buy.
                         </p>
                         <p>
-                            2. Say, you have a project to make with some of your
+                            2. Say, you are in a project with some of your
                             colleagues. You are the lead developer. You create a
                             work under some random name say, "Project 350". Then
                             you added your colleagues as collaborators. They can
@@ -43,8 +42,8 @@ const About = () => {
                             this section and will finish within this time limit,
                             so we can work on other things. So "Mr. 1" add a
                             task name "working on body section" and added a
-                            timer and so on.... In this way you guys can
-                            collaboratoratively work with each other.
+                            timer and so on.... In this way you and your
+                            colleagues can work in sync with each other.
                         </p>
                         <p>
                             3. Or you have some great ideas about some future
@@ -55,11 +54,10 @@ const About = () => {
                             website. etc
                         </p>
                         <p>
-                            Again, the idea is endless this is just a tool to
-                            help you with.
+                            Again, ideas are endless. This website is just a
+                            tool to help you with managing all of your ideas.
                         </p>
                     </div>
-
                     <div>
                         Licensing and Freedomness of this project
                         <p>
@@ -67,7 +65,6 @@ const About = () => {
                             MIT license.
                         </p>
                     </div>
-
                     <div>
                         FAQ
                         <p>Q: Why can't I add/remove collaborator?</p>
