@@ -41,7 +41,7 @@ const Footer = () => {
             </ul>
 
             <Link to="/me" className="text-syntax">
-                <small>Who and What made this possible?</small>
+                <small>Who & What made this possible?</small>
             </Link>
         </footer>
     );

@@ -198,7 +198,7 @@ const Works = (props) => {
                                                 <Button
                                                     size="sm"
                                                     as={Link}
-                                                    variant="main"
+                                                    variant="edit-tasks"
                                                     to={`/${work.id}/task/list/`}
                                                     className="mb-2 dropdown_item-3"
                                                     style={{ minWidth: "8rem" }}
@@ -243,11 +243,25 @@ const Works = (props) => {
                     </Masonry>
                 </>
             ) : (
-                <CustomAlert
-                    variant="info"
-                    status="Your work list is empty!"
-                    alertClass="mx-2"
-                />
+                <>
+                    {/* <CustomAlert
+                        variant="info"
+                        status="Your work list is empty!"
+                        alertClass="mx-2"
+                    /> */}
+
+                    <p className="text-center mb-5">
+                        <b>Your work list is empty!</b>
+                    </p>
+
+                    <div className="ccard bg-main-bg mx-2">
+                        <div className="p-3 p-md-4 text-center">
+                            If you are new here, you can check the
+                            <Link to="/about"> help </Link>section to get you
+                            started
+                        </div>
+                    </div>
+                </>
             )}
         </>
     );

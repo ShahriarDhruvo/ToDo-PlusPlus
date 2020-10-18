@@ -217,7 +217,7 @@ const Tasks = (props) => {
                                                     <div className="col-12 col-md-4">
                                                         <Button
                                                             size="sm"
-                                                            variant="main"
+                                                            variant="edit-tasks"
                                                             className="my-2 my-md-0 dropdown_item-2"
                                                             style={{
                                                                 minWidth:
