@@ -4,7 +4,7 @@ export const ThemeContext = createContext();
 
 const ThemeContextProvider = (props) => {
     // Color State
-    const [colorTheme, setColorTheme] = useState("theme-white");
+    const [colorTheme, setColorTheme] = useState("theme-gradient-blue");
 
     // Save selected theme
     useEffect(() => {

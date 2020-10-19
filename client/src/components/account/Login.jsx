@@ -140,6 +140,10 @@ const Login = () => {
                             variant="main"
                             className="mt-2 w-100"
                         >
+                            <FontAwesomeIcon
+                                className="fa-icon mr-2"
+                                icon={["fas", "sign-in-alt"]}
+                            />
                             Login
                         </Button>
                     </Form>

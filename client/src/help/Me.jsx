@@ -1,5 +1,6 @@
 import React from "react";
 import emoji from "react-easy-emoji";
+import { Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 
 const Me = () => {
@@ -41,7 +42,6 @@ const Me = () => {
                             suitable projects after a certain amount of time.
                         </p>
 
-                        <br />
                         <p>
                             And so, I built <b>To-do++</b> using React JS,
                             Django and DRF (Django Rest Framework). I started
@@ -96,8 +96,8 @@ const Me = () => {
                         </p>
 
                         <span>
-                            So, if you like what I did then like, share and give
-                            star to my{" "}
+                            So, if you like what I did and want to support me
+                            then like, share and give star to my{" "}
                             <a
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -105,9 +105,26 @@ const Me = () => {
                             >
                                 Github
                             </a>{" "}
-                            repo {emoji("😁")}. And I hope my project helps you
-                            a bit to maintain your works. Thank you!
+                            repo and can donate some cash to my
+                            <Link to="/support"> bkash </Link>
+                            account {emoji("😁")}. I hope my project helps you a
+                            bit to maintain your works. Thanks!
                         </span>
+
+                        <div className="mt-3 text-center">
+                            <div>
+                                <img
+                                    src="/static/img/author.png"
+                                    alt="author's signature"
+                                    style={{
+                                        width: "8rem",
+                                        borderRadius: "0.45rem",
+                                    }}
+                                />
+                            </div>
+
+                            <small>Shahriar Elahi Dhruvo</small>
+                        </div>
                     </div>
                 </div>
             </div>

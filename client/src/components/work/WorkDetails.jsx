@@ -95,7 +95,7 @@ const WorkDetails = () => {
 
                     <Link to={"/work/update/" + work.id}>
                         <FontAwesomeIcon
-                            className="mb-1 mr-1"
+                            className="mr-1"
                             icon={["fas", "edit"]}
                         />
                         Edit
@@ -154,7 +154,6 @@ const WorkDetails = () => {
                                 modalBody={`Do you really want to remove "${collaborator.username}" from "${work.title}" work's collaboration?`}
                             >
                                 <FontAwesomeIcon
-                                    className="mb-1"
                                     icon={["fas", "user-slash"]}
                                 />
                             </CustomModal>
@@ -166,7 +165,7 @@ const WorkDetails = () => {
                     <div className="mt-3" style={{ fontSize: "0.95rem" }}>
                         <Link to={`/add/collaborator/${params.id}`}>
                             <FontAwesomeIcon
-                                className="mb-1 mr-1"
+                                className="mr-1"
                                 icon={["fas", "user-plus"]}
                             />
                             Add Collaborator

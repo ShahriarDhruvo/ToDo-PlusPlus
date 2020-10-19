@@ -29,7 +29,7 @@ import PasswordReset from "./generic/PasswordReset";
 import PassworResetConfirm from "./generic/PasswordResetConfirm";
 import About from "./help/About";
 import Me from "./help/Me";
-// import Trash from "./trash/Trash";
+import Support from "./help/Support";
 
 library.add(far, fas, fab);
 
@@ -98,10 +98,8 @@ const App = () => {
                         <Route exact path="/me" component={Me} />
                         <Route exact path="/about" component={About} />
                         <Route exact path="/login" component={Login} />
+                        <Route exact path="/support" component={Support} />
                         <Route exact path="/register" component={Register} />
-
-                        {/* <Route exact path="/trash" component={Trash} /> */}
-
                         <ProtectedRoute exact path="/" component={Home} />
                         <Route component={NotFound} />
                     </Switch>

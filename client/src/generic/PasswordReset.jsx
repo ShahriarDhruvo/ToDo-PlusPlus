@@ -85,7 +85,7 @@ const PasswordReset = (props) => {
                                     className="mr-2"
                                 >
                                     <FontAwesomeIcon
-                                        className="mb-1 mr-2"
+                                        className="mr-2"
                                         icon={["fa", "paper-plane"]}
                                     />
                                     Send Email
@@ -96,7 +96,7 @@ const PasswordReset = (props) => {
                                     onClick={() => props.history.goBack()}
                                 >
                                     <FontAwesomeIcon
-                                        className="mb-1 mr-2"
+                                        className="mr-2"
                                         icon={["fa", "chevron-left"]}
                                     />
                                     Go Back

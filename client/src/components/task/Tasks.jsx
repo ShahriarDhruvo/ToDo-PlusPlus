@@ -187,7 +187,7 @@ const Tasks = (props) => {
                                                             {!task.completed ? (
                                                                 <>
                                                                     <FontAwesomeIcon
-                                                                        className="mb-1 mr-1"
+                                                                        className="mr-1"
                                                                         icon={[
                                                                             "fas",
                                                                             "check",
@@ -200,7 +200,7 @@ const Tasks = (props) => {
                                                             ) : (
                                                                 <>
                                                                     <FontAwesomeIcon
-                                                                        className="mb-1 mr-1"
+                                                                        className="mr-1"
                                                                         icon={[
                                                                             "fa",
                                                                             "ban",
@@ -234,7 +234,7 @@ const Tasks = (props) => {
                                                             }
                                                         >
                                                             <FontAwesomeIcon
-                                                                className="mb-1 mr-1"
+                                                                className="mr-1"
                                                                 icon={[
                                                                     "fas",
                                                                     "edit",
@@ -263,7 +263,7 @@ const Tasks = (props) => {
                                                             modalBody="Do you really want to delete this task?"
                                                         >
                                                             <FontAwesomeIcon
-                                                                className="mb-1 mr-1"
+                                                                className="mr-1"
                                                                 icon={[
                                                                     "fas",
                                                                     "trash",

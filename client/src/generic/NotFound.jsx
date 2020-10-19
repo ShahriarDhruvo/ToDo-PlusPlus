@@ -16,20 +16,21 @@ const NotFound = (props) => (
             <h2 className="my-3">Oops! This Page Could Not Be Found.</h2>
             <span className="text-danger">Error Code: 404</span>
             <p>
-                The page you are looking for does not exist, have
-                been removed, name changed or is temporarily unavailable.
+                The page you are looking for does not exist, have been removed,
+                name changed or is temporarily unavailable.
             </p>
-            <Button variant="main" className="mt-3" as={Link} to="/">
-                <FontAwesomeIcon className="mb-1 mr-2" icon={["fa", "home"]} />
+            <Button size="sm" variant="main" className="mt-3" as={Link} to="/">
+                <FontAwesomeIcon className="mr-2" icon={["fa", "home"]} />
                 Go To Homepage
             </Button>
             <Button
+                size="sm"
                 variant="main"
                 className="mt-3 ml-2"
                 onClick={() => props.history.goBack()}
             >
                 <FontAwesomeIcon
-                    className="mb-1 mr-2"
+                    className="mr-2"
                     icon={["fa", "chevron-left"]}
                 />
                 Go Back

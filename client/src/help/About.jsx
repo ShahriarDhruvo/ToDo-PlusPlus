@@ -68,7 +68,14 @@ const About = () => {
                     </div>
 
                     <div>
-                        <b>Licensing and freedom of this project:</b>
+                        <b>Supported browsers</b>
+                        <p className="ml-3">
+                            Google Chrome, Mozilla Firefox, Microsoft Edge
+                        </p>
+                    </div>
+
+                    <div>
+                        <b>Licensing and freedom of this project</b>
                         <p className="ml-3">
                             This project an open source project, licenced under
                             MIT license.

@@ -109,7 +109,7 @@ const AddCollaborator = (props) => {
                             style={{ minWidth: "7rem" }}
                         >
                             <FontAwesomeIcon
-                                className="mb-1 mr-2"
+                                className="mr-2"
                                 icon={["fas", "user-plus"]}
                             />
                             Add
@@ -123,7 +123,7 @@ const AddCollaborator = (props) => {
                             onClick={() => props.history.goBack()}
                         >
                             <FontAwesomeIcon
-                                className="mb-1 mr-2"
+                                className="mr-2"
                                 icon={["fa", "chevron-left"]}
                             />
                             Go Back

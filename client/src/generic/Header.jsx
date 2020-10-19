@@ -3,8 +3,8 @@ import emoji from "react-easy-emoji";
 
 const Header = (props) => {
     return (
-        <div className="mb-5 text-center">
-            <div className="clogo" style={{ fontSize: "1.72rem" }}>
+        <div className="clogo mb-5 text-center">
+            <div style={{ fontSize: "1.72rem" }}>
                 {props.title ? props.title : "ToDo++"}
             </div>
 

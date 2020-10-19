@@ -136,7 +136,7 @@ const PasswordChange = (props) => {
                                 className="mr-2"
                             >
                                 <FontAwesomeIcon
-                                    className="mb-1 mr-2"
+                                    className="mr-2"
                                     icon={["fa", "key"]}
                                 />
                                 Change Password
@@ -148,7 +148,7 @@ const PasswordChange = (props) => {
                                 onClick={() => props.history.goBack()}
                             >
                                 <FontAwesomeIcon
-                                    className="mb-1 mr-2"
+                                    className="mr-2"
                                     icon={["fa", "chevron-left"]}
                                 />
                                 Go Back

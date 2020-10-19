@@ -138,7 +138,7 @@ const UpdateTask = (props) => {
                     style={{ minWidth: "8rem" }}
                 >
                     <FontAwesomeIcon
-                        className="mb-1 mr-1"
+                        className="mr-1"
                         icon={["fa", "wrench"]}
                     />
                     Update

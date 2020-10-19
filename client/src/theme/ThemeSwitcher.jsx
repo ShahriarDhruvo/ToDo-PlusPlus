@@ -5,36 +5,32 @@ const ThemeSwitcher = () => {
     const { colorTheme, handleTheme } = useContext(ThemeContext);
 
     return (
-        <div className="theme-options d-flex justify-content-around mx-auto mb-3">
+        <div
+            className="theme-options d-flex justify-content-around mx-auto mb-3"
+            style={{ maxWidth: "12rem" }}
+        >
             <div
-                id="theme-white"
-                onClick={() => handleTheme("theme-white")}
-                className={`${colorTheme === "theme-white" ? "active" : ""}`}
+                id="theme-light-green"
+                onClick={() => handleTheme("theme-light-green")}
+                className={`${colorTheme === "theme-light-green" ? "active" : ""}`}
             />
+
             <div
-                id="theme-blue"
-                onClick={() => handleTheme("theme-blue")}
-                className={`${colorTheme === "theme-blue" ? "active" : ""}`}
+                id="theme-gradient-blue"
+                onClick={() => handleTheme("theme-gradient-blue")}
+                className={`${colorTheme === "theme-gradient-blue" ? "active" : ""}`}
             />
+
             <div
-                id="theme-orange"
-                onClick={() => handleTheme("theme-orange")}
-                className={`${colorTheme === "theme-orange" ? "active" : ""}`}
+                id="theme-gradient-cream"
+                onClick={() => handleTheme("theme-gradient-cream")}
+                className={`${colorTheme === "theme-gradient-cream" ? "active" : ""}`}
             />
+
             <div
-                id="theme-purple"
-                onClick={() => handleTheme("theme-purple")}
-                className={`${colorTheme === "theme-purple" ? "active" : ""}`}
-            />
-            <div
-                id="theme-green"
-                onClick={() => handleTheme("theme-green")}
-                className={`${colorTheme === "theme-green" ? "active" : ""}`}
-            />
-            <div
-                id="theme-black"
-                onClick={() => handleTheme("theme-black")}
-                className={`${colorTheme === "theme-black" ? "active" : ""}`}
+                id="theme-gradient-silver"
+                onClick={() => handleTheme("theme-gradient-silver")}
+                className={`${colorTheme === "theme-gradient-silver" ? "active" : ""}`}
             />
         </div>
     );

@@ -69,7 +69,7 @@ const Register = (props) => {
                             className="mb-2 w-100"
                         >
                             <FontAwesomeIcon
-                                className="mb-1 mr-2"
+                                className="mr-2"
                                 icon={faTwitter}
                             />
                             Signup via Twitter
@@ -82,7 +82,7 @@ const Register = (props) => {
                             className="w-100"
                         >
                             <FontAwesomeIcon
-                                className="mb-1 mr-2"
+                                className="mr-2"
                                 icon={faFacebook}
                             />
                             Signup via facebook

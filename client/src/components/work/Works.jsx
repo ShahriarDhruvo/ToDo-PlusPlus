@@ -145,7 +145,7 @@ const Works = (props) => {
                                                     {!work.completed ? (
                                                         <>
                                                             <FontAwesomeIcon
-                                                                className="mb-1 mr-1"
+                                                                className="mr-1"
                                                                 icon={[
                                                                     "fas",
                                                                     "check",
@@ -158,7 +158,7 @@ const Works = (props) => {
                                                     ) : (
                                                         <>
                                                             <FontAwesomeIcon
-                                                                className="mb-1 mr-1"
+                                                                className="mr-1"
                                                                 icon={[
                                                                     "fa",
                                                                     "ban",
@@ -185,7 +185,7 @@ const Works = (props) => {
                                                     style={{ minWidth: "8rem" }}
                                                 >
                                                     <FontAwesomeIcon
-                                                        className="mb-1 mr-1"
+                                                        className="mr-1"
                                                         icon={["fas", "info"]}
                                                     />
                                                     {/* <span className="d-none d-sm-inline"> */}
@@ -204,7 +204,7 @@ const Works = (props) => {
                                                     style={{ minWidth: "8rem" }}
                                                 >
                                                     <FontAwesomeIcon
-                                                        className="mb-1 mr-1"
+                                                        className="mr-1"
                                                         icon={["fas", "tasks"]}
                                                     />
                                                     {/* <span className="d-none d-sm-inline"> */}
@@ -227,7 +227,7 @@ const Works = (props) => {
                                                     modalBody={`Do you really want to delete "${work.title}" work?`}
                                                 >
                                                     <FontAwesomeIcon
-                                                        className="mb-1 mr-1"
+                                                        className="mr-1"
                                                         icon={["fas", "trash"]}
                                                     />
                                                     {/* <span className="d-none d-sm-inline"> */}

@@ -100,7 +100,7 @@ const PassworResetConfirm = (props) => {
                                 className="mb-2 mb-md-0 mr-sm-2"
                             >
                                 <FontAwesomeIcon
-                                    className="mb-1 mr-2"
+                                    className="mr-2"
                                     icon={["fa", "window-restore"]}
                                 />
                                 Reset Password
@@ -112,7 +112,7 @@ const PassworResetConfirm = (props) => {
                                 onClick={() => props.history.goBack()}
                             >
                                 <FontAwesomeIcon
-                                    className="mb-1 mr-2"
+                                    className="mr-2"
                                     icon={["fa", "chevron-left"]}
                                 />
                                 Go Back

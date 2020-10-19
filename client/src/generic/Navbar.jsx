@@ -10,12 +10,12 @@ const MainNav = () => {
     return (
         <Navbar>
             <Navbar.Brand className="clogo" as={NavLink} to="/">
-                {/* <img
-                    src="/img/logo.png"
+                <img
                     alt="logo"
-                    className="mb-1 mr-1"
-                    style={{ width: "1.5rem" }}
-                /> */}
+                    className="mr-1"
+                    src="/static/favicon.ico"
+                    style={{ width: "1.1rem", marginBottom: "0.4rem" }}
+                />
                 ToDo++
             </Navbar.Brand>
 
@@ -31,7 +31,7 @@ const MainNav = () => {
                         <FontAwesomeIcon
                             icon={["fas", "user-tie"]}
                             style={{ fontSize: "1.1rem" }}
-                            className="fa-icon mb-1 text-syntax"
+                            className="fa-icon text-syntax"
                         />
                     </Nav.Link>
                 </Nav>
