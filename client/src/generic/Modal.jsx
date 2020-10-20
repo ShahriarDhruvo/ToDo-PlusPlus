@@ -26,8 +26,8 @@ const CustomModal = (props) => {
 
             <Modal
                 show={show}
+                animation={true}
                 onHide={handleClose}
-                animation={false}
                 className="text-center"
                 centered
             >

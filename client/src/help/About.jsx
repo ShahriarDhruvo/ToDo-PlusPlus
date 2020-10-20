@@ -22,7 +22,7 @@ const About = () => {
                         <b>Example:</b>
                         <div className="ml-3">
                             <p>
-                                1. You have buy some grocery. You make a list
+                                1. You have to buy some grocery. You make a list
                                 (add some task) of that under a certain work
                                 name "Today's lunch". Then you add some tasks
                                 under that work name like a. Have to buy some

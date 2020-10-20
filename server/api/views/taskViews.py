@@ -29,7 +29,7 @@ class TaskList(ListAPIView):
 		if not is_authenticated:
 			raise PermissionDenied("You are not authorized to see the list")
 		
-		queryset = Task.objects.filter(work_name = wpk).order_by('-id')
+		queryset = Task.objects.filter(work_name = wpk).order_by('id')
 
 		if queryset:
 			return queryset
