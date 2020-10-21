@@ -101,7 +101,7 @@ const Me = () => {
                             <a
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                href="https://github.com/ShahriarDhruvo"
+                                href="https://github.com/ShahriarDhruvo/ToDo-PlusPlus"
                             >
                                 Github
                             </a>{" "}

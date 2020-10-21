@@ -104,29 +104,30 @@ const WorkDetails = () => {
 
                 {status && <CustomAlert variant={variant} status={status} />}
 
-                <b>Status: </b>
-                {work.completed ? "Completed" : "Incomplete"}
-                <br />
+                <div className="mb-3">
+                    <b>Status: </b>
+                    {work.completed ? "Completed" : "Incomplete"}
+                    <br />
 
-                <b>Task Count: </b>
-                {tasks.length}
-                <br />
+                    <b>Task Count: </b>
+                    {tasks.length}
+                    <br />
 
-                <b>Owner: </b>
-                {collaborators.map((collaborator) => {
-                    if (collaborator.pk === work.owner) {
-                        return (
-                            <Link
-                                key={collaborator.pk}
-                                to={`/profile/${params.id}/${collaborator.pk}`}
-                            >
-                                {collaborator.username}
-                            </Link>
-                        );
-                    }
-                    return undefined;
-                })}
-                <br />
+                    <b>Owner: </b>
+                    {collaborators.map((collaborator) => {
+                        if (collaborator.pk === work.owner) {
+                            return (
+                                <Link
+                                    key={collaborator.pk}
+                                    to={`/profile/${params.id}/${collaborator.pk}`}
+                                >
+                                    {collaborator.username}
+                                </Link>
+                            );
+                        }
+                        return undefined;
+                    })}
+                </div>
 
                 <b>Collaborators: </b>
                 {collaborators.map((collaborator) => (
@@ -153,9 +154,7 @@ const WorkDetails = () => {
                                 }
                                 modalBody={`Do you really want to remove "${collaborator.username}" from "${work.title}" work's collaboration?`}
                             >
-                                <FontAwesomeIcon
-                                    icon={["fas", "user-slash"]}
-                                />
+                                <FontAwesomeIcon icon={["fas", "user-slash"]} />
                             </CustomModal>
                         )}
                     </div>

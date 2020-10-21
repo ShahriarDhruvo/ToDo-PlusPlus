@@ -8,7 +8,7 @@ import { AuthenticationContext } from "../contexts/AuthenticationContext";
 
 const Home = () => {
     const [works, setWorks] = useState([]);
-    const [flag, setFlag] = useState(true);
+    const [flag, setFlag] = useState(Math.random());
 
     const { handleLogOut } = useContext(AuthenticationContext);
 
@@ -30,7 +30,7 @@ const Home = () => {
         loadData();
     }, [flag, handleLogOut]);
 
-    const updateFlag = () => setFlag(!flag);
+    const updateFlag = () => setFlag(Math.random());
 
     return (
         <Container className="vertical-center">

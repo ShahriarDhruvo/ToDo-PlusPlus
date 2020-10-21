@@ -106,12 +106,7 @@ const Tasks = (props) => {
                                                         <span>
                                                             {task.title}
                                                         </span>
-                                                        <div
-                                                            style={{
-                                                                fontStyle:
-                                                                    "italic",
-                                                            }}
-                                                        >
+                                                        <div>
                                                             <small className="text-muted">
                                                                 {task.author}
                                                             </small>
@@ -122,12 +117,7 @@ const Tasks = (props) => {
                                                         <strike>
                                                             {task.title}
                                                         </strike>
-                                                        <div
-                                                            style={{
-                                                                fontStyle:
-                                                                    "italic",
-                                                            }}
-                                                        >
+                                                        <div>
                                                             <small className="text-muted">
                                                                 {task.author}
                                                             </small>

@@ -10,7 +10,7 @@ const Task = () => {
     const [workTitle, setWorkTitle] = useState(undefined);
     const [status, setStatus] = useState(undefined);
     const [variant, setVariant] = useState("danger");
-    const [flag, setFlag] = useState(true);
+    const [flag, setFlag] = useState(Math.random());
     const { handleLogOut } = useContext(AuthenticationContext)
 
     const params = useParams();
@@ -47,7 +47,7 @@ const Task = () => {
         loadData();
     }, [params.wid, flag, handleLogOut]);
 
-    const updateFlag = () => setFlag(!flag);
+    const updateFlag = () => setFlag(Math.random());
 
     return (
         <Container className="vertical-center">
